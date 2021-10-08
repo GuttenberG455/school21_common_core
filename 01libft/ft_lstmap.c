@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:43:58 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 17:55:29 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/08 20:06:33 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,27 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *))
 {
-	t_list	*first;
+	t_list	*ptr;
 	t_list	*new;
 
-	if (!f || !del)
-		return (0);
-	first = 0;
+	ptr = 0;
 	while (lst)
 	{
 		new = ft_lstnew((*f)(lst->content));
-		ft_lstadd_back(&first, new);
-		ft_lstdelone(lst, del);
-		free(new);
+		if (!new)
+		{
+			while (ptr)
+			{
+				new = ptr->next;
+				(*del)(ptr->content);
+				free(ptr);
+				ptr = new;
+			}
+			lst = 0;
+			return (0);
+		}
+		ft_lstadd_back(&ptr, new);
 		lst = lst->next;
 	}
-	return (first);
+	return (ptr);
 }

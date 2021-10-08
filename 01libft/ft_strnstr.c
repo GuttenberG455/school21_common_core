@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 10:27:46 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/07 20:41:59 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/08 18:52:57 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t size)
 	size_t	j;
 
 	i = 0;
-	if (!size)
+	if (little[0] == 0)
 		return ((char *) big);
+	if (!size)
+		return (0);
 	while (big[i] && i < size)
 	{
 		j = 0;

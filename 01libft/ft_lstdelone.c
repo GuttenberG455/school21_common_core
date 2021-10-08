@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:18:56 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 14:20:26 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/08 19:51:23 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
 	(*del)(lst->content);
-	lst->next = 0;
+	free(lst);
+	lst = 0;
 }
