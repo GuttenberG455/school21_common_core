@@ -6,7 +6,11 @@ SRCS	=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 			ft_toupper.c ft_calloc.c  ft_isdigit.c ft_memchr.c  ft_memset.c  \
 			ft_putstr_fd.c  ft_strjoin.c ft_strmapi.c ft_strtrim.c
 
+BONUS	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
+			ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
+
 OBJS			= $(SRCS:.c=.o)
+BONUS_OBJS		= $(BONUS:.c=.o)
 
 CC				= gcc
 RM				= rm -f
@@ -20,9 +24,11 @@ $(NAME):		$(OBJS)
 				ar rcs $(NAME) $(OBJS)
 
 clean:
-				$(RM) $(OBJS)
+				$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean:			clean
 				$(RM) $(NAME)
 
-.PHONY:			all clean fclean re
+bonus:			$(OBJS) $(BONUS_OBJS)
+				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)	
+.PHONY:			all clean fclean re bonus
