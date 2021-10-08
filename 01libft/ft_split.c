@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:06:07 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/07 14:31:43 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/08 10:37:25 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static char	*ft_malloc_word(char *str, char sep)
 	while (str[i] && (str[i] != sep))
 		i++;
 	word = (char *)malloc(sizeof(char) * (i + 1));
+	if (word == 0)
+		return (0);
 	i = 0;
 	while (str[i] && (str[i] != sep))
 	{
@@ -61,6 +63,8 @@ char	**ft_split(char *str, char sep)
 	i = 0;
 	j = 0;
 	arr = (char **)malloc(sizeof(char *) * (ft_count_words(str, sep) + 1));
+	if (arr == 0)
+		return (0);
 	while (str[i])
 	{
 		while (str[i] && (str[i] == sep))

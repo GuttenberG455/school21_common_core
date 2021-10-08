@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:54:16 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/07 14:30:14 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/08 11:57:05 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		ft_toupper(int ch); // 13 OK
 int		ft_tolower(int ch); // 14 OK
 char	*ft_strchr(const char *str, int sym); // 15 OK
 char	*ft_strrchr(const char *str, int sym); // 16 OK 
-int		ft_strncmp(char *s1, char *s2, size_t n); // 17 OK
+int		ft_strncmp(const unsigned char *s1, const unsigned char *s2, size_t n);
 void	*ft_memchr(const void *memptr,	int val, size_t size); // 18 OK
 int		ft_memcmp(const void *memptr1, const void *memptr2, size_t size); // 19 OK
 char	*ft_strnstr(const char *big, const char *little, size_t size); // 20 OK

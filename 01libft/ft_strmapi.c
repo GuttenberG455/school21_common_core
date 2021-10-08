@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 18:55:34 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/06 19:21:12 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/08 10:33:39 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	i = 0;
 	str = malloc(sizeof(char) * ft_statstrlen(s) + 1);
+	if (str == 0)
+		return (0);
 	while (s[i])
 	{
-		str[i] = (*f)(i, s[i]); // ЧТО ЗА ИНТ И ЧАР?????
+		str[i] = (*f)(i, s[i]);
 		i++;
 	}
 	str[i] = 0;
