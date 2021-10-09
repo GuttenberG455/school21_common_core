@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 19:06:55 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/09 11:27:15 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 16:05:38 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,4 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 		(*f)(i, &s[i]);
 		i++;
 	}
-	s[i] = 0;
 }

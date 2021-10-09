@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 12:14:44 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/09 11:42:45 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 16:01:06 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstnew(void *content)
 
 	ptr = (t_list *)malloc(sizeof(t_list));
 	if (!(ptr))
-		return (NULL);
+		return (0);
 	ptr->content = content;
 	ptr->next = 0;
 	return (ptr);

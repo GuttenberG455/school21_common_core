@@ -6,18 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:05:22 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/09 12:15:36 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 16:00:32 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void	ft_statlstdelone(t_list *lst, void (*del)(void*))
-{
-	(*del)(lst->content);
-	free(lst);
-	lst = 0;
-}
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
@@ -29,7 +22,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		while (*lst)
 		{
 			temp = (*lst)->next;
-			ft_statlstdelone(*lst, del);
+			ft_lstdelone(*lst, del);
 			(*lst) = temp;
 		}
 	}

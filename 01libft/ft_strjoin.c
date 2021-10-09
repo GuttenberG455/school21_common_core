@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:19:15 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/09 11:44:45 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 16:05:54 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1)
 		return (0);
 	str = malloc(ft_statstrlen(s1) + ft_statstrlen(s2) + 1);
-	if (!(str))
+	if (!str)
 		return (0);
 	i = 0;
 	j = 0;
@@ -46,6 +46,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 		j++;
 	}
-	str[i] = '\0';
+	str[i] = 0;
 	return (str);
 }

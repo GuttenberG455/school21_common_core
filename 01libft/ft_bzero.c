@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 14:56:34 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/09 11:40:32 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 15:59:07 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ void	ft_bzero(void *ptr, size_t size)
 		str[i] = '\0';
 		i++;
 	}
-	str = &str[i];
 }

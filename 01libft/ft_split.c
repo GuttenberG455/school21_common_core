@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:06:07 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/09 11:59:52 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 15:51:19 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,25 @@ static char	*ft_malloc_word(char const *str, char sep)
 	return (word);
 }
 
-char	**ft_split(char const *s, char sep)
+static void	ft_freespace(char **arr, int pos)
 {
-	char	**arr;
-	int		i;
-	int		j;
+	int	i;
 
-	if (!s)
-		return (0);
+	i = 0;
+	while (i < pos)
+	{
+		free(arr[i]);
+		i++;
+	}
+}
+
+static void	ft_makearray(char const *s, char sep, char **arr)
+{
+	int	i;
+	int	j;
+
 	i = 0;
 	j = 0;
-	arr = (char **)malloc(sizeof(char *) * (ft_count_words(s, sep) + 1));
-	if (arr == 0)
-		return (0);
 	while (s[i])
 	{
 		while (s[i] && (s[i] == sep))
@@ -74,11 +80,29 @@ char	**ft_split(char const *s, char sep)
 		if (s[i] && (s[i] != sep))
 		{
 			arr[j] = ft_malloc_word(&s[i], sep);
+			if (arr[j] == 0)
+			{
+				ft_freespace(arr, j);
+				free(arr);
+				return ;
+			}
 			j++;
 			while (s[i] && (s[i] != sep))
 				i++;
 		}
 	}
 	arr[j] = 0;
+}	
+
+char	**ft_split(char const *s, char sep)
+{
+	char	**arr;
+
+	if (!s)
+		return (0);
+	arr = (char **)malloc(sizeof(char *) * (ft_count_words(s, sep) + 1));
+	if (arr == 0)
+		return (0);
+	ft_makearray(s, sep, arr);
 	return (arr);
 }
