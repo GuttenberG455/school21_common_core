@@ -6,12 +6,10 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:01:26 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 17:29:03 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:41:01 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)

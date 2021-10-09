@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 14:56:34 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/06 12:43:49 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:40:32 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_bzero(void *ptr, size_t size)
 {

@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 10:27:46 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 18:52:57 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:45:28 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t size)
 {

@@ -6,21 +6,21 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:52:26 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 20:17:00 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:46:01 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-static size_t	ft_strlen(const char *str)
+static size_t	ft_statgetlen(char const *s, unsigned int start, size_t size)
 {
-	size_t	i;
+	size_t	len;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	if ((ft_strlen(s) - start) < size)
+		len = (ft_strlen(s) - start);
+	else
+		len = size;
+	return (len);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t size)
@@ -30,16 +30,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t size)
 	size_t	len;
 	char	*str;
 
+	if (!s)
+		return (0);
 	if (start > ft_strlen(s))
 	{
 		str = (char *)malloc(sizeof(char *));
 		str[0] = 0;
 		return (str);
 	}
-	if ((ft_strlen(s) - start) < size)
-		len = (ft_strlen(s) - start);
-	else
-		len = size;
+	len = ft_statgetlen(s, start, size);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == 0)
 		return (0);
@@ -47,6 +46,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t size)
 	j = 0;
 	while (j < len)
 		str[j++] = s[i++];
-	str[j] = '\0';
+	str[j] = 0;
 	return (str);
 }

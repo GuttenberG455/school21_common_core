@@ -6,13 +6,13 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:03:45 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/06 13:18:18 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:44:53 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 

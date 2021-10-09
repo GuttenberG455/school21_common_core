@@ -6,11 +6,10 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 12:14:44 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 12:34:23 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:42:45 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 t_list	*ft_lstnew(void *content)

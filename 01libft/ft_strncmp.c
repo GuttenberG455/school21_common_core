@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 18:45:21 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 19:09:52 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:45:07 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:06:07 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 10:37:25 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:44:29 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	ft_count_words(char *str, char sep)
 {
@@ -60,6 +60,8 @@ char	**ft_split(char *str, char sep)
 	int		i;
 	int		j;
 
+	if (!str)
+		return (0);
 	i = 0;
 	j = 0;
 	arr = (char **)malloc(sizeof(char *) * (ft_count_words(str, sep) + 1));

@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:14:10 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/07 16:05:10 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:40:55 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static char	*ft_statstrdup(char *src)
 {

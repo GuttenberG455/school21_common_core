@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:43:33 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/07 20:32:41 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:43:12 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t size)
 {

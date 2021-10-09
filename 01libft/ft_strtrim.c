@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 18:12:12 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/07 13:57:44 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:45:44 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	ft_inset(char ch, char const *set)
 {
@@ -26,16 +26,6 @@ static int	ft_inset(char ch, char const *set)
 	return (0);
 }
 
-static int	ft_statstrlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
@@ -43,10 +33,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*str;
 
+	if (!s1)
+		return (0);
 	start = 0;
 	while (s1[start] && ft_inset(s1[start], set))
 		start++;
-	end = ft_statstrlen(s1);
+	end = ft_strlen(s1);
 	while (end > start && ft_inset(s1[end - 1], set))
 		end--;
 	str = (char *)malloc(sizeof(*s1) * (end - start + 1));

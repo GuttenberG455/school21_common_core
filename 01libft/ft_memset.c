@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 16:31:07 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/06 15:22:36 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:43:31 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memset(void *memptr, int val, size_t size)
 {

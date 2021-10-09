@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 18:55:26 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/06 12:52:32 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:44:48 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 static int	ft_getstrlen(const char *str)
 {

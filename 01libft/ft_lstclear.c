@@ -6,11 +6,10 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:05:22 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 16:31:58 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:41:07 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))

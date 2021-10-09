@@ -6,11 +6,12 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 19:34:53 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/06 19:42:56 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:44:21 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
 static void	ft_putchar(char c, int fd)
 {

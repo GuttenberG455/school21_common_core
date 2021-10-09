@@ -6,11 +6,10 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:43:58 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 20:06:33 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:42:42 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *))

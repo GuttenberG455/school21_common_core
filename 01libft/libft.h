@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:54:16 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/08 19:10:04 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:30:31 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_isdigit(int ch);
 int		ft_isalnum(int ch);
 int		ft_isascii(int ch);
 int		ft_isprint(int ch);
-size_t	ft_strlen(char *str);
+size_t	ft_strlen(const char *str);
 void	*ft_memset(void *memptr, int val, size_t size);
 void	ft_bzero(void *ptr, size_t size);
 void	*ft_memcpy(void *destptr, const void *srcptr, size_t num);

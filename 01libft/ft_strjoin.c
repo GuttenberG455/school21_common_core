@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:19:15 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/05 17:50:38 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/09 11:44:45 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	ft_statstrlen(const char *str)
 {
@@ -28,6 +28,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 	char	*str;
 
+	if (!s1)
+		return (0);
 	str = malloc(ft_statstrlen(s1) + ft_statstrlen(s2) + 1);
 	if (!(str))
 		return (0);
