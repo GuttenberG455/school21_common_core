@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 18:12:12 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/09 11:45:44 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/12 10:05:04 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1);
 	while (end > start && ft_inset(s1[end - 1], set))
 		end--;
-	str = (char *)malloc(sizeof(*s1) * (end - start + 1));
+	str = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (str == 0)
 		return (0);
 	i = 0;

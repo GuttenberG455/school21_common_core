@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:52:26 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/09 11:46:01 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/12 10:07:29 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t size)
 		return (0);
 	if (start > ft_strlen(s))
 	{
-		str = (char *)malloc(sizeof(char *));
+		str = (char *)malloc(sizeof(char));
 		str[0] = 0;
 		return (str);
 	}
