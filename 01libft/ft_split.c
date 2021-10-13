@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:06:07 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/09 15:51:19 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:24:51 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	ft_freespace(char **arr, int pos)
 	}
 }
 
-static void	ft_makearray(char const *s, char sep, char **arr)
+static int	ft_makearray(char const *s, char sep, char **arr)
 {
 	int	i;
 	int	j;
@@ -84,7 +84,7 @@ static void	ft_makearray(char const *s, char sep, char **arr)
 			{
 				ft_freespace(arr, j);
 				free(arr);
-				return ;
+				return (1);
 			}
 			j++;
 			while (s[i] && (s[i] != sep))
@@ -92,6 +92,7 @@ static void	ft_makearray(char const *s, char sep, char **arr)
 		}
 	}
 	arr[j] = 0;
+	return (0);
 }	
 
 char	**ft_split(char const *s, char sep)
@@ -103,6 +104,10 @@ char	**ft_split(char const *s, char sep)
 	arr = (char **)malloc(sizeof(char *) * (ft_count_words(s, sep) + 1));
 	if (arr == 0)
 		return (0);
-	ft_makearray(s, sep, arr);
+	if (ft_makearray(s, sep, arr))
+	{
+		free(arr);
+		return (0);
+	}
 	return (arr);
 }

@@ -6,32 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:14:10 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/09 11:40:55 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:14:16 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char	*ft_statstrdup(char *src)
-{
-	char	*ptr;
-	int		i;
-
-	i = 0;
-	while (src[i])
-		i++;
-	ptr = malloc(i);
-	i = 0;
-	if (ptr == 0)
-		return (0);
-	while (src[i] != '\0')
-	{
-		ptr[i] = src[i];
-		i++;
-	}
-	ptr[i] = 0;
-	return (ptr);
-}
 
 static int	itoa_isnegative(int *n)
 {
@@ -63,9 +42,9 @@ char	*ft_itoa(int n)
 	char	*str;
 
 	if (n == -2147483648)
-		return (ft_statstrdup("-2147483648"));
+		return (ft_strdup("-2147483648"));
 	if (n == 0)
-		return (ft_statstrdup("0"));
+		return (ft_strdup("0"));
 	negative = itoa_isnegative(&n);
 	len = ft_getintlen(n);
 	len += negative;
