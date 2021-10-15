@@ -6,10 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:03:27 by majacqua          #+#    #+#             */
-/*   Updated: 2021/10/14 18:50:29 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/10/15 12:33:01 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "get_next_line.h"
 
 char	*ft_savestat(char *str)
@@ -37,6 +38,7 @@ char	*ft_savestat(char *str)
 		new[j++] = str[i++];
 	new[j] = 0;
 	free(str);
+	// printf("_%s_ - savestat\n", new);
 	return (new);
 }
 
@@ -90,10 +92,13 @@ char	*get_next_line(int fd)
 			return (0);
 		}
 		temp[byte_count] = 0;
+		printf("\n[%s]+[%s]\n", statstr, temp);
 		statstr = ft_strjoin(statstr, temp);
+		printf("statjoined = (%s)\n", statstr);
 	}
 	free(temp);
 	temp = ft_getstat(statstr);
 	statstr = ft_savestat(statstr);
+	// printf("\nreturn - [%s] stat-(%s)\n", temp, statstr);
 	return (temp);
 }
