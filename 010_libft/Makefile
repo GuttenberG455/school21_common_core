@@ -7,31 +7,37 @@ SRCS	=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
 BONUS	=	ft_lstnew.c  ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-			ft_lstdelone.c ft_lstclear.c ft_lstiter.c  ft_lstmap.c  
+			ft_lstdelone.c ft_lstclear.c ft_lstiter.c  ft_lstmap.c  		
 
-OBJS			= $(SRCS:.c=.o)
-BONUS_OBJS		= $(BONUS:.c=.o)
+OBJ_SRC 		= $(SRCS:.c=.o)
+OBJ_BONUS 		= $(BONUS:.c=.o)
+
+NAME			= libft.a
+LIBH			= libft.h
 
 CC				= gcc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
+FLAGS 			= -Wall -Wextra -Werror
 
-NAME			= libft.a
+$(NAME): 		$(OBJ_SRC)
+		ar rc $(NAME) $(OBJ_SRC)
+		ranlib $(NAME)
 
-all:			$(NAME)
+%.o:		%.c $(LIBH)
+		$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME):		$(OBJS) libft.h
-				ar rcs $(NAME) $(OBJS)
+all: 		$(NAME)
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
+			$(RM) $(OBJ_SRC) $(OBJ_BONUS) 
 
-fclean:			clean
-				$(RM) $(NAME)
+fclean: 	clean
+		$(RM) $(NAME)
 
-bonus:			$(OBJS) $(BONUS_OBJS)
-				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+re: 		fclean all
 
-re:				fclean all
+bonus: 		$(OBJ_SRC) $(OBJ_BONUS)
+		ar rc $(NAME) $(OBJ_SRC) $(OBJ_BONUS)
+		ranlib $(NAME)
 
-.PHONY:			all clean fclean re bonus
+.PHONY: 	all bonus clean fclean re
