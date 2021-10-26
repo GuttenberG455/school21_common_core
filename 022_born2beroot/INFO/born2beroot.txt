@@ -1,0 +1,883 @@
+------------------------------------------------------------------------------------------------- 10.0.2.15
+-------------------------------------------------------------------------------------------------/Users/login_intra/.ssh/known_hosts
+						BORN2BEROOT
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+Aptitude — оболочка для Advanced Packaging Tool, части системы управления пакетами в операционной 
+системе Debian и её производных. Имеет графический интерфейс (GTK), псевдографический и интерфейс 
+командной строки.
+
+-------------------------------------------------------------------------------------------------
+
+apt (advanced packaging tool) — программа для установки, обновления и удаления программных пакетов 
+в операционных системах Debian и основанных на них (Ubuntu, Linux Mint и т. п.), иногда также 
+используется в дистрибутивах, основанных на Mandrake, например Mandriva, ALT Linux и PCLinuxOS. 
+Способна автоматически устанавливать и настраивать программы для UNIX-подобных операционных систем 
+как из предварительно откомпилированных пакетов, так и из исходных кодов.
+
+Пакеты берутся из интернет-репозиториев, либо их можно установить с имеющихся носителей. Список 
+источников пакетов хранится в файле /etc/apt/sources.list и в каталоге /etc/apt/sources.list.d/. 
+Графические оболочки для apt позволяют легко добавлять новые и удалять ненужные источники.
+
+apt (apt-get) значительно упрощает процесс установки программ в командном режиме.
+
+Для пользователей, предпочитающих графический интерфейс, более удобными могут оказаться другие 
+front-end'ы — Synaptic и Adept. Существует текстово‐графический интерактивный пакет (использующий 
+ncurses) — aptitude.
+
+-------------------------------------------------------------------------------------------------
+
+aptitude vs apt. 5 причин, почему я использую aptitude
+https://habr.com/ru/post/74506/
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+SELinux (англ. Security-Enhanced Linux — Linux с улучшенной безопасностью) — реализация системы 
+принудительного контроля доступа, которая может работать параллельно с классической избирательной 
+системой контроля доступа.
+
+-------------------------------------------------------------------------------------------------
+
+AppArmor — программный инструмент упреждающей защиты, основанный на политиках безопасности (известных 
+также как профили), которые определяют, к каким системным ресурсам и с какими привилегиями может 
+получить доступ то или иное приложение. В AppArmor включён набор стандартных профилей, а также 
+инструменты статического анализа и инструменты, основанные на обучении, позволяющие ускорить и 
+упростить построение новых профилей[2].
+
+-------------------------------------------------------------------------------------------------
+
+Системы защиты Linux
+https://habr.com/en/company/ruvds/blog/523872/
+
+Безопасный Linux вместе с AppArmor
+https://habr.com/ru/company/ruvds/blog/532988/
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+				Настройка AppArmor
+
+
+sudo apt install apparmor-utils apparmor-profiles		установка
+
+apparmor_status							статус
+
+sudo cp /usr/share/doc/apparmor-profiles/extras/usr.bin.man /etc/apparmor.d/
+
+
+
+sudo aa-enforce man						принудительное выполнение
+sudo aa-comlain man						режим обучения
+
+sudo /etc/init.d/apparmor stop
+sudo /etc/init.d/apparmor start
+sudo /etc/init.d/apparmor restart
+sudo /etc/init.d/apparmor status
+
+
+https://wiki.debian.org/AppArmor/HowToUse
+https://www.cyberciti.biz/faq/suse-ubuntu-linux-start-stop-restart-apparmor-command/
+https://wiki.debian.org/AppArmor/HowToUse
+https://losst.ru/nastrojka-apparmor-v-ubuntu-16-04
+https://xakep.ru/2010/10/04/53424/#toc03.
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+http://localhost/			заглушка
+
+http://localhost/wordpress/		сайт на вордпресс
+
+http://0.0.0.0/wordpress/wp-admin/	админка
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+/etc/ssh/sshd_config
+
+файл создаёшь сам, код внутри - хэш, который ты берёшь из файла своего .vdi
+
+shasum b2br01.vdi
+91607ff14ef4b14c83e018335c6fe9e3cde4a440  b2br01.vdi
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+uname -a 					вывод данных о системе
+
+		Структура дисков:
+lsblk						посмотреть структуру дисков
+
+ 
+hostnamectl					Проверить наименование хоста
+hostnamectl set-hostname "новое имя хоста"	Установить новое имя хоста 
+sudo vim /etc/hostname				файл с названием компьютера
+sudo reboot					перезагрузка компьютера
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+		Обновление:
+apt-get update					проверка обновлений
+
+sudo apt update 				проверка обновлений с правами root
+-------------------------------------------------------------------------------------------------
+		Смена пользователя:
+
+su "username"					смена пользователя
+
+cut -d: -f1 /etc/passwd				отфильтрованный список пользователей
+getent passwd | grep "username"			есть ли данный пользователь в системе
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+		Установить:
+
+apt install sudo				установить sudo
+apt-get install vim				установить VIM
+apt-get install ufw				установка UFW
+sudo apt install openssh-server ssh		установить SSH сервер
+
+sudo apt-get remove "name"			удаление пакета/программы
+sudo apt-get --purge remove evolution		удаление пакета/программы с коняги файлами
+
+find / -name "name"				ищем файлы по имени
+sudo dpkg -S /usr/bin/evolution			смотрим имя пакета, которому принадлежит файл
+
+systemctl status				активные программы
+
+
+https://itisgood.ru/2019/07/12/kak-ustanovit-nedostajushhuju-komandu-ifconfig-v-debian/
+https://losst.ru/udalenie-paketov-debian
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+		Проверка установки sudo:
+app install sudo				установка sudo
+
+dpkg -s "имя пакета"				проверка установка 
+dpkg -l | grep sudo				проверка установки судо
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+		Создать пользователя:
+
+adduser "username"				создать нового пользователя
+deluser "username"				удалить пользователя
+
+sudo -lU "username"				какими привилегиями обладает конкретный пользователь
+-------------------------------------------------------------------------------------------------
+		Добавить в группу:
+
+adduser "username" "groupname"			добавить в группу пользователя
+usermod -aG "groupname" "username"		добавить пользователя в группу
+getent group "groupname"			проверить наличие пользователя в группе
+groups "username"				проверить все группы пользователя
+id -nG "username"				проверить все группы пользователя
+cat /etc/group					вывести все группы из каталога групп вместе с системными
+
+groupadd "groupname"				создать новую группу
+
+sudo groupdel "groupname"			удалить группу
+delgroup "groupname"				удалить группу
+sudo deluser "username" "groupname"		удалить пользьвателя из группы
+sudo usermod -G group1,group2 "username"	удалить пользователя из (перечисление) групп
+sudo usermod -G "username"			удалить пользователя из всех групп
+
+
+https://manpages.debian.org/jessie/adduser/delgroup.8.ru.html#:~:text=%D0%A3%D0%B4%D0%B0%D0%BB%D0%B8%D1%82%D1%8C%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83,%D0%B5%D1%81%D0%BB%D0%B8%20%D0%B2%20%D0%BD%D0%B5%D1%91%20%D0%B2%D1%85%D0%BE%D0%B4%D1%8F%D1%82%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8.
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+		Настройка SSH сервера:
+
+
+sudo apt install openssh-server ssh		установить SSH сервер 
+sudo systemctl start sshd			запуск SSH сервера
+
+
+
+sudo systemctl restart sshd			перезапуск SSH сервера
+sudo service ssh restart			перезапуск SSH сервера (второй вариант)
+
+-------------------------------------------------------------------------------------------------
+
+		Настройка порта для SSH:
+
+vim /etc/ssh/sshd_config			открываем файл конфигурации SSH
+#Port 22 меняем значение на Port 4242		делаем замену порта и пишем без #
+#PermitRootLogin… на PermitRootLogin no		выставляем значение "no" и пишем без #
+(По соображениям безопасности делаем невозможно подключение с использованием SSH как root)
+
+systemctl restart sshd				делаем рестарт
+
+netstat -tulpan | grep ssh			проверка порта SSH сервера
+
+sudo systemctl status sshd			отображаемся статус SSH сервера
+
+ssh "username"@10.0.2.15 -p 4242		подключиться 
+exit						отключиться
+
+https://firstvds.ru/technology/kak-pomenyat-izmenit-port-u-ssh-servera
+https://system-admins.ru/kak-izmenit-port-ssh-na-linux-ili-unix-servere/
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+		Установка UFW
+apt-get install ufw
+
+sudo apt install ufw				установка ufw 
+sudo ufw status verbose				status ufw
+sudo ufw enable					включить брандмауэр UFW (при первой установке откл)
+sudo ufw disable				отключить брандмауэр UFW
+
+
+
+-------------------------------------------------------------------------------------------------
+		Настройка брандмауэра UFW:
+
+sudo ufw default deny incoming			запрещает все входящие подключения
+sudo ufw default allow outgoing			разрешает исходящие
+sudo ufw allow 4242				открыть порт 4242 для входящих подключений
+
+sudo ufw status numbered			выведете нумерованный список текущих правил
+sudo ufw delete "номер_правила"			удалить правило
+
+sudo ufw app info 'Apache'			дополнительная информацию о конкретном профиле и 
+						определенных правилах
+
+
+sudo ufw allow from 203.0.113.4			различные варианты команд
+sudo ufw allow from 203.0.113.4 to any port 22	
+sudo ufw allow from 203.0.113.0/24		
+sudo ufw allow from 203.0.113.0/24 to any port 22
+sudo ufw allow in on eth0 to any port 80	
+
+
+
+https://1cloud.ru/help/security/ispolzovanie-utility-ufw-na-inux
+https://blog.sedicomm.com/2018/07/06/kak-nastroit-brandmauer-ufw-na-ubuntu-i-debian/
+-------------------------------------------------------------------------------------------------
+
+UFW (Uncomplicated Firewall) - является самым простым и довольно популярным в инструментарием 
+командной строки для настройки и управления брандмауэром в дистрибутивах Ubuntu и Debian. 
+Правильно функционирующий брандмауэр является наиболее важной частью полной безопасности 
+системы Linux. UFW позволяет сделать базовые настройки, для более сложных настроек используйте iptables.
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+		Надежная политика паролей:
+
+vim /etc/login.defs				файл конфигурации данный по паролям
+
+PASS_MAX_DAYS  30				Срок действия пароля 
+PASS_MIN_DAYS 2					Минимальное количество дней между сменами пароля 
+PASS_WARN_AGE 7					Количество дней предупреждения до истечения срока действия пароля
+
+-------------------------------------------------------------------------------------------------
+		Требования к паролю:
+ 
+apt-get -y install libpam-cracklib		Установить пакет libpam-cracklib
+
+vim /etc/pam.d/common-password			открываем файл настройки паролей
+
+	добавляем password requisite pam_cracklib.so с флагами
+
+minlen=10 					Минимальная длина пароля
+ucredit=-1 					минимум одна буква в верхнем регистре
+lcredit=-1					минимум одна буква в нижнем регистре
+dcredit=-1 					минимум одна цифра
+maxrepeat=3 					пароль не должен содержать более 3-х идущих подряд одинаковых символов
+reject_username 				пароль не должен включать имя пользователя
+difok=7 					Количество символов в вашем новом пароле, которые НЕ должны 							присутствовать в вашем старом пароле
+
+https://itsecforu.ru/2018/06/13/%D0%BA%D0%B0%D0%BA-%D0%B7%D0%B0%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7/
+https://habr.com/ru/company/otus/blog/448996/
+-------------------------------------------------------------------------------------------------
+		Смена пароля пользователя:
+
+passwd						сменить свой пароль 
+passwd -aS | grep P				Посмотреть все пароли пользователей
+
+https://losst.ru/kak-smenit-parol-v-linux
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+		Настройка надежной конфигурации sudo:
+
+vim /etc/sudoers
+
+Defaults passwd_tries=3				количество попыток ввода пароля перед тем, как 
+						sudo прекратит работу
+
+Defaults badpass_message=“сообщение"		выводит сообщение в случае ошибочного ввода sudo пароля
+
+Defaults logfile="/var/log/sudo/sudo.log" 	(создать саму папку и файл!!!) записывать в лог все 
+						попытки подключения к sudo
+
+Defaults  log_input,log_output			позволяют sudo запускать команду в pseudo-tty и 							регистрировать все вводимые 
+						пользователем и все выходные данные, отправленные на экран
+
+
+Defaults secure_path=":/usr/bin:/sbin:/bin:/snap/bin”	по соображениям безопасности пути, 													которые может и	использовать sudo, должны быть ограничены
+
+Defaults requiretty				разрешить вызов sudo с реального терминала, но не с помощью 
+						таких методов, как скрипты
+
+
+https://zalinux.ru/?p=4490 (про TTY)
+https://www.hostinger.ru/rukovodstva/sudo-i-sudoers-fail-kak-ispolzovat
+https://www.8host.com/blog/redaktirovanie-fajla-sudoers-v-ubuntu-i-centos/
+https://sukachoff.ru/router/sudo-opisanie-komandy-polzuemsya-komandami-sudo-su-nastroika-su
+https://www.tecmint.com/sudoers-configurations-for-setting-sudo-in-linux/
+https://qastack.ru/server/111064/sudoers-how-to-disable-requiretty-per-user
+https://wiki.archlinux.org/title/Sudo_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
+https://wiki.archlinux.org/title/Sudo_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
+https://linux-notes.org/ispravlyaem-oshibku-sudo-sorry-you-must-have-a-tty-to-run-sudo/
+-------------------------------------------------------------------------------------------------
+Команда sudo позволяет пользователям без полномочий root запускать команды, которые обычно требуют 
+привилегий суперпользователя, в то время как файл sudoers указывает системе, как обрабатывать 
+команду sudo. В этом руководстве мы покажем вам все основные моменты использования команды sudo, 
+а также способы редактирования файла sudoers.
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+		Написание скрипта с состоянием системы:
+
+whereis bash					узнаем где лежит интерпретатор
+
+cd "путь к bash"
+
+vim ./monitoring.sh
+chmod ugo+x monitoring.sh			устанавливаем разрешения
+chmod 755 monitoring.sh				устанавливаем разрешения
+
+	В vim ./monitoring.sh добавляем:
+
+# !/usr/bin/bash
+clear
+wall "
+#Architecture: $(uname -a)
+#CPU physical: $(nproc --all)
+#vCPU: $(cat /proc/cpuinfo | grep processor | wc -l)
+#Memory Usage: $(free -h | awk 'NR == 2 {print $3-0"/"$2-0"Gb"}') ($(free -t | awk 'NR == 2 {printf("%.2f"), $3/$2*100}’)%)
+#Disk Usage: $(df | awk 'NR == 4 {printf("%.2f / %.2fGb (%d%%)"),$3/1024000,$2/1024000, $5)"}')
+#CPU load: $(top -b -n1 | grep ^%Cpu | awk '{printf("%.1f"), 100-$8}')%
+#Last boot: $(who -b | awk 'NR == 1 {print $3" " $4}')
+#LVM use: $(if [ $(lsblk | grep lvm | wc -l) -gt 0 ]
+then
+    echo "yes"
+else
+    echo "no"
+fi
+)
+#Connections TCP: $(netstat | grep tcp |wc -l) ESTABLISHED
+#User log: $(who | wc -l)
+#Network: IP $(ip route list | awk 'NR == 2 {print $9}') ($(ip addr show enp0s3 | awk 'NR == 2 {print $2}'))
+#Sudo: $(grep -c ':' /var/log/sudo/sudo.log) cmd
+#User on src: $(getent passwd {1000..60000} | grep -c ':')
+"
+
+https://qastack.ru/unix/218074/how-to-know-number-of-cores-of-a-system-in-linux
+https://losst.ru/ispolzovanie-awk-v-linux
+https://andreyex.ru/linux/komanda-wall-v-linux/
+https://man7.org/linux/man-pages/man1/wall.1.html
+https://goto-linux.com/2019/9/5/%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%B8%D1%82%D1%8C-%D0%B8-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D1%83-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D1%80%D0%B0-%D0%B2-linux/ У
+https://blog.pridybailo.com/%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D0%B9-%D0%B2-bash/-ш-шшшш
+https://linuxize.com/post/how-to-list-users-in-linux/
+-------------------------------------------------------------------------------------------------
+		Настройка cron:
+crontab -e					редактирования или создания файла расписания для текущего пользователя
+*/10 * * * * ./monitoring.sh
+
+crontab -l					Вывод существующих задач в расписании пользователя
+crontab -r					Удаление файла расписания текущего пользователя
+
+crontab -u username				Работа с расписаниями указанных пользователей. Выполняется только от пользователя root
+
+
+* * * * * some_script1
+#* * * * * some_script2
+
+sudo service cron reload			перезапустите сервис
+/etc/init.d/cron stop				остановить сервис
+
+		(Вы должны быть пользователем root, чтобы делать эти вещи)
+
+https://losst.ru/kak-dobavit-komandu-v-cron#%D0%9A%D0%B0%D0%BA_%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C_%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F_cron
+https://debian-handbook.info/browse/ru-RU/stable/sect.task-scheduling-cron-atd.html
+https://blog.sedicomm.com/2017/07/24/kak-dobavit-zadanie-v-planirovshhik-cron-v-linux-unix/
+https://qastack.ru/superuser/232144/how-to-stop-a-currently-running-cron-job
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+systemctl list-unit-files			посмотреть список служб
+
+systemctl list-unit-files --type service	только службы linux:
+
+sudo systemctl start application.service
+sudo systemctl stop application
+sudo systemctl status application
+
+https://losst.ru/upravlenie-sluzhbami-linux
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+			Настройка службы синхронизации времени
+
+nano /etc/systemd/timesyncd.conf			конфигурация и сервера для синхронизации
+
+systemctl restart systemd-timesyncd			рестарт
+systemctl status systemd-timesyncd			статус 
+systemctl start systemd-timesyncd			включить
+systemctl stop systemd-timesyncd			выключить
+systemctl enable systemd-timesyncd			включен постоянно с начала работы
+
+
+timedatectl status					статус NTP сервиса
+
+
+ntp можно установить для автоматической синхронизации
+
+
+https://wiki.it-kb.ru/unix-linux/debian/buster/systemd-timesyncd-in-debian-10
+https://www.k-max.name/linux/ntp-server-na-linux/
+https://www.8host.com/blog/sinxronizaciya-vremeni-v-debian-10/
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+apt-get update
+apt-get install exim4
+apt-get install exim4-daemon-heavy
+
+
+dpkg-reconfigure exim4-config
+sudo /etc/init.d/exim4 restart
+sudo /etc/init.d/exim4 status
+
+
+
+echo "Testing our Exim" | mail -s "Test" example@example.com
+
+
+https://1cloud.ru/help/linux/nastrojka-exim4
+-------------------------------------------------------------------------------------------------
+			бэкап сервера c rsync
+apt-get install rsync				ставим rsync 
+
+mkdir /backup					папка для бекапа
+
+nano /usr/local/sbin/backup-tar.sh		скрипт бекапа
+chmod +x /usr/local/sbin/backup-tar.sh		разрезения для скрипта
+
+mcedit /usr/local/sbin/backup-rsync.sh 		скрипт копирования на сервер
+chmod +x /usr/local/sbin/backup-rsync.sh	разрезешения для скрипта
+
+crontab -e
+00 08 * * 7 /bin/bash /usr/local/sbin/backup-tar.sh	бекап каждое воскресенье в 8 утра
+00 23 * * 7 /bin/bash /usr/local/sbin/backup-rsync.sh	выгрузка бекапа на сервер каждое воскресенье в 23
+
+https://www.netangels.pro/article/setup-a-backup-on-vds/
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Установите WordPress на Ubuntu 16.04 LTS с поддержкой Lighttpd, MariaDB и PHP 7.1
+
+Во многих случаях вы увидите, как веб-мастера устанавливают WordPress на Ubuntu 16.04 LTS с 
+Apache2 или Nginx и MariaDB с поддержкой PHP ... Что ж, этот пост показывает вам, как вместо 
+этого использовать альтернативный HTTP-сервер, называемый HTTP-сервером Lighttpd ...
+
+Lighttpd - это безопасный, быстрый и гибкий HTTP-сервер с небольшим объемом памяти по сравнению с 
+другими веб-серверами ... Его управляемая событиями архитектура оптимизирована для большого количества 
+параллельных соединений (keep-alive), что важно для высокопроизводительных динамических приложений. .
+
+WordPress, самая мощная и популярная система управления контентом (CMS), является правильным 
+инструментом для разработки и создания мощных и динамических веб-сайтов на основе PHP, гибка и 
+может работать на различных или HTTP-серверах.
+
+https://websiteforstudents.com/install-wordpress-on-ubuntu-16-04-lts-with-lighttpd-mariadb-and-php-7-1-support/
+-------------------------------------------------------------------------------------------------
+		Шаг 1. Установите HTTP-сервер Lighttpd
+
+sudo apt install lighttpd			установка HTTP-сервера Lighttpd
+
+sudo systemctl stop lighttpd.service		остановка службы Lighttpd
+sudo systemctl start lighttpd.service		запуск службы Lighttpd
+sudo systemctl enable lighttpd.service		чтобы всегда включался при запуске сервера
+
+-------------------------------------------------------------------------------------------------
+
+
+		Шаг 2: Установите сервер базы данных MariaDB
+
+
+sudo apt install mariadb-server mariadb-client	установка сервера базы данных MariaDB
+
+sudo systemctl stop mysql.service		остановка службы MariaDB
+sudo systemctl start mysql.service		запуск  службы MariaDB
+sudo systemctl enable mysql.service		чтобы всегда включался при запуске сервера
+
+
+sudo mysql_secure_installation			защитить сервер MariaDB.
+
+
+	При появлении запроса ответьте на приведенные ниже вопросы, следуя инструкциям.
+
+Enter current password for root (enter for none):	просто нажмите  Enter. (Введите текущий пароль для root)
+Set root password? [Y/n]: 		Y		Установить пароль root? - Да
+New password:			Enter password		Новый пароль: введите пароль
+Re-enter new password: 		Repeat password		Повторно введите новый пароль: Повторите пароль
+Remove anonymous users? [Y/n]: 		Y		Удалить анонимных пользователей? - Да
+Disallow root login remotely? [Y/n]: 	Y		Запретить удаленный вход root? - Да
+Remove test database and access to it? [Y/n]:  	Y	Удалить тестовую базу данных и получить к ней доступ? - Да
+Reload privilege tables now? [Y/n]:  	Y		Перезагрузить таблицы привилегий сейчас?  - Да
+
+sudo systemctl restart mysql.service		перезагрузить MariaDB server
+
+
+-------------------------------------------------------------------------------------------------
+
+		Шаг 3. Установите PHP 7.1 FastCGI и связанные модули
+
+
+sudo apt-get -y install php
+
+
+PHP 7.1 недоступен в репозиториях Ubuntu по умолчанию… для его установки вам нужно будет получить его из сторонних репозиториев.
+Выполните приведенные ниже команды, чтобы добавить указанный ниже сторонний репозиторий для обновления до PHP 7.1
+
+
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+
+
+sudo apt update
+
+
+После этого выполните приведенные ниже команды, чтобы установить PHP-FastCGI и связанные с ним модули PHP. Есть много модулей PHP, которые выполняют разные функции ... однако приведенные ниже могут понадобиться при разработке веб-сайтов на основе PHP.
+
+sudo apt install php-cgi php-mcrypt php-cli php-mysql php-gd php-imagick php-recode php-tidy php-xml php-xmlrpc
+
+
+sudo sudo lighttpd-enable-mod fastcgi 
+sudo lighttpd-enable-mod fastcgi-php
+
+
+sudo apt install libterm-readline-gnu-perl
+
+sudo apt-get update && sudo apt-get upgrade 
+
+sudo /etc/init.d/lighttpd force-reload
+
+
+
+Шаг 4: Создайте базу данных WordPress
+Теперь, когда вы установили все необходимые пакеты, продолжайте ниже, чтобы начать настройку серверов. Сначала выполните приведенные ниже команды, чтобы создать пустую базу данных WordPress.
+
+Чтобы войти на сервер базы данных MariaDB, выполните следующие команды.
+
+sudo mysql -u root -p
+
+Затем создайте базу данных с именем '42db'
+
+CREATE DATABASE 42db;
+
+Создайте пользователя базы данных с именем wpdbuser с новым паролем
+
+CREATE USER '42db'@'localhost' IDENTIFIED BY 'password';
+
+Затем предоставьте пользователю полный доступ к базе данных.
+
+GRANT ALL ON 42db.* TO '42dbuser'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+
+Наконец, сохраните изменения и выйдите.
+
+FLUSH PRIVILEGES;
+EXIT;
+
+-------------------------------------------------------------------------------------------------
+
+			чекнуть базу
+
+sudo mysql -u root -p
+
+SHOW DATABASES;
+MariаDB [(none)]> USE base;			переход в базу
+MariаDB [base]> SHOW tables;			просмотр всех таблиц из базы
+MariаDB [base]> SELECT * FROM page;		просмотр содержания нужной страницы
+
+
+MariаDB [(none)]> CREATE DATABASE `base` CHARACTER SET utf8 COLLATE utf8_general_ci;	
+			Добавление базы с параметрами
+
+
+MariaDB [(none)]> DROP DATABASE `base`;		удалить базу
+
+MariaDB [(none)]> SELECT User,Host FROM mysql.user;	Просмотр пользователей с выводом их прав
+
+https://sevo44.ru/mariadb-rabota-iz-konsoli/
+-------------------------------------------------------------------------------------------------
+
+		Шаг 5: Настройте Lighttpd PHP-FastCGI Settings
+
+
+Next, you may want to configure Lighttpd to use PHP server scripting properly. The default PHP-FastCGI configuration file is located at /etc/php/7.3/cgi/php.ini
+
+Open PHP Lighttpd configuration file by running the commands below
+
+sudo nano /etc/php/7.3/cgi/php.ini
+
+Then edit the file to suit your environments. Some important lines to consider:
+
+file_uploads = On
+allow_url_fopen = On
+memory_limit = 256M
+upload_max_filesize = 100M
+cgi.fix_pathinfo=0
+date.timezone = America/Chicago
+Next, open the Lighttpd site configuration file… by default it’s stored at /etc/lighttpd/lighttpd.conf
+
+sudo nano /etc/lighttpd/lighttpd.conf
+
+They configure the highlighted lines below to enable its rewrite module and create a VirtualHost for our site and save the file. Remember to replace example.com with your own domain name..
+
+server.modules = (
+        "mod_access",
+        "mod_alias",
+        "mod_compress",
+        "mod_redirect",
+        "mod_rewrite",
+)
+
+
+$HTTP["host"] =~ "(^|www\.)example.com$" {
+    server.document-root = "/var/www/html/wordpress"
+    server.errorlog      = "/var/log/lighttpd/example.com-error.log"
+    server.error-handler-404 = "/index.php"
+}
+
+server.document-root        = "/var/www/html"
+server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+server.errorlog             = "/var/log/lighttpd/error.log"
+server.pid-file             = "/var/run/lighttpd.pid"
+server.groupname            = "www-data"
+server.port                 = 80
+
+
+index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+
+compress.cache-dir          = "/var/cache/lighttpd/compress/"
+compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+
+# default listening port for IPv6 falls back to the IPv4 port
+## Use ipv6 if available
+#include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+include_shell "/usr/share/lighttpd/create-mime.assign.pl"
+include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
+Next, run the commands below to open FastCGI default configuraiton file for Lighttpd..
+
+sudo nano /etc/lighttpd/conf-available/15-fastcgi-php.conf
+
+Then confirm that PHP-FastCGI is configured as shown in the highlighted portion below to use PHP 7.1...
+
+# -*- depends: fastcgi -*-
+# /usr/share/doc/lighttpd/fastcgi.txt.gz 
+# http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ConfigurationOptions#mod_fastcgi-fastcgi
+
+## Start an FastCGI server for php (needs the php7.1-cgi package)
+fastcgi.server += ( ".php" =>
+        ((
+                "bin-path" => "/usr/bin/php-cgi7.1(версия php-cgiХ.Х<меняем на скаченную)",
+                "socket" => "/var/run/lighttpd/php.socket",
+                "max-procs" => 1,
+                "bin-environment" => (
+                        "PHP_FCGI_CHILDREN" => "4",
+                        "PHP_FCGI_MAX_REQUESTS" => "10000"
+                ),
+                "bin-copy-environment" => (
+                        "PATH", "SHELL", "USER"
+                ),
+                "broken-scriptfilename" => "enable"
+        ))
+)
+
+
+-------------------------------------------------------------------------------------------------
+
+		Step 6: Download WordPress Latest Release
+Next, visit WordPress site and download the latest version….
+
+After downloading, run the commands below to extract the downloaded file and move it into a new WordPress root directory.
+
+cd /tmp && wget https://wordpress.org/latest.tar.gz
+tar -zxvf latest.tar.gz
+sudo mv wordpress /var/www/html/wordpress
+Then run the commands below to set the correct permissions for WordPress to function.
+
+sudo chown -R www-data:www-data /var/www/html/wordpress/
+sudo chmod -R 755 /var/www/html/wordpress/
+--------------------------------------------------------------------------------------------------
+
+		STEP 7: CONFIGURE WORDPRESS
+Now that Lighttpd is configured, run the commands below to create WordPress wp-config.php file.
+
+sudo mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
+
+Then run the commands below to open WordPress configuration file.
+
+sudo nano /var/www/html/wordpress/wp-config.php
+
+Enter the highlighted text below that you created for your database and save.
+
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define('DB_NAME', 'wpdb');
+
+/** MySQL database username */
+define('DB_USER', 'wpdbuser');
+
+/** MySQL database password */
+define('DB_PASSWORD', 'user_password_here');
+
+/** MySQL hostname */
+define('DB_HOST', 'localhost');
+
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
+
+/** The Database Collate type. Don't change this if in doubt. */
+define('DB_COLLATE', '');
+Restart Lighttpd services
+
+sudo systemctl restart lighttpd.service
+
+After that, open your browser and browse to your domain name to launch WordPress configuration wizard.
+
+You should see WordPress setup wizard to complete. Please follow the wizard carefully.
+
+http://example.com
+
+
+https://websiteforstudents.com/install-wordpress-on-ubuntu-16-04-lts-with-lighttpd-mariadb-and-php-7-1-support/
+-------------------------------------------------------------------------------------------------
+
+
+			Включить поддержку PHP в lighttpd:
+
+sudo lighty-enable-mod fastcgi
+sudo lighty-enable-mod fastcgi-php
+
+https://interface31.ru/tech_it/2011/12/nastraivaem-prostoy-veb-server-na-baze-lighttpd.html
+-------------------------------------------------------------------------------------------------
+
+				Если ты видишь ошибку:
+
+	your php installation appears to be missing the mysql extension which is required by wordpress
+
+php -v					проверить версию  PHP
+
+apt-get update				проверить обновления
+apt-get install php7.4-mysql		(установи необходимую версию измени 7.4)
+
+https://www.rosehosting.com/blog/how-to-fix-the-missing-mysql-extension-error-in-wordpress/
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+http://rus-linux.net/MyLDP/vm/VirtualBox-networking.html
+https://losst.ru/nastrojka-seti-virtualbox
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Разница между Debian и CentOS
+
+https://losst.ru/chto-luchshe-debian-ili-centos#:~:text=Debian%20%2D%20%D1%8D%D1%82%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%2C%20%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%B2%D0%B0%D0%B5%D0%BC%D1%8B%D0%B9%20%D0%B8,%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D1%8F%D0%B5%D1%82%20%D1%81%D0%BE%D0%B1%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%2C%20%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%B2%D0%B0%D0%B5%D0%BC%D1%8B%D0%B9%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BE%D0%BC.
+
+-------------------------------------------------------------------------------------------------
+
+					CentOS
+
+		Что Такое SELinux?
+
+SELinux — функция контроля безопасности, которая ограничивает доступ к определённым модулям ядра. CentOS 7 и RHEL включают её по умолчанию, чтобы обеспечить дополнительный уровень безопасности для системы. Однако функция может быть реализована и в других дистрибутивах Linux, например, Debian.
+
+https://www.hostinger.ru/rukovodstva/kak-v-centos-7-otkliuchit-selinux#:~:text=SELinux%20%E2%80%94%20%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F%20%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8F%20%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8%2C%20%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D0%B0%D1%8F,%D0%B4%D0%B8%D1%81%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%82%D0%B8%D0%B2%D0%B0%D1%85%20Linux%2C%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%2C%20Debian.
+
+
+	DNF — Утилита управления пакетами нового поколения для дистрибутивов на основе RP
+
+DNF была создана на замену утилиты управления пакетами «YUM» в дистрибутивах на основе Red Hat, а именно RHEL, CentOS и Fedora и т. д., то есть всех тех, которые используют менеджер пакетов RPM.
+
+	Недостатки Yum, которые привели к основанию DNF:
+
+Разрешение зависимостей YUM является кошмаром и было разрешено в DNF с помощью библиотеки SUSE libsolv и оболочки Python вместе с C Hawkey.
+У YUM нет документированного API.
+Создавать новые функции сложно.
+Нет поддержки других расширений, кроме Python.
+Меньшие затраты памяти и меньшая автоматическая синхронизация метаданных — процесс, требующий много времени.
+
+https://zalinux.ru/?p=5386
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+		если Debian  - какая разница между aptitude и apt и что такое APPArmor
+
+
+Первым отличием является то, что  aptitude предоставляет интерфейс меню терминала, 
+похожего на   терминал в Synaptic,  а apt-get не похож.
+
+Имеется, правда, несколько незначительных отличий.
+
+aptitude автоматически удалит пакеты, тогда как apt-get потребует для этого действия отдельной команды
+Команды для обновления вместо dist-upgrade были переименованы в aptitude, возможно, для более точных названий safe-upgrade и full-upgrade соответственно.
+На самом деле aptitude выполняет функции не только apt-get, но и некоторых сопутствующих инструментов, таких как apt-cache и apt-mark.
+
+aptitude имеет немного другой синтаксис запроса для поиска в отличии от apt-cache
+У aptitude существуют команды why и why-not, которые говорят вам, какие установленные вручную пакеты препятствуют выполнению действия, которое вы, возможно, захотите предпринять.
+https://unixhow.com/1624/kakaya-raznica-mezhdu-apt-aptitude-chem-osobennosti-wajig
+-------------------------------------------------------------------------------------------------
+				что такое APPArmor
+
+AppArmor — программный инструмент упреждающей защиты, основанный на политиках безопасности (известных также как профили), которые определяют, к каким системным ресурсам и с какими привилегиями может получить доступ то или иное приложение. В AppArmor включён набор стандартных профилей, а также инструменты статического анализа и инструменты, основанные на обучении, позволяющие ускорить и упростить построение новых профилей[2].
+
+
+
+https://ru.wikipedia.org/wiki/AppArmor
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+	
+		Использование утилиты UFW на Linux
+	
+		Что это такое?
+UFW (Uncomplicated Firewall) - является самым простым и довольно популярным в инструментарием командной строки для настройки и управления брандмауэром в дистрибутивах Ubuntu и Debian. Правильно функционирующий брандмауэр является наиболее важной частью полной безопасности системы Linux. UFW позволяет сделать базовые настройки, для более сложных настроек используйте iptables.
+
+https://1cloud.ru/help/security/ispolzovanie-utility-ufw-na-inux
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+		Использование SSH	
+
+Одним из важнейших инструментов в работе системного администратора является SSH.
+
+SSH, или Secure Shell, — это протокол, используемый для безопасного входа на удаленные системы. Это самый распространенный способ получения доступа к удаленным серверам Linux.
+
+SSH (англ. Secure Shell — «безопасная оболочка») — сетевой протокол прикладного уровня, позволяющий производить удалённое управление операционной системой и туннелирование TCP-соединений (например, для передачи файлов).
+
+
+
+https://www.digitalocean.com/community/tutorials/how-to-use-ssh-to-connect-to-a-remote-server-ru#:~:text=SSH%2C%20%D0%B8%D0%BB%D0%B8%20Secure%20Shell%2C%20%E2%80%94,%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BA%20%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5.
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+			Диспетчер логических томов (LVM)	
+
+
+LVM — это метод распределения пространства жёсткого диска по логическим томам, размер которых можно легко менять, в отличие от разделов. С LVM пространство жёсткого диска или набора дисков распределяется по физическим томам. Физический том не может располагаться более чем на одном диске.
+
+
+http://rhd.ru/docs/manuals/enterprise/RHEL-4-Manual/sysadmin-guide/ch-lvm-intro.html#:~:text=LVM%20%E2%80%94%20%D1%8D%D1%82%D0%BE%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%82%D0%B2%D0%B0,%D0%B1%D0%BE%D0%BB%D0%B5%D0%B5%20%D1%87%D0%B5%D0%BC%20%D0%BD%D0%B0%20%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B5.
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+				cron
+
+cron — классический демон, использующийся для периодического выполнения заданий в определённое время. Регулярные действия описываются инструкциями, помещенными в файлы crontab и в специальные каталоги. Название cron образовано от греческого слова χρόνος — время.
+
+https://ru.wikipedia.org/wiki/Cron
+
+
+
+

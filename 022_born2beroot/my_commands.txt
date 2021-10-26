@@ -1,0 +1,66 @@
+	login as root
+$ su -
+
+		Installing tools: sudo, Vim, git
+	install sudo
+$ apt-get update -y
+$ apt-get upgrade -y
+$ apt install sudo
+	installing Vim
+$ sudo apt-get install vim
+	installing git
+$ apt-get update -y
+$ apt-get upgrade -y
+$ apt-get install git -y
+	add user in sudo group
+$ su -
+$ usermod -aG sudo <username>
+$ getent group sudo
+	delete user from group
+$ sudo gpasswd -d <username> <group>
+	Give privilege as a su.
+Open sudoers file:
+$ sudo visudo
+Add this line in file:
+your_username    ALL=(ALL) ALL
+
+		Installing SSH and configuring SSH service
+	Install UFW
+$ apt-get install ufw
+	Enable
+$ sudo ufw enable
+	Check the status
+$ sudo ufw status numbered
+	Configure the rules
+$ sudo ufw allow ssh
+	Configure the port rules
+$ sudo ufw allow 4242
+	Delete the new rule: 
+$ sudo ufw status numbered
+$ sudo ufw delete <number of port>
+Restart SSH server (go to the your VM machine)
+$ sudo systemctl restart ssh
+	Check ssh status:
+$ sudo service sshd status
+	From host side from iTerm2 or Terminal enter as shown below:
+$ ssh <username>@127.0.0.1 -p 4242
+	Quit the connection:
+$ exit
+
+		Create group
+$ sudo groupadd user42
+$ sudo groupadd evaluating
+	Check if group created:
+$ getent group
+
+		Configuring sudoers group
+Go to file:
+$ sudo nano /etc/sudoers
+
+Defaults     secure_path="..."
+Defaults     passwd_tries=3
+Defaults     badpass_message="Password is wrong, please try again!"
+Defaults	logfile="/var/log/sudo/sudo.log"
+Defaults	log_input,log_output
+Defaults    requiretty
+Defaults   secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
