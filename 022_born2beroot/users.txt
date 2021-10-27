@@ -2,3 +2,4 @@ ssh 1122
 root - 1122
 user - 1122
 majacqua - 1122 
+tuser - 1QAZ2wsx3edc 
