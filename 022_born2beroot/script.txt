@@ -1,0 +1,7 @@
+1. Architecture: uname -a (Сведения о системе)
+2. CPU physical: nproc --all (Кол-во обрабатываемых элементов, доступных тек. процессу)
+3. vCPU: cat /proc/cpuinfo | grep processor | wc -l (В файле cpuinfo берет строки с процессорами и считает кол-во)
+4. Memory Usage free -m | grep Mem | awk '{printf("%s/%d (%s%%)", $3, $2, $3*100/%2)}'
+free - показывает кол-во свободной и используемой памяти в системе
+awk printf - выводим на экран исп. / всего и отношение в процентах
+5. Disk Usage: df -m | grep /dev/mapper/majacqua--vg-root | awk '{printf(%s/%dGb (%s)" , $4, $2/1024, $5)}'

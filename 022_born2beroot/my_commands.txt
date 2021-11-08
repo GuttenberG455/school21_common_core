@@ -64,3 +64,6 @@ Defaults	logfile="/var/log/sudo/sudo.log"
 Defaults	log_input,log_output
 Defaults    requiretty
 Defaults   secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+		Check apparmor
+$ sudo apparmor_status
