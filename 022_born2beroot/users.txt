@@ -1,5 +1,15 @@
 ssh 1122
 root - 1122
-user - 1122
-majacqua - 1122 
+majacqua - QAZ123wsxedc 
 tuser - 1QAZ2wsx3edc 
+
+
+
+
+
+SHA 4945332f7bf1a38d3ec967c9ff1a7cebffcfaf86
+
+
+
+
+

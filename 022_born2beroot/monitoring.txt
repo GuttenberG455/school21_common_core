@@ -1,0 +1,24 @@
+1. Architecture: uname -a (Сведения о системе)
+2. CPU physical: nproc --all (Кол-во обрабатываемых элементов, доступных тек. процессу)
+3. vCPU: cat /proc/cpuinfo | grep processor | wc -l (В файле cpuinfo берет строки с процессорами и считает кол-во)
+4. Memory Usage free -m | grep Mem | awk '{printf("%s/%d (%s%%)", $3, $2, $3*100/%2)}'
+free - показывает кол-во свободной и используемой памяти в системе
+awk printf - выводим на экран исп. / всего и отношение в процентах
+5. Disk Usage: df -m | grep /dev/mapper/majacqua--vg-root | awk '{printf(%s/%dGb (%s)" , $4, $2/1024, $5)}'
+df -m - отчет о использовании места файловой системы диска (-m в Мб) 
+строка с раздела root Использовано/Всего и процент
+6. CPU Load: top -bn1 | grep %CPU | cut -c 11- | awk '{printf("%.1f%%, %1+$3)}'
+top - отображает процессы Линукса
+берем верхнюю строку с CPU, отрезаем лишнее, считаем user percentage (user + nice)
+7. Last Boot: who -b | awk '{print $3 " " $4}'
+who -b - показывает последний system boot выводим дату и время
+8. LVM use: if [ $(lsblk | grep "lvm" | wc -l) -eq 0] then echo "no" else echo "yes" fi
+выводим список lsblk берем и считаем кол-во lvm выводим да/нет
+9. Connection TCP: netstat | grep "tcp" | wc -l
+берем список всех соединений и считаем кол-во с TCP
+10. User log: users | wc -l
+Считаем кол-во юзеров
+11. Network : hostname -I : показывает адрес хоста
+ip a | grep ether : 
+12. Sudo : journalctl _COMM=sudo | grep COMMAND | wc -l
+Запрос системного журнала где sudo берем и считаем кол-во команд

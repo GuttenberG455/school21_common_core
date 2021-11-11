@@ -1,0 +1,45 @@
+Запускаем ВМ. Проверяем, что нет визуальной оболочки. Проверяем наличие зашифрованного диска.
+Подключаемся к user majacqua. НЕ root!! Пароль по правилам.  
+
+Проверка Linux Debian или CentOS $ sudo head -n 2 /etc/es-release. (или uname -a)
+Проверка присутствия usera в группы $ groups majacqua
+
+Прроверка политики паролей 	$ vim /etc/login.defs
+				$ vim /etc/pam.d/common-password
+
+Создаем нового пользователя $ sudo adduser <имя_проверяющего> Пароль по правилам!
+Даем новому пользователю полные права 	$ sudo vim /etc/sudoers
+					$ sudo usermod -aG sudo <имя>
+Проверяем доступ $ sudo -lU <user>
+Создаем новую группу "evals" и добавляем usera туда. Проверяем добавление!
+	$ groupadd "evals" 
+	$ usermod -aG "evals" <user> 
+	$ getent group evals
+
+Проверяем что hostname - majacqua42 Меняем его на имя проверяемого и перезагружаем АРМ
+$ hostnamectl set-hostname <user42> Перезагружаем Проверяем изменненный хостнейм. $ lsblk
+
+Проверяем что sudo установлено $ dpkg -l | grep sudo
+Проверяем что user в sudo $ getent group sudo
+Смотри директорию $ ls /var/log/sudo
+Открывает содержимое sudo.log Проверяем добавилось ли действие с sudo
+
+Проверяем работоспособность ufw $ systemctl status ufw
+Смотрим правила для ufw $ sudo ufw status numbered
+Добавить новое правило 8080, проверить и удалить его
+	$ ufw allow 8080
+	$ ufw delete 2/4
+
+Проверка ssh $ sudo systemctl status ssh
+Смотрим файл конфигурации $ vim /etc/ssh/ssh_config
+Подключаемся и отключаемся $ ssh "username"@10.0.2.15 -p 4242      	$ exit
+
+Проверка работоспособности скрипта $ sh /usr/bin/monitoring.sh
+Смотрим выполнение правила о раз в 10 минут $ crontab -l
+
+
+
+
+
+
+ 

@@ -55,7 +55,7 @@ $ getent group
 
 		Configuring sudoers group
 Go to file:
-$ sudo nano /etc/sudoers
+$ sudo vim /etc/sudoers
 
 Defaults     secure_path="..."
 Defaults     passwd_tries=3
@@ -67,3 +67,9 @@ Defaults   secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:
 
 		Check apparmor
 $ sudo apparmor_status
+
+
+  1. Настроить заново ssh
+2. Сделать правильно скрипт со временем использования
+3. Дать разрешения скрипту
+4. ВСЕ ПРОВЕРИТЬ!
