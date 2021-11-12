@@ -2,9 +2,11 @@
 Подключаемся к user majacqua. НЕ root!! Пароль по правилам.  
 
 Проверка Linux Debian или CentOS $ sudo head -n 2 /etc/es-release. (или uname -a)
+Проверка <service> $ sudo systemctl status <service>
 Проверка присутствия usera в группы $ groups majacqua
 
-Прроверка политики паролей 	$ vim /etc/login.defs
+
+Проверка политики паролей 	$ vim /etc/login.defs
 				$ vim /etc/pam.d/common-password
 
 Создаем нового пользователя $ sudo adduser <имя_проверяющего> Пароль по правилам!
@@ -31,7 +33,8 @@ $ hostnamectl set-hostname <user42> Перезагружаем Проверяе�
 	$ ufw delete 2/4
 
 Проверка ssh $ sudo systemctl status ssh
-Смотрим файл конфигурации $ vim /etc/ssh/ssh_config
+Проверка ssh $ sudo systemctl status sshd
+Смотрим файл конфигурации $ vim /etc/ssh/sshd_config
 Подключаемся и отключаемся $ ssh "username"@10.0.2.15 -p 4242      	$ exit
 
 Проверка работоспособности скрипта $ sh /usr/bin/monitoring.sh
