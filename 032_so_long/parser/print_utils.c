@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:44:52 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/16 18:00:00 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/17 15:14:00 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putstr(char *str)
 	if (!str)
 		return ;
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		write(1, &str[i], 1);
 		i++;
@@ -32,9 +32,11 @@ void	print_map(char **grid)
 	int	i;
 
 	i = 0;
+	if (!grid)
+		return ;
 	while (grid[i])
 	{
-		ft_putstr(grid[i]);
+		printf("%p\n", grid[i]);
 		i++;
 	}
 }

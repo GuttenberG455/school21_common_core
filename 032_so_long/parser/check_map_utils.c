@@ -6,24 +6,32 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:25:51 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/16 18:32:19 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/17 12:07:59 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_map.h"
 
-int	is_ch_in_str(const char *str, int ch)
+int	count_ch_in_grid(char **grid, int ch)
 {
 	int	i;
+	int	j;
+	int	count;
 
-	i = 0;
-	if (!str)
+	if (!grid)
 		return (0);
-	while (str[i])
+	i = 0;
+	count = 0;
+	while (grid[i])
 	{
-		if (str[i] == (char) ch)
-			return (1);
+		j = 0;
+		while (grid[i][j])
+		{
+			if (grid[i][j] == (char) ch)
+				count++;
+			j++;
+		}
 		i++;
 	}
-	return (0);
+	return (count);
 }

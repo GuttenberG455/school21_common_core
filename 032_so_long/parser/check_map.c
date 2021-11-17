@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:33:56 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/16 19:02:20 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/17 14:28:47 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 void	print_error(int status)
 {
-	if (status == 1)
+	if (status == 10)
 		ft_putstr("Error\nIncorrect map: No borders");
+	else if (status == 11)
+		ft_putstr("Error\nIncorrect map: Wrong dimensions");
 	else if (status == 20)
 		ft_putstr("Error\nIncorrect map: No player");
 	else if (status == 21)
@@ -35,31 +37,12 @@ void	print_error(int status)
 
 void	get_counts(t_map *map)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	map->player_count = 0;
-	map->exit_count = 0;
-	map->coins_count = 0;
-	while (map->grid[i])
-	{
-		j = 0;
-		while (map->grid[i][j])
-		{
-			if (map->grid[i][j] == 'P')
-				map->player_count++;
-			if (map->grid[i][j] == 'E')
-				map->exit_count++;
-			if (map->grid[i][j] == 'C')
-				map->coins_count++;
-			j++;
-		}
-		i++;
-	}
+	map->player_count = count_ch_in_grid(map->grid, 'P');
+	map->exit_count = count_ch_in_grid(map->grid, 'E');
+	map->coins_count = count_ch_in_grid(map->grid, 'C');
 }
 
-int	check_borders(char **grid, int height)
+int	check_borders(char **grid, int height, int width)
 {
 	int	i;
 	int	j;
@@ -71,12 +54,27 @@ int	check_borders(char **grid, int height)
 		while (grid[i][j])
 		{
 			if ((grid[i][j] != '1') && ((i == 0) || (j == 0)
-			|| (j == ft_strlen(grid[i]) - 1) || (i == height - 1)))
+			|| (j == width - 1) || (i == height - 1)))
 				return (1);
 			j++;
 		}
 		i++;
 	}
+	return (0);
+}
+
+int	check_characters(t_map *map)
+{
+	int	amount;
+
+	amount = count_ch_in_grid(map->grid, 'P');
+	amount += count_ch_in_grid(map->grid, 'E');
+	amount += count_ch_in_grid(map->grid, 'C');
+	amount += count_ch_in_grid(map->grid, '1');
+	amount += count_ch_in_grid(map->grid, '0');
+	printf("Sum of all characters - [%d]\n", amount);
+	if (amount != map->width * map->height)
+		return (1);
 	return (0);
 }
 
@@ -92,8 +90,12 @@ void	get_map_status(t_map *map)
 		map->status = 31;
 	else if (map->coins_count == 0)
 		map->status = 4;
-	else if (check_borders(map->grid, map->height))
-		map->status = 1;
+	else if (check_borders(map->grid, map->height, map->width))
+		map->status = 10;
+	else if (check_dimensions(map))
+		map->status = 11;
+	else if (check_characters(map))
+		map->status = 5;
 	else
 		map->status = 0;
 	printf("Map status - %d\n", map->status);
@@ -105,8 +107,7 @@ int	check_map(t_map *map)
 	get_map_status(map);
 	if (map->status)
 		print_error(map->status);
-	printf("Players - %d\nExits - %d\nCoins - %d\n", map->player_count, map->exit_count, map->coins_count);
+	printf("Players - %d Exits - %d Coins - %d\n", map->player_count, map->exit_count, map->coins_count);
+	printf("Height - %d\t Width - %d\n", map->height, map->width);
 	return (0);
 }
-
-// СДЕЛАТЬ ПРОВЕРКУ НА НЕПРАВИЛЬНЫЕ СИМВОЛЫ!

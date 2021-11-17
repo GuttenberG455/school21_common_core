@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:58:30 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/16 18:28:28 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/17 15:09:02 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,7 @@ void	print_error(int status);
 int		check_map(t_map *map);
 
 int		create_map(char *map_src);
+int		count_ch_in_grid(char **grid, int ch);
+int		check_dimensions(t_map *map);
+int		get_dimensions(char *file, t_map *map);
 #endif 
