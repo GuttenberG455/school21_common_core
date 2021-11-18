@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:44:52 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/17 15:14:00 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/18 10:34:52 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	print_map(char **grid)
 		return ;
 	while (grid[i])
 	{
-		printf("%p\n", grid[i]);
+		printf("%s\n", grid[i]);
 		i++;
 	}
 }

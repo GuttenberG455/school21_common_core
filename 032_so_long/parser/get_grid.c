@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:03:27 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/16 18:03:38 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/18 11:06:18 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,11 @@ int	get_grid(char *file, char **grid)
 	while (reader)
 	{
 		reader = get_next_line(fd, grid);
+		grid++;
 		if (!reader)
 			break ;
-		grid++;
 	}
+	*grid = 0;
 	close(fd);
 	return (0);
 }

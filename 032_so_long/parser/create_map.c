@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:01:52 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/17 15:07:09 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/18 10:55:24 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ int	create_map(char *map_src)
 	}	
 	map->grid = (char **) malloc(map->height + 1);
 	get_grid(map_src, map->grid);
+	check_map(map);
 	print_map(map->grid);
-	// check_map(map);
-	// print_map(map->grid);
-	// clear_map(map);
+	clear_map(map);
 	return (1);
 }
