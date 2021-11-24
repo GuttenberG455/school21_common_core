@@ -6,27 +6,27 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:46:42 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/23 20:19:40 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/24 13:00:57 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	op_swap_one(t_lstack **stack)
+void	op_swap_one(t_lstack **stack)
 {
 	t_lstack	*second;
 	t_lstack	*first;
-	int			temp;
+	// int			temp;
 
 	first = *stack;
-	if (!first || !first->next)
-		return (1);
+	if (!stack || !first || !first->next)
+		return ;
 	else
 	{
 		second = first->next;
-		temp = first->order;
-		first->order = second->order;
-		second->order = temp;
+		// temp = first->order;
+		// first->order = second->order;
+		// second->order = temp;
 		if (!second->next)
 			first->next = 0;
 		else
@@ -39,7 +39,6 @@ int	op_swap_one(t_lstack **stack)
 		first->prev = second;
 		*stack = second;
 	}
-	return (0);
 }
 
 void	op_swap_two(t_lstack **stack1, t_lstack **stack2)
@@ -53,7 +52,7 @@ void	op_push(t_lstack **stack1, t_lstack **stack2)
 	t_lstack	*list;
 	t_lstack	*second;
 
-	if (!stack1)
+	if (!stack1 || !*stack1)
 		return ;
 	else
 	{
@@ -70,6 +69,6 @@ void	op_push(t_lstack **stack1, t_lstack **stack2)
 		else
 			list->next = 0;
 		*stack2 = list;
-	
+		list->flag += 1;
 	}
 }

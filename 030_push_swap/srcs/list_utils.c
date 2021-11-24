@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:24:07 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/23 18:54:15 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/24 15:21:22 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,33 @@ t_lstack	*ft_create_list(int value)
 	return (ptr);
 }
 
-void	ft_print_list(t_lstack **lst)
+void	ft_print_list(t_lstack **stack)
 {
 	t_lstack	*iter;
 
-	if (!lst)
+	if (!stack)
 		return ;
-	iter = *lst;
+	iter = *stack;
 	while (iter)
 	{
-		// ft_putnbr_fd(lst->value, 1);
-		// ft_putchar_fd('\n', 1);
-		printf("%p %d -value |%d| next-%p prev-%p\n", iter, iter->value, iter->order, iter->next, iter->prev);
+		printf("%p _%d_ -value |%d|%d| next-%p prev-%p\n", iter, iter->value, iter->order, iter->flag, iter->next, iter->prev);
 		iter = iter->next;
 	}
 }
 
-void	ft_push_list(t_lstack **lst, t_lstack *new)
+void	ft_push_list(t_lstack **stack, t_lstack *new)
 {
 	t_lstack	*iter;
 	static int	order = 0;
 
-	if (*lst == 0)
+	if (*stack == 0)
 	{
 		iter = new;
-		*lst = new;
+		*stack = new;
 		new->order = order++;
 		return ;
 	}
-	iter = *lst;
+	iter = *stack;
 	while (iter)
 	{
 		if (iter->next == 0)
@@ -67,4 +65,39 @@ void	ft_push_list(t_lstack **lst, t_lstack *new)
 		}
 		iter = iter->next;
 	}
+}
+
+t_lstack	*ft_last_lstack(t_lstack **stack)
+{
+	t_lstack	*iter;
+
+	if (!stack || !*stack)
+		return (0);
+	iter = *stack;
+	while (iter)
+	{
+		if (iter->next == 0)
+			return (iter);
+		iter = iter->next;
+	}
+	return (iter);
+}
+
+size_t	ft_lstack_len(t_lstack **stack)
+{
+	t_lstack	*iter;
+	size_t		len;
+
+	if (!stack || !*stack)
+		return (0);
+	len = 0;
+	iter = *stack;
+	while (iter)
+	{
+		if (iter->next == 0)
+			return (iter);
+		iter = iter->next;
+		len++;
+	}
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:46:13 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/23 19:56:30 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:12:42 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,22 @@ typedef struct s_lstack{
 	struct s_lstack	*next;
 }	t_lstack;
 
+void		tiny_sort(t_lstack **stack1, t_lstack **stack2);
+
+void		large_sort(t_lstack **stack1, t_lstack **stack2);
+
 int			create_start_stack(t_lstack **stack, int argc, char **argv);
 t_lstack	*ft_create_list(int value);
-void		ft_print_list(t_lstack **lst);
-void		ft_push_list(t_lstack **lst, t_lstack *new);
+void		ft_print_list(t_lstack **stack);
+void		ft_push_list(t_lstack **stack, t_lstack *new);
+t_lstack	*ft_last_lstack(t_lstack **stack);
+size_t		ft_lstack_len(t_lstack **stack);
 
-int			op_swap_one(t_lstack **stack);
+void		op_swap_one(t_lstack **stack);
 void		op_swap_two(t_lstack **stack1, t_lstack **stack2);
 void		op_push(t_lstack **stack1, t_lstack **stack2);
-
+void		op_rotate_one(t_lstack **stack);
+void		op_rotate_two(t_lstack **stack1, t_lstack **stack2);
+void		op_reverse_rotate_one(t_lstack **stack);
+void		op_reverse_rotate_two(t_lstack **stack1, t_lstack **stack2);
 #endif
