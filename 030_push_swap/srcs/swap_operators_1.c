@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:46:42 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/24 13:00:57 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/26 13:12:03 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	op_swap_one(t_lstack **stack)
 		first->prev = second;
 		*stack = second;
 	}
+	printf("swap\n");
 }
 
 void	op_swap_two(t_lstack **stack1, t_lstack **stack2)
@@ -71,4 +72,5 @@ void	op_push(t_lstack **stack1, t_lstack **stack2)
 		*stack2 = list;
 		list->flag += 1;
 	}
+	printf("push\n");
 }

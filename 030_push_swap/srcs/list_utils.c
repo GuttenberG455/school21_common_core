@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:24:07 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/24 15:21:22 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/26 16:14:41 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,12 @@ void	ft_print_list(t_lstack **stack)
 void	ft_push_list(t_lstack **stack, t_lstack *new)
 {
 	t_lstack	*iter;
-	static int	order = 0;
 
 	if (*stack == 0)
 	{
 		iter = new;
 		*stack = new;
-		new->order = order++;
+		new->order = -1;
 		return ;
 	}
 	iter = *stack;
@@ -59,7 +58,7 @@ void	ft_push_list(t_lstack **stack, t_lstack *new)
 		if (iter->next == 0)
 		{
 			iter->next = new;
-			new->order = order++;
+			new->order = -1;
 			new->prev = iter;
 			return ;
 		}
@@ -95,7 +94,7 @@ size_t	ft_lstack_len(t_lstack **stack)
 	while (iter)
 	{
 		if (iter->next == 0)
-			return (iter);
+			return (++len);
 		iter = iter->next;
 		len++;
 	}
