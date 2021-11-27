@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:02:58 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/27 12:49:57 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/27 14:37:13 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	is_sorted(t_lstack **stack)
 	return (0);
 }
 
-int	create_start_stack(t_lstack **stack, int argc, char **argv)
+int	create_start_stack(t_env *env, int argc, char **argv)
 {
 	int			i;
 	t_lstack	*new;
@@ -72,10 +72,10 @@ int	create_start_stack(t_lstack **stack, int argc, char **argv)
 		while (i < argc)
 		{
 			new = ft_create_list(ft_atoi(argv[i]));
-			ft_push_list(stack, new);
+			ft_push_list(env->stack_a, new);
 			i++;
 		}
-		get_order_list(stack);
+		get_order_list(env->stack_a);
 		return (0);
 	}
 }

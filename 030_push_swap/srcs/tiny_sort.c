@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:20:26 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/26 15:35:25 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/27 16:39:28 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	merge_two_sorted_stacks(t_lstack **stack1, t_lstack **stack2)
 	}	
 }
 
-void	sort_four_to_six(t_lstack **stack1, t_lstack **stack2)
+void	sort_four_to_six(t_env *env)
 {
 	size_t		i;
 	size_t		len_stack1;
@@ -89,31 +89,31 @@ void	sort_four_to_six(t_lstack **stack1, t_lstack **stack2)
 	t_lstack	*iter_a;
 
 	i = 0;
-	len_stack1 = ft_lstack_len(stack1);
+	len_stack1 = ft_lstack_len(env->stack_a);
 	while (i < len_stack1 - 3)
 	{
-		op_push(stack1, stack2);
+		op_push(env->stack_a, env->stack_b);
 		i++;
 	}
 	if (i <= 2)
-		sort_two(stack2);
+		sort_two(env->stack_b);
 	else
-		sort_three(stack2);
-	sort_three(stack1);
-	merge_two_sorted_stacks(stack1, stack2);
-	while (ft_lstack_len(stack2))
+		sort_three(env->stack_b);
+	sort_three(env->stack_a);
+	merge_two_sorted_stacks(env->stack_a, env->stack_b);
+	while (ft_lstack_len(env->stack_b))
 	{
-		op_push(stack2, stack1);
-		op_rotate_one(stack1);
+		op_push(env->stack_b, env->stack_a);
+		op_rotate_one(env->stack_a);
 	}	
 }
 
-void	tiny_sort(t_lstack **stack1, t_lstack **stack2)
+void	tiny_sort(t_env *env)
 {	
-	if (ft_lstack_len(stack1) <= 2)
-		sort_two(stack1);
-	else if (ft_lstack_len(stack1) == 3)
-		sort_three(stack1);
-	else if (ft_lstack_len(stack1) >= 4)
-		sort_four_to_six(stack1, stack2);
+	if (ft_lstack_len(env->stack_a) <= 2)
+		sort_two(env->stack_a);
+	else if (ft_lstack_len(env->stack_a) == 3)
+		sort_three(env->stack_a);
+	else if (ft_lstack_len(env->stack_a) >= 4)
+		sort_four_to_six(env);
 }
