@@ -6,39 +6,59 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:02:58 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/26 16:23:48 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/27 12:49:57 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	get_order_list(t_lstack **stack)
+static void	get_order_list(t_lstack **stack)
 {
 	size_t		size;
 	size_t		position;
-	t_lstack	*min_value;
+	t_lstack	*min_stack;
 	t_lstack	*iter;
+	int			min_value;
 
 	position = 0;
 	iter = *stack;
-	min_value->value = INT_MAX;
 	while (position < ft_lstack_len(stack))
 	{
+		min_value = INT_MAX;
 		while (iter)
 		{
-			printf("Compare: %d %d pos-%zu\n", iter->value, min_value->value, position);
-			if (iter->value < min_value->value && iter->order == -1)
+			if (iter->value < min_value && iter->order == -1)
 			{
-				min_value = iter;
-			}
+				min_stack = iter;
+				min_value = iter->value;
+			}	
 			iter = iter->next;
 		}
-		min_value->order = position;
+		min_stack->order = position;
 		position++;
 		iter = *stack;
 	}
 }
-// не работает заполнение порядка на финише
+
+int	is_sorted(t_lstack **stack)
+{
+	t_lstack	*iter;
+	int			order;
+
+	order = 0;
+	iter = *stack;
+	while (iter)
+	{
+		if (iter->order != order)
+			return (1);
+		if (iter->next == 0)
+			return (0);
+		iter = iter->next;
+		order++;
+	}
+	return (0);
+}
+
 int	create_start_stack(t_lstack **stack, int argc, char **argv)
 {
 	int			i;
@@ -55,6 +75,7 @@ int	create_start_stack(t_lstack **stack, int argc, char **argv)
 			ft_push_list(stack, new);
 			i++;
 		}
+		get_order_list(stack);
 		return (0);
 	}
 }

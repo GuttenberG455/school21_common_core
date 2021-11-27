@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:46:42 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/26 13:12:03 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/27 12:14:22 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	op_swap_one(t_lstack **stack)
 {
 	t_lstack	*second;
 	t_lstack	*first;
-	// int			temp;
 
 	first = *stack;
 	if (!stack || !first || !first->next)
@@ -24,9 +23,6 @@ void	op_swap_one(t_lstack **stack)
 	else
 	{
 		second = first->next;
-		// temp = first->order;
-		// first->order = second->order;
-		// second->order = temp;
 		if (!second->next)
 			first->next = 0;
 		else

@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:46:13 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/24 14:12:42 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/27 14:03:00 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <limits.h>
 # include "../libft/libft.h"
 
 typedef struct s_lstack{
@@ -30,7 +31,11 @@ void		tiny_sort(t_lstack **stack1, t_lstack **stack2);
 
 void		large_sort(t_lstack **stack1, t_lstack **stack2);
 
+void		large_first_push(t_lstack **stack1, t_lstack **stack2);
+
 int			create_start_stack(t_lstack **stack, int argc, char **argv);
+int			is_sorted(t_lstack **stack);
+
 t_lstack	*ft_create_list(int value);
 void		ft_print_list(t_lstack **stack);
 void		ft_push_list(t_lstack **stack, t_lstack *new);
