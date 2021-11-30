@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tiny_sort.c                                        :+:      :+:    :+:   */
+/*   task_swap_op2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 13:20:26 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/30 18:45:01 by majacqua         ###   ########.fr       */
+/*   Created: 2021/11/30 16:06:19 by majacqua          #+#    #+#             */
+/*   Updated: 2021/11/30 17:48:38 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	tiny_two(t_env *env)
+void	oper_ra(t_env *env)
 {
-	sort_two(env->stack_a);
+	op_rotate_one(env->stack_a);
+	env->step_count++;
+	printf("ra\n");
 }
 
-void	tiny_three(t_env *env)
+void	oper_rb(t_env *env)
 {
-	sort_three(env->stack_a);
+	op_rotate_one(env->stack_b);
+	env->step_count++;
+	printf("rb\n");
 }
 
-void	tiny_sort(t_env *env)
-{	
-	if (ft_lstack_len(env->stack_a) <= 2)
-		tiny_two(env);
-	else if (ft_lstack_len(env->stack_a) == 3)
-		tiny_three(env);
-	else if (ft_lstack_len(env->stack_a) >= 4)
-		sort_four_to_six(env);
+void	oper_rr(t_env *env)
+{
+	op_rotate_one(env->stack_a);
+	op_rotate_one(env->stack_b);
+	env->step_count++;
+	printf("rr\n");
 }

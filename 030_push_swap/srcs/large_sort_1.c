@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 13:04:03 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/27 17:12:04 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:44:41 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	large_first_push(t_env *env)
 	env->flag = 1;
 	env->max = (int) ft_lstack_len(env->stack_a) - 1;
 	env->mid = env->max / 2 + env->looking;
-	printf("next:%d\tmax:%d\tmid:%d\n", env->looking, env->max, env->mid);
+	printf("Fitst: next:%d\tmax:%d\tmid:%d\n", env->looking, env->max, env->mid);
 	while (i <= env->max)
 	{
 		iter = *env->stack_a;
 		if (iter->order <= env->mid)
-			op_push(env->stack_a, env->stack_b);
+			oper_pa(env);
 		else
-			op_rotate_one(env->stack_a);
+			oper_ra(env);
 		i++;
 	}
 }
@@ -42,14 +42,14 @@ void	large_no_flag_push(t_env *env)
 	i = 0;
 	env->max = (int) ft_lstack_len(env->stack_a) - 1;
 	env->mid = env->max / 2 + env->looking;
-	printf("next:%d\tmax:%d\tmid:%d\n", env->looking, env->max, env->mid);
+	printf("No_Flag: next:%d\tmax:%d\tmid:%d\n", env->looking, env->max, env->mid);
 	while (i <= env->max)
 	{
 		iter = *env->stack_a;
 		if (iter->order <= env->mid && iter->flag == 0)
-			op_push(env->stack_a, env->stack_b);
+			oper_pa(env);
 		else
-			op_rotate_one(env->stack_a);
+			oper_ra(env);
 		i++;
 	}
 }
@@ -63,31 +63,30 @@ void	large_b_first_sort(t_env *env)
 	env->max = env->mid;
 	env->mid = (env->max - env->looking) / 2 + env->looking;
 	env->flag++;
+	printf("B Sort: next:%d\tmax:%d\tmid:%d\n", env->looking, env->max, env->mid);
 	if (ft_lstack_len(env->stack_b) == 2)
 	{
 		sort_two(env->stack_b);
-		op_push(env->stack_b, env->stack_a);
-		op_rotate_one(env->stack_a);
-		env->looking++;
-		op_push(env->stack_b, env->stack_a);
-		op_rotate_one(env->stack_a);
-		env->looking++;
+		oper_pb(env);
+		oper_ra(env);
+		oper_pb(env);
+		oper_ra(env);
+		env->looking += 2;
 		return ;
 	}
-	printf("next:%d\tmax:%d\tmid:%d\n", env->looking, env->max, env->mid);
 	while (ft_lstack_len(env->stack_b))
 	{
 		iter = *env->stack_b;
 		if (iter->order == env->looking)
 		{
-			op_push(env->stack_b, env->stack_a);
-			op_rotate_one(env->stack_a);
+			oper_pb(env);
+			oper_ra(env);
 			env->looking++;
 		}
 		else if (iter->order > env->mid)
-			op_push(env->stack_b, env->stack_a);
+			oper_pb(env);
 		else
-			op_rotate_one(env->stack_b);
+			oper_rb(env);
 		i++;
 	}
 }
@@ -95,12 +94,32 @@ void	large_b_first_sort(t_env *env)
 void	large_flag_push(t_env *env)
 {
 	t_lstack	*iter;
+	int			upper_flag;
 
 	iter = *env->stack_a;
-	printf("next:%d\tmax:%d\tmid:%d\n", env->looking, env->max, env->mid);
-	while (iter->flag != 0)
+	upper_flag = iter->flag;
+	printf("Flag Push: next:%d\tmax:%d\tmid:%d\n", env->looking, env->max, env->mid);
+	printf("[%d]-[%d]\n", iter->flag, upper_flag);
+	while (iter->flag == upper_flag)
 	{
-		op_push(env->stack_a, env->stack_b);
+		printf("[%d]-[%d]\n", iter->flag, upper_flag);
+		oper_pa(env);
 		iter = *env->stack_a;
 	}
+}
+
+int	is_all_flags(t_lstack **stack)
+{
+	t_lstack	*iter;
+
+	iter = *stack;
+	while (iter)
+	{
+		if (iter->flag == 0)
+			return (1);
+		if (iter->next == 0)
+			return (0);
+		iter = iter->next;
+	}
+	return (0);
 }

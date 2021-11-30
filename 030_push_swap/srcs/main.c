@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:55:13 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/27 17:18:02 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/11/30 18:47:20 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ int	main(int argc, char **argv)
 	else
 		large_sort(env);
 	printf("-----Sorted Stack A------\n");
-	ft_print_list(env->stack_a);
-	printf("-----\n");
-	ft_print_list(env->stack_b);
+	ft_print_env(env);
+	printf("-----Steps %d------\n", env->step_count);
 	return (0);
 }
 
@@ -45,4 +44,10 @@ int	main(int argc, char **argv)
 3. Понять что вообще нужно сделать
 4. ?????????
 5. PROFIT!
+NEXT HUYNA
+TODO
+1. Переделать тайни сорт, переписать все под новый env
+2. Сократить кол-во операций для ларджа (сортировку 2-3)
+3. Сделать счетчик операций?????
+4. 
 */
