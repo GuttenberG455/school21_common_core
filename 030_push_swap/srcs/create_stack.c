@@ -6,15 +6,14 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:02:58 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/27 14:37:13 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:44:44 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	get_order_list(t_lstack **stack)
+int	get_order_list(t_lstack **stack)
 {
-	size_t		size;
 	size_t		position;
 	t_lstack	*min_stack;
 	t_lstack	*iter;
@@ -38,30 +37,13 @@ static void	get_order_list(t_lstack **stack)
 		position++;
 		iter = *stack;
 	}
-}
-
-int	is_sorted(t_lstack **stack)
-{
-	t_lstack	*iter;
-	int			order;
-
-	order = 0;
-	iter = *stack;
-	while (iter)
-	{
-		if (iter->order != order)
-			return (1);
-		if (iter->next == 0)
-			return (0);
-		iter = iter->next;
-		order++;
-	}
 	return (0);
 }
 
 int	create_start_stack(t_env *env, int argc, char **argv)
 {
 	int			i;
+	long long	input_num;
 	t_lstack	*new;
 
 	if (argc < 2)
@@ -71,11 +53,18 @@ int	create_start_stack(t_env *env, int argc, char **argv)
 		i = 1;
 		while (i < argc)
 		{
-			new = ft_create_list(ft_atoi(argv[i]));
+			input_num = ft_atoi(argv[i]);
+			if (ft_atoi(argv[i]) == 0 && argv[i][0] != '0')
+				return (1);
+			if (input_num > INT_MAX || input_num < INT_MIN
+				|| !is_number(argv[i]))
+				return (1);
+			new = ft_create_list(input_num);
 			ft_push_list(env->stack_a, new);
 			i++;
 		}
-		get_order_list(env->stack_a);
+		if (get_order_list(env->stack_a) || is_dublicate(env->stack_a))
+			return (1);
 		return (0);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:20:26 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/30 18:45:01 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/02 09:15:12 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	tiny_two(t_env *env)
 {
-	sort_two(env->stack_a);
+	sort_two(env, 0);
 }
 
 void	tiny_three(t_env *env)
 {
-	sort_three(env->stack_a);
+	sort_three_stack_a(env);
 }
 
 void	tiny_sort(t_env *env)

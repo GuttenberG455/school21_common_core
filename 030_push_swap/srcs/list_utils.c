@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:24:07 by majacqua          #+#    #+#             */
-/*   Updated: 2021/11/30 17:49:14 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/02 13:02:35 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ size_t	ft_lstack_len(t_lstack **stack)
 
 void	ft_print_env(t_env *env)
 {
-	// ft_print_list(env->stack_a);
-	// printf("-- %d ENV_FLAG -\n", env->flag);
-	// ft_print_list(env->stack_b);
+	ft_print_list(env->stack_a);
+	printf("-- %d ENV_FLAG -\n", env->flag);
+	ft_print_list(env->stack_b);
 	printf("----------------------------\n");
 }
