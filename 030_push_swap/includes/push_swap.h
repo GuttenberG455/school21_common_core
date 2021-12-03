@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:46:13 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/03 13:38:37 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/03 16:46:03 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-// # include <stdio.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <limits.h>
 # include "../libft/libft.h"
@@ -36,6 +36,8 @@ typedef struct s_env{
 	int				flag;
 	unsigned int	step_count;
 }	t_env;
+
+int			push_swap(int argc, char **argv);
 
 int			create_start_stack(t_env *env, int argc, char **argv);
 t_lstack	*ft_create_list(int value);
