@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:46:13 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/02 15:46:04 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:38:37 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include <stdio.h>
+// # include <stdio.h>
 # include <unistd.h>
 # include <limits.h>
 # include "../libft/libft.h"

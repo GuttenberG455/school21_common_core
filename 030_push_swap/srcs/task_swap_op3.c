@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 16:19:39 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/02 10:01:44 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:37:07 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	oper_rra(t_env *env)
 {
 	op_reverse_rotate_one(env->stack_a);
 	env->step_count++;
-	printf("rra\n");
+	ft_putstr_fd("rra\n", 1);
 }
 
 void	oper_rrb(t_env *env)
 {
 	op_reverse_rotate_one(env->stack_b);
 	env->step_count++;
-	printf("rrb\n");
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void	oper_rrr(t_env *env)
@@ -31,5 +31,5 @@ void	oper_rrr(t_env *env)
 	op_reverse_rotate_one(env->stack_a);
 	op_reverse_rotate_one(env->stack_b);
 	env->step_count++;
-	printf("rrr\n");
+	ft_putstr_fd("rrr\n", 1);
 }

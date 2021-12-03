@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:08:55 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/02 15:42:55 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:35:02 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	large_fast_sort_two(t_env *env, int flag)
 	{
 		count++;
 		iter = iter->next;
+	}
+	if (count == 1)
+	{
+		oper_ra(env);
+		return (1);
 	}
 	if (count == 2)
 	{

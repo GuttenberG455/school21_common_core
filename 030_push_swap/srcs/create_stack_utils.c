@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:44:07 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/02 15:44:52 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:29:59 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	is_number(char *str)
 
 int	is_dublicate(t_lstack **stack)
 {
-	int			i;
+	size_t		i;
 	t_lstack	*iter;
 
 	iter = *stack;
@@ -65,7 +65,6 @@ int	is_dublicate(t_lstack **stack)
 int	get_value_by_order(t_lstack **stack, int ord)
 {
 	t_lstack	*iter;
-	int			i;
 
 	iter = *stack;
 	while (iter)
