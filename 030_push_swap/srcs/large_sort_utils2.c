@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 11:30:02 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/06 14:55:37 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/06 15:04:17 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,6 @@ void	large_push_min_flag(t_env *env)
 		rotate_for_push_both(env, steps_a, steps_b);
 	else
 		rotate_for_push_alone(env, steps_a, steps_b);
-	oper_pb(env);
+	oper_pa(env);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:24:51 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/06 14:55:59 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/06 15:03:58 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	large_push_mid(t_env *env)
 		while (i++ < ft_abs(steps))
 			oper_rra(env);
 	}
-	oper_pa(env);
+	oper_pb(env);
 	return ;
 }
 
@@ -42,7 +42,7 @@ void	large_push_all_2b(t_env *env)
 		iter = *env->stack_a;
 		if (iter->value != env->min && iter->value != env->max)
 		{
-			oper_pa(env);
+			oper_pb(env);
 			if (iter->value > env->mid)
 				oper_rb(env);
 		}

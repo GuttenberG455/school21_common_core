@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:39:41 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/06 14:55:17 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/06 15:04:31 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	merge_two_sorted_stacks(t_env *env)
 	{
 		if (lowest_b && lowest_b->value <= iter_a->value)
 		{	
-			oper_pb(env);
+			oper_pa(env);
 			len_stack1++;
 			if (ft_lstack_len(env->stack_b) != 0)
 				lowest_b = *env->stack_b;
@@ -124,7 +124,7 @@ void	sort_four_to_six(t_env *env)
 	len_stack1 = ft_lstack_len(env->stack_a);
 	while (i < len_stack1 - 3)
 	{
-		oper_pa(env);
+		oper_pb(env);
 		i++;
 	}
 	if (i <= 2)
@@ -135,7 +135,7 @@ void	sort_four_to_six(t_env *env)
 	merge_two_sorted_stacks(env);
 	while (ft_lstack_len(env->stack_b))
 	{
-		oper_pb(env);
+		oper_pa(env);
 		oper_ra(env);
 	}	
 }

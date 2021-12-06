@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:46:13 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/06 14:47:50 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/06 15:13:27 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <limits.h>
 # include "../libft/libft.h"
+
+# ifndef INT_MAX
+#  define INT_MAX 2147483647 
+# endif
 
 typedef struct s_lstack{
 	int				value;
