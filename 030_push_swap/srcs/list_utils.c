@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:24:07 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/05 12:35:52 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/06 14:55:51 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,6 @@ t_lstack	*ft_create_list(int value)
 	ptr->prev = 0;
 	ptr->next = 0;
 	return (ptr);
-}
-
-void	ft_print_list(t_lstack **stack)
-{
-	t_lstack	*iter;
-
-	if (!stack)
-		return ;
-	iter = *stack;
-	while (iter)
-	{
-		printf("%p _%d_ -value |%d|%d| next-%p prev-%p\n", iter, iter->value, iter->order, iter->flag, iter->next, iter->prev);
-		iter = iter->next;
-	}
 }
 
 void	ft_push_list(t_lstack **stack, t_lstack *new)
@@ -99,12 +85,4 @@ size_t	ft_lstack_len(t_lstack **stack)
 		len++;
 	}
 	return (len);
-}
-
-void	ft_print_env(t_env *env)
-{
-	ft_print_list(env->stack_a);
-	printf("--  --\n");
-	ft_print_list(env->stack_b);
-	printf("----------------------------\n");
 }

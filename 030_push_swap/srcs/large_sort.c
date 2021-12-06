@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:24:51 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/05 16:25:46 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/06 14:55:59 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	large_push_mid(t_env *env)
 {
-	int	top_steps;
+	int	steps;
 	int	i;
 
-	top_steps = count_steps_to_top(env->stack_a, env->mid);
+	steps = count_steps_to_top(env->stack_a, env->mid);
 	i = 0;
-	if (top_steps > 0)
+	if (steps > 0)
 	{
-		while (i++ < ft_abs(top_steps))
+		while (i++ < ft_abs(steps))
 			oper_ra(env);
 	}
-	else
+	else if (steps < 0)
 	{
-		while (i++ < ft_abs(top_steps))
+		while (i++ < ft_abs(steps))
 			oper_rra(env);
 	}
 	oper_pa(env);
@@ -51,14 +51,35 @@ void	large_push_all_2b(t_env *env)
 	}
 }
 
+void	large_last_rotate(t_env *env)
+{
+	int	steps;
+	int	i;
+
+	i = 0;
+	steps = count_steps_to_top(env->stack_a, env->min);
+	if (steps > 0)
+	{
+		while (i++ < ft_abs(steps))
+			oper_ra(env);
+	}
+	else if (steps < 0)
+	{
+		while (i++ < ft_abs(steps))
+			oper_rra(env);
+	}
+}
+
 void	large_sort(t_env *env)
 {
 	large_push_mid(env);
 	large_push_all_2b(env);
-	large_count_flags(env);
-	printf("-------------------------\n");
-	ft_print_list(env->stack_a);
-	printf("-----\n");
-	ft_print_list(env->stack_b);
+	while (ft_lstack_len(env->stack_b))
+	{		
+		large_count_flags(env);
+		find_min_flag(env->stack_b);
+		large_push_min_flag(env);
+	}
+	large_last_rotate(env);
 	return ;
 }

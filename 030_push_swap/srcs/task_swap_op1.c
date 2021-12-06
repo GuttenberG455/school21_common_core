@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 15:14:41 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/05 13:41:46 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/06 14:55:27 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ void	oper_pb(t_env *env)
 {
 	op_push(env->stack_b, env->stack_a, 0, env);
 	env->step_count++;
-	ft_putstr_fd("pb\n", 1);
+	ft_putstr_fd("pa\n", 1);
 }
 
 void	oper_pa(t_env *env)
 {
 	op_push(env->stack_a, env->stack_b, 1, env);
 	env->step_count++;
-	ft_putstr_fd("pa\n", 1);
+	ft_putstr_fd("pb\n", 1);
 }

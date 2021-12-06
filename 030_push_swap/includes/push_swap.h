@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:46:13 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/05 16:26:05 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/06 14:47:50 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@ int			count_steps_to_top(t_lstack **stack, int num);
 void		large_push_mid(t_env *env);
 void		large_push_all_2b(t_env *env);
 void		large_count_flags(t_env *env);
+int			find_closest_big(t_lstack **stack, int num);
+int			find_min_flag(t_lstack **stack);
+void		large_push_min_flag(t_env *env);
 
-void		ft_print_list(t_lstack **stack);
-void		ft_print_env(t_env *env);
 void		ft_push_list(t_lstack **stack, t_lstack *new);
 t_lstack	*ft_last_lstack(t_lstack **stack);
 size_t		ft_lstack_len(t_lstack **stack);
@@ -86,5 +87,6 @@ void		oper_rrr(t_env *env);
 
 int			ft_min(int a, int b);
 int			ft_abs(int a);
+int			ft_same_sign(int a, int b);
 
 #endif

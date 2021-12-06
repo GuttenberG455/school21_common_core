@@ -1,5 +1,5 @@
-SRCS	=	srcs/create_stack.c srcs/create_stack_utils.c srcs/large_sort.c srcs/large_sort_utils1.c \
-			srcs/list_utils.c srcs/push_swap.c srcs/tiny_sort.c srcs/tiny_sort_utils.c \
+SRCS	=	srcs/create_stack.c srcs/create_stack_utils.c srcs/large_sort.c srcs/large_sort_utils1.c srcs/large_sort_utils2.c \
+			srcs/list_utils.c srcs/math_utils.c srcs/push_swap.c srcs/tiny_sort.c srcs/tiny_sort_utils.c \
 			srcs/swap_oper_utils.c srcs/task_swap_op1.c srcs/task_swap_op2.c srcs/task_swap_op3.c 
 
 OBJS		= $(SRCS:.c=.o)
