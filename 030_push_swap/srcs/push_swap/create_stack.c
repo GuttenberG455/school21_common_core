@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:02:58 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/08 15:02:16 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:49:21 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	create_start_stack(t_env *env, int argc, char **argv)
 	t_lstack	*new;
 
 	if (argc < 2)
-		return (1);
+		return (2);
 	else
 	{	
 		i = 1;
