@@ -6,12 +6,12 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 11:01:42 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/13 12:21:43 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/15 20:08:09 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/get_map.h"
-#include "../../includes/get_grid.h"
+#include "../../includes/map.h"
+#include "../../includes/grid.h"
 
 int	check_dimensions(t_map *map)
 {

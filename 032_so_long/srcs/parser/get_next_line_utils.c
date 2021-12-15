@@ -6,11 +6,11 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:21:41 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/13 12:22:56 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/15 20:08:16 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/get_grid.h"
+#include "../../includes/grid.h"
 
 size_t	ft_strlen(char *str)
 {

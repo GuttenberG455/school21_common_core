@@ -6,12 +6,12 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:33:56 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/13 12:21:26 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/15 20:08:00 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/get_map.h"
-#include "../../includes/get_grid.h"
+#include "../../includes/map.h"
+#include "../../includes/grid.h"
 
 void	print_error(int status)
 {

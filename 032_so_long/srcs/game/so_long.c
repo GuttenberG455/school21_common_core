@@ -6,40 +6,50 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:51:37 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/14 19:00:01 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/15 20:06:53 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/game.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_program	program;
-	program.mlx = mlx_init();
-	program.map = create_map("../../maps/subj.ber");
-	print_map(program.map->grid);
-	program.window = ft_new_window(program.mlx, program.map);
-	draw_map(program);
-	
-	program.sprite = ft_new_sprite(program.mlx, "../../images/player.xpm");
-	program.sprite_pos.x = 32;
-	program.sprite_pos.y = 32;
-	mlx_put_image_to_window(program.mlx, program.window.reference,
-	program.sprite.reference, program.sprite_pos.x, program.sprite_pos.y);
-	
-	mlx_key_hook(program.window.reference, *ft_input, &program);
-	mlx_loop_hook(program.mlx, *ft_update, &program);
-	
-	mlx_loop(program.mlx);
+	t_map		*map_ptr;
+
+	map_ptr = create_map(argv[1]);
+	if (!map_ptr)
+	{
+		write(1, "Error\n", 6);
+		return (0);
+	}
+	print_map(map_ptr->grid);
+	// program.mlx = mlx_init();
+	// program.map = *map_ptr;
+	// print_map(program.map.grid);
+	// program.window = ft_new_window(program.mlx, program.map);
+	// draw_map(program);
+
+	// mlx_key_hook(program.window.reference, *ft_input, &program);
+
+	// mlx_loop(program.mlx);
 }
+/*
+ПЕРЕСТАЛО ВООЬЩЕ ВСЕ РАБОТАТЬ
+ПЗДЕК 
 
-/* TODO
-Структуры
-1. Карта в реальном времени, по которой ходит P. Через 1 ходить нельзя, C собирается, через Е выходим
-2. Подсчет действий, оставшееся количество монет в структуре игры
+Скачать готовый вариант, проверить там скорость  и утечки со своими картами
 
-Функция
-1. Отрисовка текущей карты
-2. Перемещение игрока
+РАЗОБРАТЬСЯ С ЕБАННОЙ ПАМЯТЬЮ
+1. Сеги
+2. Утечки
+3. БАсы
+4. Флаги
+5. Хуяги
+6. Хуейкфайл (про бонусы не забыть)
+7. ХУЛИ так медленно ходит
+8. Все что не влезает на маковский экран, не даем создать
 
+БОНУСЫ-ХУЕНОСЫ
+1. Враги, шо б с локтя пизды давали и чел отлетал в таверну и ггвп
 */

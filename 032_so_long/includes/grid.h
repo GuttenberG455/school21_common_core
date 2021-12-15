@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_utils.c                                      :+:      :+:    :+:   */
+/*   grid.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 13:44:52 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/15 20:08:22 by majacqua         ###   ########.fr       */
+/*   Created: 2021/11/16 16:15:04 by majacqua          #+#    #+#             */
+/*   Updated: 2021/12/15 20:10:40 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/map.h"
-#include "../../includes/grid.h"
+#ifndef GRID_H
+# define GRID_H
 
-void	ft_putstr(char *str)
-{
-	int	i;
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 
-	if (!str)
-		return ;
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
 
-void	print_map(char **grid)
-{
-	int	i;
+size_t	ft_strlen(char *str);
+int		ft_islinebreak(const char *str);
+char	*ft_strdup(char *src);
+char	*ft_strjoin(char const *s1, char const *s2);
 
-	i = 0;
-	if (!grid)
-		return ;
-	while (grid[i])
-	{
-		printf("%s\n", grid[i]);
-		i++;
-	}
-}
+int		get_next_line(int fd, char **map);
+
+#endif

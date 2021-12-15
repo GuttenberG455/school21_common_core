@@ -1,5 +1,7 @@
 NAME = so_long.out
-SRC = so_long.c window.c image.c draw_map.c draw_map_utils.c movements.c \
+SRC = so_long.c window.c image.c draw_map.c draw_map_utils.c hooks.c \
+			movements.c \
+			movements_utils.c \
 			../parser/check_map_utils.c \
 			../parser/check_map.c \
 			../parser/create_map.c \

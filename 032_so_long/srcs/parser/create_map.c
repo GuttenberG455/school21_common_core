@@ -6,12 +6,12 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:01:52 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/14 18:55:46 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/15 20:08:04 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/get_map.h"
-#include "../../includes/get_grid.h"
+#include "../../includes/map.h"
+#include "../../includes/grid.h"
 
 void	clear_map(t_map *map)
 {
@@ -43,8 +43,5 @@ t_map	*create_map(char *map_src)
 	map->grid = (char **) malloc(map->height + 1);
 	get_grid(map_src, map->grid);
 	check_map(map);
-	// print_map(map->grid);
 	return (map);
-	// clear_map(map);
-	// return (0);
 }

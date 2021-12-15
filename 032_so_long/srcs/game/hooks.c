@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 10:45:02 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/15 11:52:19 by majacqua         ###   ########.fr       */
+/*   Created: 2021/12/13 19:03:00 by majacqua          #+#    #+#             */
+/*   Updated: 2021/12/15 19:57:50 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/game.h"
 
-t_image	ft_new_sprite(void *mlx, char *path)
-{
-	t_image	img;
 
-	img.reference = mlx_xpm_file_to_image(mlx, path, &img.size.x, &img.size.y);
-	img.pixels = mlx_get_data_addr(img.reference, &img.bit_per_pixel, &img.line_size, &img.endian);
-	return (img);
+int	ft_input(int key, void *param)
+{
+	t_program	*program = (t_program *) param;
+	
+	mlx_clear_window(program->mlx, program->window.reference);
+	map_get_player_pos(program);
+	
+	if (key == 13)
+		player_move_up(program);
+	else if (key == 0)
+		player_move_left(program);
+	else if (key == 1)
+		player_move_down(program);
+	else if (key == 2)
+		player_move_right(program);
+	else if (key == 53)
+		ft_close();
+	
+	draw_map(*program);
+	return (0);
 }
