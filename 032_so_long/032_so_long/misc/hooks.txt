@@ -1,9 +1,0 @@
-W -		13
-A -		0
-S -		1
-D -		2
-Esc -	53
-Up -	126
-Left -	123
-Down -	125
-Right -	124
