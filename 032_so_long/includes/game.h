@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:44:39 by majacqua          #+#    #+#             */
-/*   Updated: 2021/12/23 18:43:24 by majacqua         ###   ########.fr       */
+/*   Updated: 2021/12/24 15:39:24 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,28 @@
 # define GAME_H
 
 # include <mlx.h>
-// # include <stdio.h>
 # include "../libft/libft.h"
 
 # ifndef INT_MAX
-#  define INT_MAX 2147483647 
+#  define INT_MAX 		2147483647 
+# endif
+
+# define IMG_W			32
+# define IMG_H			32
+
+# if defined(__APPLE__) && defined(__MACH__)
+#  define A_KEY			0
+#  define S_KEY			1
+#  define D_KEY			2
+#  define W_KEY			13
+#  define ESC 			53
+
+# else
+#  define A_KEY			97
+#  define W_KEY			119
+#  define S_KEY			115
+#  define D_KEY			100
+#  define ESC			65307
 # endif
 
 typedef struct s_vector
@@ -56,8 +73,8 @@ typedef struct s_map {
 
 typedef struct s_player
 {
-	t_vector	cur_pos;
-	int			step_count;
+	t_vector		cur_pos;
+	unsigned int	step_count;
 }		t_player;
 
 typedef struct s_prog
@@ -70,7 +87,7 @@ typedef struct s_prog
 	t_map		map;
 }		t_prog;
 
-// void		printf_map_grid(t_prog *prog);
+void		printf_map_grid(t_prog *prog);
 
 void		get_dimensions(t_prog *prog, char **argv);
 void		get_map_grid(t_prog *prog, char *file_name);
@@ -78,8 +95,8 @@ int			check_map_grid(t_prog *prog);
 void		get_map_status(t_map *map);
 void		get_counts(t_map *map);
 
-int			ft_close(char *text);
-t_window	ft_new_window(void *mlx, t_map map);
+int			ft_close(char *text, int free_fl, t_prog *prog);
+t_window	ft_new_window(void *mlx, t_prog prog);
 t_image		ft_new_sprite(void *mlx, char *path);
 int			ft_input(int key, void *param);
 
@@ -91,13 +108,13 @@ void		draw_sprite_player(t_prog prog, int i, int j);
 void		draw_sprite_enemy(t_prog prog, int i, int j);
 void		draw_sprite_ground(t_prog prog, int i, int j);
 
+void		make_player_move(t_prog *prog, t_vector old_pos, t_vector next_pos);
+void		map_get_player_pos(t_prog *prog);
 void		player_move_up(t_prog *prog);
 void		player_move_left(t_prog *prog);
 void		player_move_down(t_prog *prog);
 void		player_move_right(t_prog *prog);
 
-void		make_player_move(t_prog *prog, t_vector old_pos, t_vector next_pos);
-void		map_get_player_pos(t_prog *prog);
 int			map_check_gameover(t_prog *prog, t_vector next_pos);
 
 #endif

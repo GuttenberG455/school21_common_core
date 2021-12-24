@@ -11,11 +11,10 @@ SRCS =		srcs/so_long.c \
 			srcs/movements.c \
 			srcs/movements_utils.c \
 			srcs/ft_printf.c 
-			
-SRCS_BONUS = 
 
 HEADERS = 	includes/map.h \
-			includes/game.h
+			includes/game.h \
+			includes/ft_printf.h
 
 OBJS =		$(SRCS:.c=.o)
 
@@ -26,7 +25,7 @@ NAME =		so_long
 CC			= gcc 
 RM			= rm -f
 FLAGS		= -Wall -Wextra -Werror -I.
-LINKS = -lmlx -framework OpenGL -framework AppKit
+LINKS 		= -lmlx -framework OpenGL -framework AppKit
 
 $(NAME):		$(OBJS)
 			$(MAKE) -C libft/
@@ -43,9 +42,8 @@ clean:
 			$(RM) $(OBJS)
 
 fclean:			clean
-			$(RM) $(NAME)
-			$(RM) libft.a
 			$(MAKE) fclean -C libft/
+			$(RM) $(NAME)
 
 re:				fclean all
 
