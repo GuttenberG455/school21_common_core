@@ -1,7 +1,6 @@
-SRCS_CL	= 	srcs/client/client.c
+SRCS_CL	= 	srcs/client.c
 
-
-SRCS_SV	=	srcs/server/server.c
+SRCS_SV	=	srcs/server.c
 
 HEADERS		= includes/client.h \
 			includes/server.h
