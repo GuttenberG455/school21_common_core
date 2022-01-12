@@ -6,22 +6,19 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:13:08 by majacqua          #+#    #+#             */
-/*   Updated: 2022/01/11 15:52:54 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/01/12 18:37:35 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 #include "../libft/libft.h"
+#include <stdio.h>
 
 void	print_pid(void)
 {
-	char	*pid_str;
-
-	pid_str = ft_itoa(getpid());
 	write(1, "Server PID: ", 12);
-	write(1, pid_str, ft_strlen(pid_str));
+	ft_putnbr_fd(getpid(), 1);
 	write(1, "\n", 1);
-	free(pid_str);
 }
 
 void	bit_one(int sig, siginfo_t *info, void *context)
@@ -36,11 +33,19 @@ void	bit_zero(int sig, siginfo_t *info, void *context)
 
 int	main(void)
 {
-	struct sigaction	s_sigaction;
+	struct sigaction	sa_one;
+	struct sigaction	sa_zero;
 
-	print_pid();
+	sa_one.sa_sigaction = bit_one;
+	sa_zero.sa_sigaction = bit_zero;
+	sa_one.sa_flags = SIGINFO;
+	sa_zero.sa_flags = SIGINFO;
 	if (sigaction(SIGUSR1, &bit_one, NULL) != 0)
 		ft_close("Signal error\n");
 	if (sigaction(SIGUSR2, &bit_zero, NULL) != 0)
 		ft_close("Signal error\n");
+	print_pid();
+	// while (1)
+	// 	pause();
+	return (0);
 }
