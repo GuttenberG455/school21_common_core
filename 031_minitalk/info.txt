@@ -1,0 +1,15 @@
+Тут будет информация по функциям, понятиям
+
+Функции:
+-kill(pid_t, SIG) - отправляет сигнал SIG процессу pid_t
+-int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact)
+обрабатывает сигнал signum, обработчиком act
+
+Структура sigaction:
+struct sigaction {
+    void (*sa_handler)(int);
+    void (*sa_sigaction)(int, siginfo_t *, void *);
+    sigset_t sa_mask;
+    int sa_flags;
+    void (*sa_restorer)(void);
+}

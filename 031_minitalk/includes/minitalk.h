@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:13:16 by majacqua          #+#    #+#             */
-/*   Updated: 2022/01/12 17:43:45 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/01/13 18:59:43 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <signal.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 128
+#  define BUFFER_SIZE 256
 # endif
 
 typedef struct s_message
 {
 	char	text_msg[BUFFER_SIZE];
-	int		top_char;
+	int		top_byte;
 	int		top_bit;
 	int		buff_overflow;
 	int		all_recieved;

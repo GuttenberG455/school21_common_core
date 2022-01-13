@@ -1,6 +1,8 @@
-SRCS_CL	= 	srcs/client.c
+SRCS_CL	= 	srcs/client.c \
+			srcs/utils.c
 
-SRCS_SV	=	srcs/server.c
+SRCS_SV	=	srcs/server.c \
+			srcs/utils.c
 
 HEADERS		= includes/client.h \
 			includes/server.h
@@ -17,6 +19,8 @@ CC			= gcc
 RM			= rm -f
 FLAGS		= -Wall -Wextra -Werror -I.
 	
+all:	$(NAME_CL) $(NAME_SV)
+
 $(NAME_SV):		$(OBJS_SV)
 			$(MAKE) -C libft/
 			cp $(LIBFT) $(NAME_SV)
@@ -27,29 +31,18 @@ $(NAME_CL):		$(OBJS_CL)
 			cp $(LIBFT) $(NAME_CL)
 			$(CC) -o $(NAME_CL) $(OBJS_CL) $(LIBFT)
 
-all:	$(NAME_CL) $(NAME_SV)
-
 %.o:			%.c $(HEADERS)
 			$(CC) $(FLAGS) -c $< -o $@
 
-clean_client: 
+clean: 
 			$(MAKE) clean -C libft/
 			$(RM) $(OBJS_CL)
-
-clean_server:
-			$(MAKE) clean -C libft/
 			$(RM) $(OBJS_SV)
 
-clean:		clean_server clean_client
-
-fclean_client:	clean_client
-			$(RM) client
-
-fclean_server:		clean_server
-			$(RM) server
-
-fclean:	fclean_server clean_client
+fclean:			clean
 			$(MAKE) fclean -C libft/
+			$(RM) client
+			$(RM) server
 			$(RM) libft.a
 
 re:		fclean all
