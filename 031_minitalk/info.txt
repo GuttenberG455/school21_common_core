@@ -4,6 +4,8 @@
 -kill(pid_t, SIG) - отправляет сигнал SIG процессу pid_t
 -int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact)
 обрабатывает сигнал signum, обработчиком act
+-signal(int signum, sighandler) обрабатывает сигнал signum обработчиком handler (Не рекомендуется использовать)
+-getpid() - получает  PID (ID процесса)
 
 Структура sigaction:
 struct sigaction {

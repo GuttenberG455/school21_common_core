@@ -6,47 +6,49 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:13:10 by majacqua          #+#    #+#             */
-/*   Updated: 2022/01/13 17:57:20 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/01/15 18:54:08 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 #include "../libft/libft.h"
 
+void	msg_status(int sig)
+{
+	(void) sig;
+	write(1, "Message delivered.\n", 19);
+}
+
 void	send_char(int pid, unsigned char ch)
 {
-	uint8_t		counter;
+	int		counter;
 
-	counter = 1 << 6;
+	counter = 64;
 	while (counter)
 	{
 		if (ch & counter)
 		{
 			if (kill(pid, SIGUSR1) == -1)
-				ft_close("Error\nBad PID\n");
+				ft_close("Error\nWrong PID\n");
 		}
 		else
 		{
 			if (kill(pid, SIGUSR2) == -1)
-				ft_close("Error\nBad PID\n");
+				ft_close("Error\nWrong PID\n");
 		}
-		counter++;
-		usleep(1000);
+		counter >>= 1;
+		usleep(322);
 	}
 }
 
-void	send_message(int pid, char *text_message)
+void	send_message(int pid, char *text_msg)
 {
-	while (*text_message)
+	while (*text_msg)
 	{
-		send_char(pid, *text_message);
+		send_char(pid, *text_msg);
+		text_msg++;
 	}
-}
-
-void	msg_status(int sig)
-{
-	(void)sig;
-	write(1, "Message delivered.\n", 19);
+	send_char(pid, *text_msg);
 }
 
 int	main(int argc, char **argv)

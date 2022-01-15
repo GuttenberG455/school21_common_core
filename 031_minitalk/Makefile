@@ -4,8 +4,7 @@ SRCS_CL	= 	srcs/client.c \
 SRCS_SV	=	srcs/server.c \
 			srcs/utils.c
 
-HEADERS		= includes/client.h \
-			includes/server.h
+HEADERS		= includes/minitalk.h
 
 OBJS_CL		= $(SRCS_CL:.c=.o)
 OBJS_SV		= $(SRCS_SV:.c=.o)
