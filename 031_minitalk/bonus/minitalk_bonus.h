@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 12:13:16 by majacqua          #+#    #+#             */
-/*   Updated: 2022/01/17 15:45:41 by majacqua         ###   ########.fr       */
+/*   Created: 2022/01/17 15:45:26 by majacqua          #+#    #+#             */
+/*   Updated: 2022/01/17 15:45:34 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -30,7 +30,7 @@ typedef struct s_message
 	int		all_recieved;
 }		t_message;
 
-t_message	g_msg = {"", 0, 64, 0, 0};
+t_message	g_msg = {"", 0, 65536, 0, 0};
 
 void	ft_close(char *err_msg);
 

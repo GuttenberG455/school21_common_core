@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 12:13:08 by majacqua          #+#    #+#             */
-/*   Updated: 2022/01/17 17:10:56 by majacqua         ###   ########.fr       */
+/*   Created: 2022/01/17 15:45:10 by majacqua          #+#    #+#             */
+/*   Updated: 2022/01/17 16:36:31 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "minitalk_bonus.h"
 #include "../libft/libft.h"
 
 void	print_pid(void)
@@ -27,7 +27,7 @@ void	bit_one(int sig, siginfo_t *info, void *context)
 	(void)info;
 	if (!g_msg.top_bit)
 	{
-		g_msg.top_bit = 64;
+		g_msg.top_bit = 65536;
 		g_msg.top_byte++;
 	}
 	g_msg.text_msg[g_msg.top_byte] += g_msg.top_bit;
@@ -39,18 +39,20 @@ void	bit_one(int sig, siginfo_t *info, void *context)
 void	bit_zero(int sig, siginfo_t *info, void *context)
 {
 	(void)sig;
-	(void)info;
 	(void)context;
 	if (!g_msg.top_bit)
 	{
-		g_msg.top_bit = 64;
+		g_msg.top_bit = 65536;
 		g_msg.top_byte++;
 	}
 	g_msg.top_bit >>= 1;
 	if (g_msg.top_byte == BUFFER_SIZE - 2 && !g_msg.top_bit)
 		g_msg.buff_overflow = 1;
 	else if (!g_msg.text_msg[g_msg.top_byte] && !g_msg.top_bit)
+	{
 		g_msg.all_recieved = 1;
+		kill(info->si_pid, SIGUSR1);
+	}
 }
 
 int	main_handler(void)
@@ -63,7 +65,7 @@ int	main_handler(void)
 			write(1, g_msg.text_msg, ft_strlen(g_msg.text_msg));
 			ft_bzero(g_msg.text_msg, BUFFER_SIZE);
 			g_msg.top_byte = 0;
-			g_msg.top_bit = 64;
+			g_msg.top_bit = 65536;
 			if (g_msg.all_recieved)
 				write(1, "\n", 1);
 			g_msg.all_recieved = 0;

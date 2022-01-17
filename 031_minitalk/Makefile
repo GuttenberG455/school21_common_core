@@ -9,6 +9,7 @@ HEADERS		= includes/minitalk.h
 OBJS_CL		= $(SRCS_CL:.c=.o)
 OBJS_SV		= $(SRCS_SV:.c=.o)
 
+
 LIBFT		= libft/libft.a
 
 NAME_CL		= client
@@ -35,15 +36,21 @@ $(NAME_CL):		$(OBJS_CL)
 
 clean: 
 			$(MAKE) clean -C libft/
+			$(MAKE) clean -C bonus/
 			$(RM) $(OBJS_CL)
 			$(RM) $(OBJS_SV)
 
 fclean:			clean
 			$(MAKE) fclean -C libft/
+			$(MAKE) fclean -C bonus/
 			$(RM) client
 			$(RM) server
-			$(RM) libft.a
+
+bonus: 
+	@$(MAKE) -C bonus
+	@cp bonus/$(NAME_SV) .
+	@cp bonus/$(NAME_CL) .
 
 re:		fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

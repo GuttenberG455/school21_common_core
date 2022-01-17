@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 12:13:10 by majacqua          #+#    #+#             */
-/*   Updated: 2022/01/17 17:10:15 by majacqua         ###   ########.fr       */
+/*   Created: 2022/01/17 15:46:20 by majacqua          #+#    #+#             */
+/*   Updated: 2022/01/17 17:04:47 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "minitalk_bonus.h"
 #include "../libft/libft.h"
+
+void	msg_status(int sig)
+{
+	(void) sig;
+	write(1, "Message delivered.\n", 19);
+}
 
 void	send_char(int pid, unsigned char ch)
 {
 	int		counter;
 
-	counter = 64;
+	counter = 65536;
 	while (counter)
 	{
 		if (ch & counter)
@@ -31,7 +37,7 @@ void	send_char(int pid, unsigned char ch)
 				ft_close("Error\nWrong PID\n");
 		}
 		counter >>= 1;
-		usleep(322);
+		usleep(282);
 	}
 }
 
@@ -49,6 +55,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 3)
 		ft_close("Error\nIncorrect input\nHint: ./client [PID] [message]");
+	signal(SIGUSR1, msg_status);
 	send_message(ft_atoi(argv[1]), argv[2]);
 	return (0);
 }

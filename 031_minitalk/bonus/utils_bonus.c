@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 12:13:16 by majacqua          #+#    #+#             */
-/*   Updated: 2022/01/17 15:45:41 by majacqua         ###   ########.fr       */
+/*   Created: 2022/01/11 15:41:29 by majacqua          #+#    #+#             */
+/*   Updated: 2022/01/12 16:32:45 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "../libft/libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
-
-typedef struct s_message
+void	ft_close(char *err_msg)
 {
-	char	text_msg[BUFFER_SIZE];
-	int		top_byte;
-	int		top_bit;
-	int		buff_overflow;
-	int		all_recieved;
-}		t_message;
-
-t_message	g_msg = {"", 0, 64, 0, 0};
-
-void	ft_close(char *err_msg);
-
-#endif
+	ft_putstr_fd(err_msg, 1);
+	exit(0);
+}
