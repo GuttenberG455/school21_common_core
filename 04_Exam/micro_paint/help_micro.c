@@ -64,7 +64,7 @@ char *get_zone(FILE *file, t_zone *zone) // создаем поле
     array = (char *)malloc(sizeof(char) * (zone->width * zone->height)); // выделение памяти под поле
     while (i < zone->width * zone->height)
     {
-        array[i] = zone->backgrond; // заполнение 
+        array[i] = zone->backgrond; // заполнение бэкграунда
         i++;
     }
     return (array);
@@ -72,17 +72,17 @@ char *get_zone(FILE *file, t_zone *zone) // создаем поле
 
 int check_tmp(t_list *tmp)
 {
-    return ((tmp->height > 0.00000000 && tmp->width > 0.00000000) && (tmp->type == 'r' || tmp->type == 'R'));
+    return ((tmp->height > 0.00000000 && tmp->width > 0.00000000) && (tmp->type == 'r' || tmp->type == 'R')); // проверка ввода прямоугольника
 }
 
 int is_rec(float y, float x, t_list *tmp)
 {
-    float check = 1.00000000;
-    if ((x < tmp->x) || (tmp->x + tmp->width < x) || (y < tmp->y) || (tmp->y + tmp->height < y))
+    float check = 1.00000000; 
+    if ((x < tmp->x) || (tmp->x + tmp->width < x) || (y < tmp->y) || (tmp->y + tmp->height < y)) // за пределами квадрата
         return (0);
-    if (((x - tmp->x) < check) || ((tmp->x + tmp->width) - x < check) || ((y - tmp->y) < check) || ((tmp->y + tmp->height) - y < check))
+    if (((x - tmp->x) < check) || ((tmp->x + tmp->width) - x < check) || ((y - tmp->y) < check) || ((tmp->y + tmp->height) - y < check)) // контур
         return (2);
-    return (1);
+    return (1); // закрашенный
 }
 
 void get_draw(char **draw, t_list *tmp, t_zone *zone)
@@ -98,7 +98,7 @@ void get_draw(char **draw, t_list *tmp, t_zone *zone)
         {
             rec = is_rec(y, x, tmp);
             if ((tmp->type == 'r' && rec == 2) || (tmp->type == 'R' && rec))
-                (*draw)[(y * zone->width) + x] = tmp->color;
+                (*draw)[(y * zone->width) + x] = tmp->color; // перебор всех элементов
             x++;
         }
         y++;
@@ -110,7 +110,7 @@ int drawing(FILE *file, char **draw, t_zone *zone)
     t_list tmp;
     int count;
 
-    while ((count = fscanf(file, "%c %f %f %f %f %c\n", &tmp.type, &tmp.x, &tmp.y, &tmp.width, &tmp.height, &tmp.color)) == 6)
+    while ((count = fscanf(file, "%c %f %f %f %f %c\n", &tmp.type, &tmp.x, &tmp.y, &tmp.width, &tmp.height, &tmp.color)) == 6) // ввод данных о прямоугольниках
     {
         if (!(check_tmp(&tmp)))
             return (0);
@@ -118,7 +118,7 @@ int drawing(FILE *file, char **draw, t_zone *zone)
     }
     if (count != (-1))
         return (0);
-    return (1);
+    return (1); // неправильный ввод
 }
 
 void print_draw(char *draw, t_zone *zone)
