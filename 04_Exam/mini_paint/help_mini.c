@@ -3,14 +3,14 @@
 #include <unistd.h>
 #include <math.h>
 
-typedef struct s_zone
+typedef struct s_zone // параметры поля
 {
     int width;
     int height;
     char background;
 } t_zone;
 
-typedef struct s_list
+typedef struct s_list // параметры прямоуг
 {
     char type;
     float x;
@@ -29,13 +29,13 @@ int ft_strlen(char *str)
     return (i);
 }
 
-int fail(char *str)
+int fail(char *str) // сообщение об ошибке
 {
     write(1, str, ft_strlen(str));
     return(1);
 }
 
-int free_all(FILE *file, char *str)
+int free_all(FILE *file, char *str) //очистка памяти
 {
     fclose(file);
     if (str)
@@ -43,21 +43,21 @@ int free_all(FILE *file, char *str)
     return (1);
 }
 
-char *get_zone(FILE *file, t_zone *zone)
+char *get_zone(FILE *file, t_zone *zone) // создаем поле
 {
     int i;
     char *array;
 
-    if ((i = fscanf(file, "%d %d %c\n", &zone->width, &zone->height, &zone->background)) != 3)
+    if ((i = fscanf(file, "%d %d %c\n", &zone->width, &zone->height, &zone->background)) != 3) // берем первую строку из файла
         return (NULL);
-    if (zone->width <= 0 || zone->width > 300 || zone->height <= 0 || zone->height > 300)
+    if (zone->width <= 0 || zone->width > 300 || zone->height <= 0 || zone->height > 300) // проверка ввода
         return (NULL);
-    if (!(array = (char *)malloc(sizeof(char) * (zone->width * zone->height))))
+    if (!(array = (char *)malloc(sizeof(char) * (zone->width * zone->height)))) // выделение памяти
         return (NULL);
     i = 0;
     while (i < (zone->width * zone->height))
     {
-        array[i] = zone->background;
+        array[i] = zone->background; // заполнение бэкграунда
         i++;
     }
     return (array);
@@ -69,9 +69,9 @@ int is_rad(float x, float y, t_list *tmp)
 
     dist = sqrtf(((x - tmp->x) * (x - tmp->x)) + ((y - tmp->y) * (y - tmp->y)));
 
-    if (dist <= tmp->radius)
+    if (dist <= tmp->radius) // проверка на расстояние и радиус
     {
-        if ((tmp->radius - dist) < 1.00000000)
+        if ((tmp->radius - dist) < 1.00000000) // только окружность 
             return (2);
         return (1);
     }
@@ -88,9 +88,9 @@ void get_draw(t_list *tmp, t_zone *zone, char *draw)
         x = 0;
         while (x < zone->width)
         {
-            rad = is_rad((float)x, (float)y, tmp);
+            rad = is_rad((float)x, (float)y, tmp); // какой тип круга 
             if ((rad == 2 && tmp->type == 'c') || (rad && tmp->type == 'C'))
-                draw[(y * zone->width) + x] = tmp->color;
+                draw[(y * zone->width) + x] = tmp->color; // заполнение только если С
             x++;
         }
         y++;
@@ -102,11 +102,11 @@ int drawing(FILE *file, t_zone *zone, char *draw)
     t_list tmp;
     int count;
 
-    while ((count = fscanf(file, "%c %f %f %f %c\n", &tmp.type, &tmp.x, &tmp.y, &tmp.radius, &tmp.color)) == 5)
-    {
+    while ((count = fscanf(file, "%c %f %f %f %c\n", &tmp.type, &tmp.x, &tmp.y, &tmp.radius, &tmp.color)) == 5) 
+    {	// ввод данных о круге
         if (tmp.radius <= 0.00000000 && (tmp.type != 'c' || tmp.type != 'C'))
-            return (0);
-        get_draw(&tmp, zone, draw);
+            return (0); // если неправильный радиус
+        get_draw(&tmp, zone, draw); // рисуем
     }
     if (count != (-1))
         return (0);
