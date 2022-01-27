@@ -2,14 +2,14 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-typedef struct s_zone
+typedef struct s_zone // параметры поля
 {
     int width;
     int height;
     char backgrond;
 } t_zone;
 
-typedef struct s_list
+typedef struct s_list // параметры прямоуг
 {
 	char	type;
 	float	x;
@@ -110,8 +110,8 @@ int drawing(FILE *file, char **draw, t_zone *zone)
     t_list tmp;
     int count;
 
-    while ((count = fscanf(file, "%c %f %f %f %f %c\n", &tmp.type, &tmp.x, &tmp.y, &tmp.width, &tmp.height, &tmp.color)) == 6) // ввод данных о прямоугольниках
-    {
+    while ((count = fscanf(file, "%c %f %f %f %f %c\n", &tmp.type, &tmp.x, &tmp.y, &tmp.width, &tmp.height, &tmp.color)) == 6)
+    { // ввод данных о прямоугольниках
         if (!(check_tmp(&tmp)))
             return (0);
         get_draw(draw, &tmp, zone);
