@@ -6,13 +6,29 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:59:07 by majacqua          #+#    #+#             */
-/*   Updated: 2022/01/28 18:19:53 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:52:18 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-ште 
+int	init_mutex(t_env *env)
+{
+	int i;
+
+	i = env->philo_count;
+	while (i > 0)
+	{
+		i--;
+		if (pthread_mutex_init(&(env->forks[i]), 0))
+			return (1);
+	}
+	if (pthread_mutex_init(&(env->printing), 0)) 
+		return (1);
+	if (pthread_mutex_init(&(env->meal_check), 0)) // хз зачем, потом проверим
+		return (1);
+	return (0);
+}
 
 int	init_philos(t_env *env)
 {
@@ -50,5 +66,7 @@ int	init_env(t_env *env, char **argv)
 			(env->time_eat < 0) || (env->time_sleep < 0))
 		return (1);
 	init_philos(env);
+	if (init_mutex(env))
+		return (1);
 	return (0);
 }

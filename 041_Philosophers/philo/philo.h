@@ -6,13 +6,14 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:39:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/01/28 17:57:55 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:56:21 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include <sys/time.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -23,11 +24,13 @@ struct s_env;
 typedef struct s_philo
 {
 	int				id;
+	int				x_ate; // и что это вообще такое?
 	int				left_fork;
 	int				right_fork;
 	int 			eat_count;
 	long long		last_time_eat;
 	struct s_env	*env;
+	pthread_t		thread;
 }		t_philo;
 
 typedef struct s_env
@@ -42,13 +45,18 @@ typedef struct s_env
 	long long		start_time;
 	pthread_mutex_t	forks[322];
 	pthread_mutex_t	printing;
+	pthread_mutex_t	meal_check; // проверить зачем
 	t_philo			philos[322];
 }		t_env;
 
 void		ft_close(char *str_error);
 int			ft_strlen(char *str);
 long long	ft_atoi(char *str);
+long long 	timestamp(void);
+void		thread_sleep(t_env *env, long long time);
 
 int			init_env(t_env *env, char **argv);
+
+int			launch(t_env *env);
 
 #endif
