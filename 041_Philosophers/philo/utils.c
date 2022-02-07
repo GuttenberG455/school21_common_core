@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 20:01:38 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/02 18:57:12 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:37:00 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,12 @@ void ft_close(char *str_error)
 	exit(1);
 }
 
-long long timestamp(void)
+long long timestamp(void) // возвращает кол-во миллисекунд со времен начала
 {
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
+	printf("TS %ld %d\n", tv.tv_sec, tv.tv_usec);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
@@ -75,9 +76,9 @@ void thread_sleep(t_env *env, long long time)
 	i = timestamp();
 	while (!(env->death))
 	{
-		if (i - timestamp() >= time)
+		if (timestamp() - i >= time)
 			break ;
-		usleep(50);
+		usleep(42);
 	}
 	// while (i - timestamp() < time) // моя шляпа
 	// 	usleep(50); 

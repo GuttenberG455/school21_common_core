@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:42 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/02 18:55:23 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:54:30 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void act_eat(t_philo *philo)
 	philo->last_time_eat = timestamp();
 	pthread_mutex_unlock(&(env->meal_check));
 	thread_sleep(env, env->time_eat);
-	philo->x_ate++;
+	(philo->x_ate)++; // wat?
 	pthread_mutex_lock(&(env->forks[philo->left_fork]));
 	pthread_mutex_lock(&(env->forks[philo->right_fork]));
 }
@@ -39,13 +39,13 @@ void *start_thread(void *void_philo)
 	t_philo	*philo;
 
 	i = 0;
-	philo = void_philo;
+	philo = (t_philo *)void_philo;
 	env = philo->env;
 	if (philo->id % 2)
 		usleep(10000);
 	while (!(env->death))
 	{
-		act_eat(philo);
+		// act_eat(philo);
 		if (env->all_fed)
 			break;
 		printf("%lld %d is sleeping\n", timestamp(), philo->id);
@@ -61,7 +61,7 @@ void check_death(t_env *env, t_philo *philo)
 {
 	int		i;
 
-	while (env->all_fed)
+	while (!env->num_eat)
 	{
 		i = 0;
 		while (env->philo_count && env->death)
@@ -72,13 +72,13 @@ void check_death(t_env *env, t_philo *philo)
 				printf("%lld %d died\n", timestamp(), i);
 				env->death = 1;
 			}
-			if (env->death)
-				break;
-			i = 0;
-			while (env->num_eat && i < env->philo_count && philo[i].x_ate >= env->num_eat)
-				i++;
-			if (i == env->philo_count)
-				env->num_eat = 1;
+		if (env->death)
+			break;
+		i = 0;
+		while (env->num_eat && i < env->philo_count && philo[i].x_ate >= env->num_eat)
+			i++;
+		if (i == env->philo_count)
+			env->num_eat = 1;
 		}
 	}
 }
@@ -108,7 +108,8 @@ int launch(t_env *env)
 	t_philo	*philo;
 
 	i = 0;
-	env->num_eat = timestamp();
+	env->start_time = timestamp();
+	printf("Time start %lld\n", env->start_time);
 	philo = env->philos;
 	while (i < env->philo_count)
 	{
