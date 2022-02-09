@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:39:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/02 18:56:21 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:50:07 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ struct s_env;
 typedef struct s_philo
 {
 	int				id;
-	int				x_ate; // и что это вообще такое?
 	int				left_fork;
 	int				right_fork;
 	int 			eat_count;
@@ -40,12 +39,12 @@ typedef struct s_env
 	int				time_eat;
 	int				time_sleep;
 	int				num_eat;
-	int				death;
-	int				all_fed;
+	int				end_death;
+	int				end_all_fed;
 	long long		start_time;
 	pthread_mutex_t	forks[322];
 	pthread_mutex_t	printing;
-	pthread_mutex_t	meal_check; // проверить зачем
+	pthread_mutex_t	meal_check;
 	t_philo			philos[322];
 }		t_env;
 
@@ -53,6 +52,7 @@ void		ft_close(char *str_error);
 int			ft_strlen(char *str);
 long long	ft_atoi(char *str);
 long long 	timestamp(void);
+void		print_action(t_env *env, int id, char *action);
 void		thread_sleep(t_env *env, long long time);
 
 int			init_env(t_env *env, char **argv);

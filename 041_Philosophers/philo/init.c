@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:59:07 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/04 18:44:10 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:49:25 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	init_philos(t_env *env)
 		env->philos[i].last_time_eat = 0;
 		env->philos[i].left_fork = i;
 		env->philos[i].right_fork = (i + 1) % env->philo_count;
+		env->philos[i].env = env;
 		printf("id - %d, ec - %d lasttime - %lld Vilki %d & %d\n", env->philos[i].id, env->philos[i].eat_count, env->philos[i].last_time_eat, env->philos[i].left_fork, env->philos[i].right_fork);
 	}
 	return (0);
@@ -62,7 +63,8 @@ int	init_env(t_env *env, char **argv)
 	}
 	else
 		env->num_eat = -1;
-	env->death = 0;
+	env->end_death = 0;
+	env->end_all_fed = 0;
 	if ((env->philo_count <= 0) || (env->philo_count > 322) || (env->time_death < 0) ||
 			(env->time_eat < 0) || (env->time_sleep < 0))
 		return (1);

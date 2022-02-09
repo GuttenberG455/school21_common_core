@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:42 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/07 18:54:30 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:21:48 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@ void act_eat(t_philo *philo)
 
 	env = philo->env;
 	pthread_mutex_lock(&(env->forks[philo->left_fork]));
-	printf("%lld %d has taken a fork\n", timestamp(), philo->id);
+	print_action(env, philo->id, "has taken a fork");
 	pthread_mutex_lock(&(env->forks[philo->right_fork]));
-	printf("%lld %d has taken a fork\n", timestamp(), philo->id);
+	print_action(env, philo->id, "has taken a fork");
 	pthread_mutex_lock(&(env->meal_check));
-	printf("%lld %d is eating\n", timestamp(), philo->id);
+	philo->eat_count++;
+	print_action(env, philo->id, "is eating");
 	philo->last_time_eat = timestamp();
 	pthread_mutex_unlock(&(env->meal_check));
-	thread_sleep(env, env->time_eat);
-	(philo->x_ate)++; // wat?
-	pthread_mutex_lock(&(env->forks[philo->left_fork]));
-	pthread_mutex_lock(&(env->forks[philo->right_fork]));
+	// // thread_sleep(env, env->time_eat); // чекаем другое говно
+	usleep(env->time_eat * 1000);
+	pthread_mutex_unlock(&(env->forks[philo->left_fork]));
+	pthread_mutex_unlock(&(env->forks[philo->right_fork]));
 }
 
 
@@ -42,15 +43,19 @@ void *start_thread(void *void_philo)
 	philo = (t_philo *)void_philo;
 	env = philo->env;
 	if (philo->id % 2)
+	{	
 		usleep(10000);
-	while (!(env->death))
+	}
+	while (!(env->end_death) && !(env->end_all_fed))
 	{
-		// act_eat(philo);
-		if (env->all_fed)
+		if (env->num_eat != -1 || (env->num_eat != -1 && philo->eat_count < env->num_eat))
+			act_eat(philo);
+		if (env->end_all_fed)
 			break;
-		printf("%lld %d is sleeping\n", timestamp(), philo->id);
-		thread_sleep(env, env->time_sleep);
-		printf("%lld %d is thinking\n", timestamp(), philo->id);
+		print_action(env, philo->id, "is sleeping");
+		// thread_sleep(env, env->time_sleep);
+		usleep(env->time_sleep * 1000);
+		print_action(env, philo->id, "is thinking");
 		i++;
 	}
 	return (0);
@@ -61,25 +66,28 @@ void check_death(t_env *env, t_philo *philo)
 {
 	int		i;
 
-	while (!env->num_eat)
+	while (env->end_all_fed == 0)
 	{
 		i = 0;
-		while (env->philo_count && env->death)
-		{
-			pthread_mutex_lock(&(env->meal_check)); // втф?
-			if (philo[i].last_time_eat - timestamp() > env->time_death)
-			{
-				printf("%lld %d died\n", timestamp(), i);
-				env->death = 1;
-			}
-		if (env->death)
+		// while (i < env->philo_count && !env->end_death)
+		// {
+		// 	// pthread_mutex_lock(&(env->meal_check)); // втф?
+		// 	// if (philo[i].last_time_eat - timestamp() > env->time_end_death)
+		// 	// {
+		// 	// 	printf("%lld %d died\n", timestamp(), i);
+		// 	// 	env->end_death = 1;
+		// 	// }
+		// 	// pthread_mutex_unlock(&(env->meal_check)); // втф?
+		// 	// i++;
+		// 	// usleep(100);
+		// }
+		if (env->end_death)
 			break;
 		i = 0;
-		while (env->num_eat && i < env->philo_count && philo[i].x_ate >= env->num_eat)
+		while (env->num_eat != -1 && i < env->philo_count && philo[i].eat_count >= env->num_eat)
 			i++;
 		if (i == env->philo_count)
-			env->num_eat = 1;
-		}
+			env->end_all_fed = 1;
 	}
 }
 
@@ -113,6 +121,7 @@ int launch(t_env *env)
 	philo = env->philos;
 	while (i < env->philo_count)
 	{
+		printf("Cre_%d_\n", i);
 		if (pthread_create(&(philo[i].thread), 0, start_thread, &(philo[i])))
 			return (1);
 		philo[i].last_time_eat = timestamp();
@@ -121,4 +130,19 @@ int launch(t_env *env)
 	check_death(env, env->philos);
 	exit_launch(env, philo);
 	return (0);
-}
+} 
+
+/*
+1. Они не дохнут
+2. Тайминги слетают
+3. Посмотреть на слипы
+4. Чекнуть дедлок
+5. Проверить алгоритм
+СДОХНИТЕ ТВАРИ
+ВСЕ ФИЛОСОФЫ ДОЛЖНЫ УМЕРЕТЬ
+10. Норма
+11. Хуерма
+12. Флаги
+13. Бонусы
+
+*/
