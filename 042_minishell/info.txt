@@ -1,0 +1,65 @@
+			Функции:
+		Pipex:
+
+int access(const char *pathname, int mode); - проверяет имеет ли процесс права на чтение и запись
+! 0 / -1
+[1] имя файла
+[2] маска из флагов (default 0 (F_OK), F_OK просто проверяет существование файла.) 
+
+
+int open(const char *pathname, int flags, mode_t mode); - открывает 
+! fd и -1 если ошибка
+[1] путь к файлу
+[2] флаги [O_RDONLY - только чтение, (O_CREAT | O_WRONLY | O_TRUNC) - создать, только записью, очистить] 
+-[3] права доступа [0644 - -rw-r--r--]
+
+int unlink(const char *pathname); - удаляет файл с помощью системной функции unlink  
+! 0 / -1
+[1] путь к файлу 
+
+pid_t wait(int *status); - приостанавливает выполнение текущего процесса, пока дочерний процесс не завершится, или до появления сигнала
+! pid дочернего процесса и -1 если ошибка
+
+pid_t waitpid(pid_t pid, int *status, int options);  - приостанавливает выполнение текущего процесса, пока дочерний процесс pid, не завершится
+! pid дочернего процесса и -1 если ошибка
+[0] pid дочернего процесса 
+[1] [2] - можно по 0 ставить
+
+
+int pipe(int filedes[2]);  - создает канал
+! 0 / -1
+pipe создает пару fd, указывающих на запись inode именованного канала, помещает в массив *filedes. filedes[0] чтение, filedes[1] запись.
+
+int dup(int oldfd); - создать дубликат файлового дескриптора
+int dup2(int oldfd, int newfd);
+! новый fd / -1
+dup использует самый маленький свободный номер дескриптора.
+dup2 делает newfd копией oldfd, закрывая newfd, если требуется.  
+
+int execve(const char *filename, char *const argv [], char *const envp[]); - выполняет программу
+! -1 если ошибка
+[1] Программа должна быть или двоичным исполняемым файлом, или скриптом, начинающимся со строки "#! интерпретатор [аргументы]". Интерпретатор - это путь к исполняемому файлу, который не является скриптом; этот файл будет выполнен как интерпретатор [arg] filename.
+[2] argv - это массив строк, аргументов новой программы. 
+[3] envp - это массив строк в формате key=value, которые передаются новой программе в качестве окружения
+
+pid_t fork(void);  - создает дочерний процесс  
+! pid потомка / -1
+fork создает процесс-потомок, который отличается от родительского только значениями PID и PPID (идентификатор родительского процесса)
+
+
+		minishell:
+Из pipex: malloc, free, write, access, fork, wait, waitpid, unlink, execve, dup, dup2, pipe
+
+readline - свободная библиотека для интерфейса командной строки и обработки строк
+
+char *readline(const char *prompt); - взять строку от пользователя с редактированием
+
+void rl_clear_history(void); - Clear the history list by deleting all of the entries, in the same manner as the History library's clear_history() function. This differs from clear_history because it frees private data Readline saves in the history list.
+
+int rl_on_new_line(void); - Tell the update routines that we have moved onto a new (empty) line, usually after ouputting a newline.
+
+void rl_replace_line (const char *text, int clear_undo) - Replace the contents of rl_line_buffer with text. The point and mark are preserved, if possible. If clear_undo is non-zero, the undo list associated with the current line is cleared.
+
+void rl_redisplay (void) - Change what's displayed on the screen to reflect the current contents of rl_line_buffer.
+
+void add_history (const char *string) - Place string at the end of the history list. The associated data field (if any) is set to NULL. If the maximum number of history entries has been set using stifle_history(), and the new number of history entries would exceed that maximum, the oldest history entry is removed.
