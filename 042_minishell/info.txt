@@ -43,7 +43,7 @@ int execve(const char *filename, char *const argv [], char *const envp[]); - в�
 [3] envp - это массив строк в формате key=value, которые передаются новой программе в качестве окружения
 
 pid_t fork(void);  - создает дочерний процесс  
-! pid потомка / -1
+! pid потомка / -
 fork создает процесс-потомок, который отличается от родительского только значениями PID и PPID (идентификатор родительского процесса)
 
 
@@ -60,11 +60,14 @@ Clear the history list by deleting all of the entries, in the same manner as the
 int rl_on_new_line(void); - перемещаемся на новую линию, обычно после вывода новой линии
 Tell the update routines that we have moved onto a new (empty) line, usually after ouputting a newline.
 
-void rl_replace_line (const char *text, int clear_undo) - Replace the contents of rl_line_buffer with text. The point and mark are preserved, if possible. If clear_undo is non-zero, the undo list associated with the current line is cleared.
+void rl_replace_line (const char *text, int clear_undo) - заменяет содержимое rl_line_buffer на text. 
+Replace the contents of rl_line_buffer with text. The point and mark are preserved, if possible. If clear_undo is non-zero, the undo list associated with the current line is cleared.
 
-void rl_redisplay (void) - Change what's displayed on the screen to reflect the current contents of rl_line_buffer.
+void rl_redisplay (void) - Изменить что отображается на экране, что отразить текущее содержание rl_line_buffer
+Change what's displayed on the screen to reflect the current contents of rl_line_buffer.
 
-void add_history (const char *string) - Place string at the end of the history list. The associated data field (if any) is set to NULL. If the maximum number of history entries has been set using stifle_history(), and the new number of history entries would exceed that maximum, the oldest history entry is removed.
+void add_history (const char *string) - добавляет string в конец списка history. 
+Place string at the end of the history list. The associated data field is set to NULL.
 
 pid_t wait3(int *status, int options, struct rusage *rusage); - приостанавливает исполнение текущего процесса до того, как дочерний процесс завершит свою работу, или он не получит сигнал, прекращающий его работу, или не будет произведен вызов обработчика прерывания. 
 ! ID дочернего процесса, прекратившего работу / -1
