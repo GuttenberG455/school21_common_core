@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 15:43:34 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/26 13:10:34 by majacqua         ###   ########.fr       */
+/*   Created: 2022/02/25 13:25:18 by majacqua          #+#    #+#             */
+/*   Updated: 2022/02/25 15:17:05 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-int	cmd_pwd(char **args, t_env *env)
+void	print_args(char **args, int i)
 {
-	char	*value;
+	while (args[i])
+	{
+		ft_putstr_fd(args[i], 1);
+		if (args[i + 1])
+			ft_putchar_fd(' ', 1);
+		i++;
+	}
+}
 
-	if (!env || !env->envp)
-		return (err_return_one(M_ENV, ERR_NO_ENV));
-	if (args && args[0])
-		return (err_return_one(M_PWD, ERR_MN_ARGS));
-	value = get_env_par(env, "PWD");
-	if (!value)
-		return (err_return_one(M_ENV, ERR_NO_ENV));
-	ft_putstr_fd(value, 1);
-	ft_putchar_fd('\n', 1);
+int	cmd_echo(char **args, t_env *env)
+{
+	(void)env;
+	if (ft_strcmp(args[0], "-n") == 0)
+		print_args(args, 1);
+	else
+	{
+		print_args(args, 0);
+		ft_putchar_fd('\n', 1);
+	}
 	return (0);
 }
