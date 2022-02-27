@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   error_ext.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/19 13:53:07 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/25 16:31:56 by majacqua         ###   ########.fr       */
+/*   Created: 2022/02/25 16:31:07 by majacqua          #+#    #+#             */
+/*   Updated: 2022/02/25 16:35:51 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
-
-# include "../libftv2/libftv2.h"
-# include "../const.h"
-# include "stdio.h"
-
-int		err_return_one(char *module, char *text);
-void	*err_return_null(char *module, char *text);
-int		err_return_zero(char *module, char *type);
-int		err_return_zero(char *module, char *type);
-
 int	err_ext_return_one(char *module, char *text, char *name);
-
-#endif
+{
+	ft_putstr_fd(module, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(text, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(name, 2);
+	ft_putstr_fd("\n", 2);
+	return (1);
+}
