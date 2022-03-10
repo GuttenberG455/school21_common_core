@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 20:01:38 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/09 17:44:35 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:27:03 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	if (!str)
 		return (0);
@@ -53,26 +53,35 @@ long long	ft_atoi(char *str)
 	return (rtn);
 }
 
-void ft_close(char *str_error)
-{
-	write(1, str_error, ft_strlen(str_error));
-	exit(1);
-}
-
-long long timestamp(void) // возвращает кол-во миллисекунд со времен начала
+long long	timestamp(void)
 {
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	// printf("TS %ld %d\n", tv.tv_sec, tv.tv_usec);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-void print_action(t_env *env, int id, char *action)
+void	print_action(t_env *env, int id, char *action)
 {
 	pthread_mutex_lock(&env->printing);
-	printf("%lli", timestamp() - env->start_time);
-	printf(" %d ", id + 1);
-	printf("%s\n", action);
+	if (!env->end_death)
+	{
+		printf("%lli", timestamp() - env->start_time);
+		printf(" %d ", id + 1);
+		printf("%s\n", action);
+	}
 	pthread_mutex_unlock(&env->printing);
+}
+
+void	thread_sleep(t_env *env, long long time)
+{
+	long long	i;
+
+	i = timestamp();
+	while (!(env->end_death))
+	{
+		if ((timestamp() - i) >= time)
+			break ;
+		usleep(50);
+	}
 }

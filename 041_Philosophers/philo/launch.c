@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:42 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/09 19:21:48 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:09:29 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,13 @@ void act_eat(t_philo *philo)
 	pthread_mutex_lock(&(env->forks[philo->right_fork]));
 	print_action(env, philo->id, "has taken a fork");
 	pthread_mutex_lock(&(env->meal_check));
-	philo->eat_count++;
 	print_action(env, philo->id, "is eating");
 	philo->last_time_eat = timestamp();
 	pthread_mutex_unlock(&(env->meal_check));
-	// // thread_sleep(env, env->time_eat); // чекаем другое говно
-	usleep(env->time_eat * 1000);
-	pthread_mutex_unlock(&(env->forks[philo->left_fork]));
+	thread_sleep(env, env->time_eat);
+	philo->eat_count++;
 	pthread_mutex_unlock(&(env->forks[philo->right_fork]));
+	pthread_mutex_unlock(&(env->forks[philo->left_fork]));
 }
 
 
@@ -43,18 +42,16 @@ void *start_thread(void *void_philo)
 	philo = (t_philo *)void_philo;
 	env = philo->env;
 	if (philo->id % 2)
-	{	
 		usleep(10000);
-	}
-	while (!(env->end_death) && !(env->end_all_fed))
+	while (!(env->end_death))
 	{
-		if (env->num_eat != -1 || (env->num_eat != -1 && philo->eat_count < env->num_eat))
-			act_eat(philo);
+		// if (env->num_eat == -1 || (env->num_eat != -1 && philo->eat_count < env->num_eat))
+		// 	act_eat(philo);
+		act_eat(philo);
 		if (env->end_all_fed)
 			break;
 		print_action(env, philo->id, "is sleeping");
-		// thread_sleep(env, env->time_sleep);
-		usleep(env->time_sleep * 1000);
+		thread_sleep(env, env->time_sleep);
 		print_action(env, philo->id, "is thinking");
 		i++;
 	}
@@ -66,23 +63,25 @@ void check_death(t_env *env, t_philo *philo)
 {
 	int		i;
 
-	while (env->end_all_fed == 0)
+	while (!(env->end_all_fed))
 	{
 		i = 0;
-		// while (i < env->philo_count && !env->end_death)
-		// {
-		// 	// pthread_mutex_lock(&(env->meal_check)); // втф?
-		// 	// if (philo[i].last_time_eat - timestamp() > env->time_end_death)
-		// 	// {
-		// 	// 	printf("%lld %d died\n", timestamp(), i);
-		// 	// 	env->end_death = 1;
-		// 	// }
-		// 	// pthread_mutex_unlock(&(env->meal_check)); // втф?
-		// 	// i++;
-		// 	// usleep(100);
-		// }
+		while (i < env->philo_count && !(env->end_death))
+		{
+			pthread_mutex_lock(&(env->meal_check)); 
+			if (timestamp() - philo[i].last_time_eat > env->time_death)
+			{
+				print_action(env, philo->id, "died");
+				env->end_death = 1;
+			}
+			pthread_mutex_unlock(&(env->meal_check));
+			usleep(100);
+			i++;
+		}
 		if (env->end_death)
+		{
 			break;
+		}
 		i = 0;
 		while (env->num_eat != -1 && i < env->philo_count && philo[i].eat_count >= env->num_eat)
 			i++;
@@ -96,17 +95,20 @@ void exit_launch(t_env *env, t_philo *philo)
 	int i;
 
 	i = 0;
-	while (i < env->philo_count)
+	write(2, "ded1\n", 5);
+	while (env->philo_count != 1 && i < env->philo_count)
 	{
 		pthread_join(philo[i].thread, NULL);
 		i++;
 	}
+	write(2, "ded2\n", 5);
 	i = 0;
 	while (i < env->philo_count)	
 	{
 		pthread_mutex_destroy(&(env->forks[i]));
 		i++;
 	}
+	write(2, "ded3\n", 5);
 	pthread_mutex_destroy(&(env->printing));
 }
 
@@ -116,18 +118,17 @@ int launch(t_env *env)
 	t_philo	*philo;
 
 	i = 0;
-	env->start_time = timestamp();
-	printf("Time start %lld\n", env->start_time);
 	philo = env->philos;
+	env->start_time = timestamp();
 	while (i < env->philo_count)
 	{
-		printf("Cre_%d_\n", i);
 		if (pthread_create(&(philo[i].thread), 0, start_thread, &(philo[i])))
 			return (1);
 		philo[i].last_time_eat = timestamp();
 		i++;
 	}
 	check_death(env, env->philos);
+	write(2, "ded\n", 4);
 	exit_launch(env, philo);
 	return (0);
 } 

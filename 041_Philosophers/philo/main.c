@@ -6,11 +6,17 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:39:25 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/07 18:13:26 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:26:12 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void ft_close(char *str_error)
+{
+	write(1, str_error, ft_strlen(str_error));
+	exit(1);
+}
 
 int main(int argc, char **argv)
 {

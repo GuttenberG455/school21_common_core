@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:39:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/09 18:50:07 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:27:27 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 # include <stdio.h>
 # include <pthread.h>
 
-struct s_env;
+struct	s_env;
 
 typedef struct s_philo
 {
 	int				id;
 	int				left_fork;
 	int				right_fork;
-	int 			eat_count;
+	int				eat_count;
 	long long		last_time_eat;
 	struct s_env	*env;
 	pthread_t		thread;

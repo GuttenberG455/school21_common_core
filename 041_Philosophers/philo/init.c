@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:59:07 by majacqua          #+#    #+#             */
-/*   Updated: 2022/02/09 18:49:25 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/10 12:12:57 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	init_mutex(t_env *env)
 	}
 	if (pthread_mutex_init(&(env->printing), 0)) 
 		return (1);
-	if (pthread_mutex_init(&(env->meal_check), 0)) // хз зачем, потом проверим
+	if (pthread_mutex_init(&(env->meal_check), 0))
 		return (1);
 	return (0);
 }

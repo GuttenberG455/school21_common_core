@@ -12,7 +12,8 @@ NAME =		philo
 CC			= gcc 
 RM			= rm -f
 FLAGS		= -I.
-# FLAGS		= -Wall -Wextra -Werror -I.
+# FLAGS		= -g -Wall -Wextra -Werror -I. -fsanitize=address
+
 LINKS		= -lpthread
 
 $(NAME):		$(OBJS)
