@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 14:39:25 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/12 12:43:12 by majacqua         ###   ########.fr       */
+/*   Created: 2022/03/12 13:12:45 by majacqua          #+#    #+#             */
+/*   Updated: 2022/03/12 17:19:56 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+# include "philo_bonus.h"
 
 void ft_close(char *str_error)
 {
@@ -31,5 +31,16 @@ int main(int argc, char **argv)
 		return (0);
 	if (launch(&env))
 		ft_close("Bad launch\nMission failed\n");
-	return (0);
+	return (1);
 }
+
+/*
+1. Доделать лаунч
+2. переделать слип
+3. переделать принт экшн
+4. сделать мейк
+
+10. Проверки
+11. Нормы
+12. Флаги
+*/

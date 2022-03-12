@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 14:39:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/12 16:19:18 by majacqua         ###   ########.fr       */
+/*   Created: 2022/03/12 13:09:52 by majacqua          #+#    #+#             */
+/*   Updated: 2022/03/12 16:31:46 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#ifndef PHILO_BONUS_H
+# define PHILO_BONUS_H
 
 # include <sys/time.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include <pthread.h>
+# include <semaphore.h>
 
 struct	s_env;
 
@@ -29,7 +31,8 @@ typedef struct s_philo
 	int				eat_count;
 	long long		last_time_eat;
 	struct s_env	*env;
-	pthread_t		thread;
+	pthread_t		death_thread;
+	pid_t			pid;
 }		t_philo;
 
 typedef struct s_env
@@ -42,9 +45,9 @@ typedef struct s_env
 	int				end_death;
 	int				end_all_fed;
 	long long		start_time;
-	pthread_mutex_t	forks[322];
-	pthread_mutex_t	printing;
-	pthread_mutex_t	meal_check;
+	sem_t			*forks;
+	sem_t			*printing;
+	sem_t			*meal_check;
 	t_philo			philos[322];
 }		t_env;
 
