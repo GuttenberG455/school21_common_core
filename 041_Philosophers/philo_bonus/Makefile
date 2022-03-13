@@ -1,19 +1,17 @@
-SRCS =		main.c \
-			init.c \
-			launch.c \
-			utils.c
+SRCS =		main_bonus.c \
+			init_bonus.c \
+			launch_bonus.c \
+			utils_bonus.c
 
-HEADERS = 	philo.h
+HEADERS = 	philo_bonus.h
 
 OBJS =		$(SRCS:.c=.o)
 
-NAME =		philo
+NAME =		philo_bonus
 
 CC			= gcc 
 RM			= rm -f
-FLAGS		= -g -Wall -Wextra -Werror -I.
-
-LINKS		= -lpthread
+FLAGS		= -Wall -Wextra -Werror -I.
 
 $(NAME):		$(OBJS)
 			$(CC) $(OBJS) $(LINKS) $(LIBFT) -o $(NAME)

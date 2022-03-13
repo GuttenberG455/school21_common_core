@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 16:59:07 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/13 15:26:32 by majacqua         ###   ########.fr       */
+/*   Created: 2022/03/12 15:27:01 by majacqua          #+#    #+#             */
+/*   Updated: 2022/03/13 15:26:34 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	init_mutex(t_env *env)
+int	init_sems(t_env *env)
 {
-	int	i;
-
-	i = 0;
-	while (i < env->philo_count)
-	{
-		if (pthread_mutex_init(&env->forks[i], 0))
-			return (1);
-		i++;
-	}
-	if (pthread_mutex_init(&env->meal_check, 0))
-		return (1);
-	if (pthread_mutex_init(&env->printing, 0))
+	sem_unlink("philo_forks");
+	sem_unlink("philo_printing");
+	sem_unlink("philo_meal_check");
+	env->forks = sem_open("philo_forks", O_CREAT, S_IRWXU, env->philo_count);
+	env->printing = sem_open("philo_printing", O_CREAT, S_IRWXU, 1);
+	env->meal_check = sem_open("philo_meal_check", O_CREAT, S_IRWXU, 1);
+	if (env->forks <= 0 || env->printing <= 0 || env->meal_check <= 0)
 		return (1);
 	return (0);
 }
@@ -39,8 +34,6 @@ int	init_philos(t_env *env)
 	{
 		env->philos[i].id = i;
 		env->philos[i].env = env;
-		env->philos[i].left_fork = i;
-		env->philos[i].right_fork = (i + 1) % env->philo_count;
 		env->philos[i].eat_count = 0;
 		env->philos[i].last_time_eat = 0;
 		i++;
@@ -68,7 +61,7 @@ int	init_env(t_env *env, char **argv)
 		|| env->time_eat < 0 || env->time_sleep < 0)
 		return (1);
 	init_philos(env);
-	if (init_mutex(env))
+	if (init_sems(env))
 		return (1);
 	return (0);
 }

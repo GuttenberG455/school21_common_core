@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 20:01:38 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/13 15:01:20 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/13 15:23:52 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 long long	ft_atoi(char *str)
 {
@@ -49,7 +49,7 @@ long long	get_timestamp(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-void	thread_sleep(t_env *env, long long time)
+void	proc_sleep(t_env *env, long long time)
 {
 	long long	i;
 
@@ -64,12 +64,12 @@ void	thread_sleep(t_env *env, long long time)
 
 void	print_action(t_env *env, int id, char *action)
 {
-	pthread_mutex_lock(&env->printing);
+	sem_wait(env->printing);
 	if (!env->end_death && !env->end_all_fed)
 	{
 		printf("%lli", get_timestamp() - env->start_time);
 		printf(" %d ", id + 1);
 		printf("%s\n", action);
 	}
-	pthread_mutex_unlock(&env->printing);
+	sem_post(env->printing);
 }
