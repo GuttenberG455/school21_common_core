@@ -6,44 +6,36 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:42 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/14 15:27:33 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/14 20:31:22 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	act_eat(t_philo *philo)
+int	check_all_fed(t_env *env)
 {
-	t_env	*env;
+	int	i;
 
-	env = philo->env;
-	pthread_mutex_lock(&env->forks[philo->left_fork]);
-	print_action(env, philo->id, ST_FORK);
-	if (env->philo_count == 1)
-	{
-		pthread_mutex_unlock(&env->forks[philo->left_fork]);
-		thread_sleep(env->time_death);
-		print_action(env, philo->id, ST_DEAD);
-		env->end_death = 1;
-		return ;
-	}
-	pthread_mutex_lock(&env->forks[philo->right_fork]);
-	print_action(env, philo->id, ST_FORK);
+	i = 0;
 	pthread_mutex_lock(&env->meal_check);
-	philo->eat_count++;
-	philo->last_time_eat = get_timestamp();
-	print_action(env, philo->id, ST_EAT);
+	while (env->num_eat != -1 && i < env->philo_count
+		&& env->philos[i].eat_count >= env->num_eat)
+		i++;
+	if (i == env->philo_count)
+	{
+		env->end_all_fed = 1;
+		pthread_mutex_unlock(&env->meal_check);
+		return (1);
+	}
 	pthread_mutex_unlock(&env->meal_check);
-	thread_sleep(env->time_eat);
-	pthread_mutex_unlock(&env->forks[philo->right_fork]);
-	pthread_mutex_unlock(&env->forks[philo->left_fork]);
+	return (0);
 }
 
 void	check_death(t_env *env, t_philo *philo)
 {
 	int		i;
 
-	while (!env->end_all_fed)
+	while (1)
 	{
 		i = -1;
 		while (++i < env->philo_count && !env->end_death)
@@ -59,12 +51,8 @@ void	check_death(t_env *env, t_philo *philo)
 		}
 		if (env->end_death)
 			break ;
-		i = 0;
-		while (env->num_eat != -1 && i < env->philo_count
-			&& philo[i].eat_count >= env->num_eat)
-			i++;
-		if (i == env->philo_count)
-			env->end_all_fed = 1;
+		if (check_all_fed(env))
+			break ;
 	}
 }
 
@@ -82,8 +70,13 @@ void	*start_thread(void *void_philo)
 	while (!(env->end_death))
 	{
 		act_eat(philo);
+		pthread_mutex_lock(&env->meal_check);
 		if (env->end_all_fed)
+		{
+			pthread_mutex_unlock(&env->meal_check);
 			break ;
+		}
+		pthread_mutex_unlock(&env->meal_check);
 		print_action(env, philo->id, ST_SLEEP);
 		thread_sleep(env->time_sleep);
 		print_action(env, philo->id, ST_THINK);
@@ -124,7 +117,9 @@ int	launch(t_env *env)
 	{
 		if (pthread_create(&philo[i].thread, 0, start_thread, &philo[i]))
 			return (1);
+		pthread_mutex_lock(&env->meal_check);
 		philo[i].last_time_eat = get_timestamp();
+		pthread_mutex_unlock(&env->meal_check);
 		i++;
 	}
 	check_death(env, env->philos);

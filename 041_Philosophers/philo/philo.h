@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:39:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/14 13:01:39 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/14 20:27:02 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void		print_action(t_env *env, int id, char *action);
 void		thread_sleep(long long time);
 
 int			init_env(t_env *env, char **argv);
+void		act_eat(t_philo *philo);
 void		ft_close(char *str_error);
 
 int			launch(t_env *env);

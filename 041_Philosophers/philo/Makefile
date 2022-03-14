@@ -1,7 +1,8 @@
 SRCS =		main.c \
 			init.c \
 			launch.c \
-			utils.c
+			utils.c \
+			eat.c
 
 HEADERS = 	philo.h
 
