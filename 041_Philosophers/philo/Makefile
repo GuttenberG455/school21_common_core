@@ -11,16 +11,16 @@ NAME =		philo
 
 CC			= gcc 
 RM			= rm -f
-FLAGS		= -g -Wall -Wextra -Werror -I.
+FLAGS		= -Wall -Wextra -Werror -I.
 
 LINKS		= -lpthread
 
 $(NAME):		$(OBJS)
-			$(CC) $(OBJS) $(LINKS) $(LIBFT) -o $(NAME)
+			$(CC) $(OBJS) $(LINKS) $(LIBFT) -o $(NAME) 
 
 all:			$(NAME)
 
-%.o:			%.c $(HEADERS)
+%.o:			%.c $(HEADERS) Makefile
 			$(CC) $(FLAGS) -c $< -o $@
 
 clean:

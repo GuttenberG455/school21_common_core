@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 20:01:38 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/13 15:01:20 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:01:44 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ long long	get_timestamp(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-void	thread_sleep(t_env *env, long long time)
+void	thread_sleep(long long time)
 {
 	long long	i;
 
 	i = get_timestamp();
-	while (!(env->end_death))
+	while (1)
 	{
 		if ((get_timestamp() - i) >= time)
 			break ;

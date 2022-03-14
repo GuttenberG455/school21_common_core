@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:39:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/13 15:04:28 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:01:39 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_env
 long long	ft_atoi(char *str);
 long long	get_timestamp(void);
 void		print_action(t_env *env, int id, char *action);
-void		thread_sleep(t_env *env, long long time);
+void		thread_sleep(long long time);
 
 int			init_env(t_env *env, char **argv);
 void		ft_close(char *str_error);
