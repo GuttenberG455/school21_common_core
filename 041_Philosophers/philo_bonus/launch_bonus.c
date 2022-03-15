@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 16:16:49 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/13 15:50:50 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:56:40 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,36 +24,32 @@ void	act_eat(t_philo *philo)
 	sem_wait(env->meal_check);
 	philo->eat_count++;
 	philo->last_time_eat = get_timestamp();
-	print_action(env, philo->id, ST_EAT);
 	sem_post(env->meal_check);
-	proc_sleep(env, env->time_eat);
+	print_action(env, philo->id, ST_EAT);
+	proc_sleep(env->time_eat);
 	sem_post(env->forks);
 	sem_post(env->forks);
 }
 
-void	*check_death(void *void_philo)
+void	*check_end(void *void_philo)
 {
 	t_philo	*philo;
 	t_env	*env;
 
 	philo = (t_philo *) void_philo;
 	env = philo->env;
-	while (!env->end_all_fed)
+	while (1)
 	{
+		check_death(env, philo);
+		usleep(1000);
 		sem_wait(env->meal_check);
-		if (get_timestamp() - philo->last_time_eat > env->time_death)
+		if (env->num_eat != -1 && philo->eat_count >= env->num_eat)
 		{
-			print_action(env, philo->id, ST_DEAD);
-			env->end_death = 1;
+			sem_post(env->meal_check);
 			sem_wait(env->printing);
 			exit (1);
 		}
 		sem_post(env->meal_check);
-		if (env->end_death)
-			break ;
-		usleep(1000);
-		if (env->num_eat != -1 && philo->eat_count >= env->num_eat)
-			env->end_all_fed = 1;
 	}
 	return (NULL);
 }
@@ -66,20 +62,22 @@ void	start_process(void *void_philo)
 	philo = (t_philo *) void_philo;
 	env = philo->env;
 	philo->last_time_eat = get_timestamp();
-	pthread_create(&(philo->death_thread), NULL, check_death, void_philo);
+	pthread_create(&(philo->death_thread), NULL, check_end, void_philo);
 	if (philo->id % 2)
 		usleep(10000);
-	while (!(env->end_death) && !(env->end_all_fed))
+	while (1)
 	{
 		act_eat(philo);
-		if (env->end_all_fed)
+		if (death_sem_check(env))
 			break ;
 		print_action(env, philo->id, ST_SLEEP);
-		proc_sleep(env, env->time_sleep);
+		proc_sleep(env->time_sleep);
 		print_action(env, philo->id, ST_THINK);
+		if (death_sem_check(env))
+			break ;
 	}
 	pthread_join(philo->death_thread, NULL);
-	if (env->end_death)
+	if (death_sem_check(env))
 		exit (1);
 	exit (0);
 }
@@ -105,12 +103,7 @@ void	exit_launch(t_env *env)
 		}
 		i++;
 	}
-	sem_close(env->forks);
-	sem_close(env->printing);
-	sem_close(env->meal_check);
-	sem_unlink("/philo_forks");
-	sem_unlink("/philo_printing");
-	sem_unlink("/philo_meal_check");
+	destroy_sems(env);
 }
 
 int	launch(t_env *env)

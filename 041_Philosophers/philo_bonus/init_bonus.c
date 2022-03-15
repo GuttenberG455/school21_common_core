@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 15:27:01 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/13 15:26:34 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:29:02 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ int	init_sems(t_env *env)
 	sem_unlink("philo_forks");
 	sem_unlink("philo_printing");
 	sem_unlink("philo_meal_check");
+	sem_unlink("philo_dead_check");
 	env->forks = sem_open("philo_forks", O_CREAT, S_IRWXU, env->philo_count);
 	env->printing = sem_open("philo_printing", O_CREAT, S_IRWXU, 1);
 	env->meal_check = sem_open("philo_meal_check", O_CREAT, S_IRWXU, 1);
-	if (env->forks <= 0 || env->printing <= 0 || env->meal_check <= 0)
+	env->dead_check = sem_open("philo_dead_check", O_CREAT, S_IRWXU, 1);
+	if (env->forks <= 0 || env->printing <= 0 || env->meal_check <= 0
+		|| env->dead_check <= 0)
 		return (1);
 	return (0);
 }
@@ -56,7 +59,6 @@ int	init_env(t_env *env, char **argv)
 	else
 		env->num_eat = -1;
 	env->end_death = 0;
-	env->end_all_fed = 0;
 	if (env->philo_count <= 0 || env->philo_count > 322 || env->time_death < 0
 		|| env->time_eat < 0 || env->time_sleep < 0)
 		return (1);

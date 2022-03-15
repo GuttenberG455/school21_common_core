@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:09:52 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/13 15:05:24 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:55:59 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,25 @@ typedef struct s_env
 	int				time_sleep;
 	int				num_eat;
 	int				end_death;
-	int				end_all_fed;
 	long long		start_time;
 	sem_t			*forks;
 	sem_t			*printing;
 	sem_t			*meal_check;
+	sem_t			*dead_check;
 	t_philo			philos[322];
 }		t_env;
 
 void		ft_close(char *str_error);
-int			ft_strlen(char *str);
+
 long long	ft_atoi(char *str);
 long long	get_timestamp(void);
 void		print_action(t_env *env, int id, char *action);
-void		proc_sleep(t_env *env, long long time);
+void		proc_sleep(long long time);
+void		destroy_sems(t_env *env);
 
+void		check_death(t_env *env, t_philo *philo);
 int			init_env(t_env *env, char **argv);
-
 int			launch(t_env *env);
+int			death_sem_check(t_env *env);
 
 #endif

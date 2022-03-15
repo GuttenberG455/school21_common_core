@@ -1,7 +1,8 @@
 SRCS =		main_bonus.c \
 			init_bonus.c \
 			launch_bonus.c \
-			utils_bonus.c
+			utils_bonus.c \
+			thread_check_bonus.c
 
 HEADERS = 	philo_bonus.h
 
