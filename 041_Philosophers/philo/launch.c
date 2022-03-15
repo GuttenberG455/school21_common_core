@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:42 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/14 20:31:22 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/15 14:38:34 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ void	check_death(t_env *env, t_philo *philo)
 	while (1)
 	{
 		i = -1;
-		while (++i < env->philo_count && !env->end_death)
+		while (++i < env->philo_count)
 		{
 			pthread_mutex_lock(&env->meal_check);
 			if (get_timestamp() - philo[i].last_time_eat > env->time_death)
 			{
 				print_action(env, philo->id, ST_DEAD);
+				pthread_mutex_lock(&env->death_check);
 				env->end_death = 1;
+				pthread_mutex_unlock(&env->death_check);
 			}
 			pthread_mutex_unlock(&env->meal_check);
 			usleep(100);
 		}
-		if (env->end_death)
-			break ;
-		if (check_all_fed(env))
+		if (death_thr_check(env) || check_all_fed(env))
 			break ;
 	}
 }
@@ -67,20 +67,17 @@ void	*start_thread(void *void_philo)
 	env = philo->env;
 	if (philo->id % 2)
 		usleep(10000);
-	while (!(env->end_death))
+	while (1)
 	{
 		act_eat(philo);
-		pthread_mutex_lock(&env->meal_check);
-		if (env->end_all_fed)
-		{
-			pthread_mutex_unlock(&env->meal_check);
+		if (meal_thr_check(env) || death_thr_check(env))
 			break ;
-		}
-		pthread_mutex_unlock(&env->meal_check);
 		print_action(env, philo->id, ST_SLEEP);
 		thread_sleep(env->time_sleep);
 		print_action(env, philo->id, ST_THINK);
 		i++;
+		if (death_thr_check(env))
+			break ;
 	}
 	return (0);
 }
@@ -101,7 +98,7 @@ void	exit_launch(t_env *env, t_philo *philo)
 		pthread_mutex_destroy(&env->forks[i]);
 		i++;
 	}
-	pthread_mutex_destroy(&env->printing);
+	pthread_mutex_destroy(&env->print_check);
 	pthread_mutex_destroy(&env->meal_check);
 }
 

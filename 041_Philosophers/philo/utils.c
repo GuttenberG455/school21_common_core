@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 20:01:38 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/14 20:25:56 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/15 14:16:11 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,14 @@ void	thread_sleep(long long time)
 
 void	print_action(t_env *env, int id, char *action)
 {
-	pthread_mutex_lock(&env->printing);
+	pthread_mutex_lock(&env->print_check);
+	pthread_mutex_lock(&env->death_check);
 	if (!env->end_death)
 	{
 		printf("%lli", get_timestamp() - env->start_time);
 		printf(" %d ", id + 1);
 		printf("%s\n", action);
 	}
-	pthread_mutex_unlock(&env->printing);
+	pthread_mutex_unlock(&env->death_check);
+	pthread_mutex_unlock(&env->print_check);
 }

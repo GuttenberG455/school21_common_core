@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:39:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/14 20:27:02 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/15 14:32:51 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ typedef struct s_env
 	int				end_all_fed;
 	long long		start_time;
 	pthread_mutex_t	forks[322];
-	pthread_mutex_t	printing;
+	pthread_mutex_t	print_check;
 	pthread_mutex_t	meal_check;
+	pthread_mutex_t	death_check;
 	t_philo			philos[322];
 }		t_env;
 
@@ -64,5 +65,8 @@ void		act_eat(t_philo *philo);
 void		ft_close(char *str_error);
 
 int			launch(t_env *env);
+
+int			death_thr_check(t_env *env);
+int			meal_thr_check(t_env *env);
 
 #endif
