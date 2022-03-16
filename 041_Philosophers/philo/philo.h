@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 14:39:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/15 14:32:51 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/16 19:09:50 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <stdio.h>
 # include <pthread.h>
 
-# define ST_FORK "has taken a fork"
-# define ST_EAT "is eating"
-# define ST_SLEEP "is sleeping"
-# define ST_THINK "is thinking"
-# define ST_DEAD "died"
+# define ST_FORK	"has taken a fork"
+# define ST_EAT		"is eating"
+# define ST_SLEEP	"is sleeping"
+# define ST_THINK	"is thinking"
+# define ST_DEAD	"died"
 
 struct	s_env;
 
@@ -58,14 +58,15 @@ typedef struct s_env
 long long	ft_atoi(char *str);
 long long	get_timestamp(void);
 void		print_action(t_env *env, int id, char *action);
-void		thread_sleep(long long time);
+void		print_death(t_env *env, int id);
 
+void		thread_sleep(long long time);
 int			init_env(t_env *env, char **argv);
 void		act_eat(t_philo *philo);
 void		ft_close(char *str_error);
 
 int			launch(t_env *env);
-
+int			check_all_fed(t_env *env);
 int			death_thr_check(t_env *env);
 int			meal_thr_check(t_env *env);
 

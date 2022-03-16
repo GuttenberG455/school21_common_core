@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 20:01:38 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/15 14:16:11 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/16 19:09:48 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,27 @@ void	print_action(t_env *env, int id, char *action)
 {
 	pthread_mutex_lock(&env->print_check);
 	pthread_mutex_lock(&env->death_check);
-	if (!env->end_death)
+	if (!env->end_death
+		&& ((env->philos[id].eat_count <= env->num_eat
+				&& env->num_eat != -1) || (env->num_eat == -1)))
 	{
 		printf("%lli", get_timestamp() - env->start_time);
 		printf(" %d ", id + 1);
 		printf("%s\n", action);
+	}
+	pthread_mutex_unlock(&env->death_check);
+	pthread_mutex_unlock(&env->print_check);
+}
+
+void	print_death(t_env *env, int id)
+{
+	pthread_mutex_lock(&env->print_check);
+	pthread_mutex_lock(&env->death_check);
+	if (!env->end_death)
+	{
+		printf("%lli", get_timestamp() - env->start_time);
+		printf(" %d ", id + 1);
+		printf("%s\n", ST_DEAD);
 	}
 	pthread_mutex_unlock(&env->death_check);
 	pthread_mutex_unlock(&env->print_check);
