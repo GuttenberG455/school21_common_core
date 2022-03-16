@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:10:16 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/15 19:55:53 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:56:58 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ int	death_sem_check(t_env *env)
 		return (1);
 	}
 	sem_post(env->dead_check);
+	return (0);
+}
+
+int	meal_sem_check(t_env *env, t_philo *philo)
+{
+	sem_wait(env->meal_check);
+	if (env->num_eat != -1 && philo->eat_count >= env->num_eat)
+	{
+		sem_post(env->meal_check);
+		return (1);
+	}
+	sem_post(env->meal_check);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:09:52 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/15 19:55:59 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:24:13 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PHILO_BONUS_H
 
 # include <sys/time.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -65,10 +67,11 @@ long long	get_timestamp(void);
 void		print_action(t_env *env, int id, char *action);
 void		proc_sleep(long long time);
 void		destroy_sems(t_env *env);
-
-void		check_death(t_env *env, t_philo *philo);
 int			init_env(t_env *env, char **argv);
 int			launch(t_env *env);
+
+void		check_death(t_env *env, t_philo *philo);
 int			death_sem_check(t_env *env);
+int			meal_sem_check(t_env *env, t_philo *philo);
 
 #endif

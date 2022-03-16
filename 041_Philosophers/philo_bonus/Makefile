@@ -14,6 +14,8 @@ CC			= gcc
 RM			= rm -f
 FLAGS		= -Wall -Wextra -Werror -I.
 
+LINKS		= -lpthread
+
 $(NAME):		$(OBJS)
 			$(CC) $(OBJS) $(LINKS) $(LIBFT) -o $(NAME)
 

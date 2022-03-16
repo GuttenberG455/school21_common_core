@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 16:16:49 by majacqua          #+#    #+#             */
-/*   Updated: 2022/03/15 19:56:40 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:59:56 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,8 @@ void	*check_end(void *void_philo)
 	{
 		check_death(env, philo);
 		usleep(1000);
-		sem_wait(env->meal_check);
-		if (env->num_eat != -1 && philo->eat_count >= env->num_eat)
-		{
-			sem_post(env->meal_check);
-			sem_wait(env->printing);
-			exit (1);
-		}
-		sem_post(env->meal_check);
+		if (meal_sem_check(env, philo))
+			break ;
 	}
 	return (NULL);
 }
@@ -68,7 +62,7 @@ void	start_process(void *void_philo)
 	while (1)
 	{
 		act_eat(philo);
-		if (death_sem_check(env))
+		if (death_sem_check(env) || (meal_sem_check(env, philo)))
 			break ;
 		print_action(env, philo->id, ST_SLEEP);
 		proc_sleep(env->time_sleep);
