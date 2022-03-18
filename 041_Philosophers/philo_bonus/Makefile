@@ -21,7 +21,7 @@ $(NAME):		$(OBJS)
 
 all:			$(NAME)
 
-%.o:			%.c $(HEADERS)
+%.o:			%.c $(HEADERS) Makefile
 			$(CC) $(FLAGS) -c $< -o $@
 
 clean:
