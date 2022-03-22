@@ -67,3 +67,12 @@ a semaphore.
 - Каждый философ являются процессом. Но главный процесс не является философом.
 - Все вилки лежат в центре стола.
 - В качестве средства синхронизации доступа к ресурсу используются семафоры
+
+--- 
+
+### Misc
+
+- [Unix2019b/Библиотека pthreads](https://acm.bsu.by/wiki/Unix2019b/%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_pthreads)
+- [В чем разница между мьютексом, монитором и семафором](https://javarush.ru/groups/posts/2174-v-chem-raznica-mezhdu-mjhjuteksom-monitorom-i-semaforom)
+- [Philosophers visualizer](https://nafuka11.github.io/philosophers-visualizer/)
+- [Dining Philosopher Problem Using Semaphores](https://www.geeksforgeeks.org/dining-philosopher-problem-using-semaphores/)
