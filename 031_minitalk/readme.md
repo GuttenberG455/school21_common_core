@@ -68,3 +68,6 @@ This project introduce us to the signals and handlers. Event-driven programming 
 
 ### Misc
 
+- [Сигналы](https://learnc.info/c/signals.html)
+- [Сигналы на OpenNET](https://www.opennet.ru/docs/RUS/bogatyrev/gl_6_4.html)
+- [Практика работы с сигналами](https://habr.com/ru/post/141206/)
