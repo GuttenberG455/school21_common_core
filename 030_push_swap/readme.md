@@ -67,3 +67,7 @@ This project introduce us to the structure of stack - list LIFO (Last in - First
 --- 
 
 ### Misc
+
+- [О стеке простыми словами](https://habr.com/ru/post/341586/)
+- [Алгоритм быстрой сортировки](https://vk.com/@forum42intra-push-swap)
+- [Алгоритм работы PushSwap](https://www.youtube.com/watch?v=xp4DUxGUggU)
