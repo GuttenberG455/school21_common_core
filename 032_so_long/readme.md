@@ -3,14 +3,14 @@
 
 [Checklist](https://github.com/mharriso/school21-checklists/blob/master/ng_2_so_long.pdf)
 
-***100/100 SUCCESS*** No bonus
+***100/100 SUCCESS***. No bonus
 
 ---
 
 ## Goal of a project
 
 We must create a basic 2D game in which a hero
-escapes the map after collecting all collectibles. We are going to use MiniLibX functions
+escapes the map after collecting all collectibles. We are going to use MiniLibX functions.
 
 ## Why is *so_long* important?
 
@@ -21,7 +21,7 @@ event handling, colors, textures, file parsing and so forth.
 
 - The player’s goal is to collect every collectible present on the map, then escape.
 - The *W*, *A*, *S*, and *D* keys must be used to move the main character.
-- The player should be able to move in these 4 directions: up, down, left, right and should not be able to move into walls
+- The player should be able to move in these 4 directions: up, down, left, right and should not be able to move into walls.
 - The map has to be constructed with components: walls, collectibles, exits, player's position and freespace. 
 - The map must be rectangular and contain at least 1 exit, 1 collectible, and 1 starting position.
 
@@ -39,7 +39,7 @@ event handling, colors, textures, file parsing and so forth.
 
 [Лист проверки](https://github.com/mharriso/school21-checklists/blob/master/ng_2_so_long.pdf)
 
-Проверено на ***120/100 SUCCESS*** Без бонуса
+Проверено на ***100/100 SUCCESS***. Без бонуса
 
 ---
 
@@ -68,3 +68,5 @@ event handling, colors, textures, file parsing and so forth.
 
 ### Misc
 
+- [MiniLibx - 42 Docs](https://harm-smits.github.io/42docs/libs/minilibx)
+- [ft_libgfx AKA b_gfx overload](https://github.com/qst0/ft_libgfx)
