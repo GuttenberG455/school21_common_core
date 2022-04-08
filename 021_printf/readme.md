@@ -59,3 +59,7 @@ We will discover variadic functions in C.
 --- 
 
 ### Misc
+
+- [C library function - printf()](https://www.tutorialspoint.com/c_standard_library/c_function_printf.htm)
+- [Variadic functions](https://en.cppreference.com/w/c/variadic)
+- [va_arg, va_copy, va_end, va_start](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/va-arg-va-copy-va-end-va-start?view=msvc-170)
