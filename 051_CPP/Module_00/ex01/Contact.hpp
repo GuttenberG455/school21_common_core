@@ -9,29 +9,24 @@ class Contact
 {
 private:
 	int id;
-	static std::string	fields_name[11];
-	std::string			informations[11];
+	static std::string	fields_name[5];
+	std::string			info[5];
 
 	enum Field {
 		FirstName = 0,
 		LastName,
 		Nickname,
-		Login,
-		Address,
-		Email,
-		Phone,
-		Birthday,
-		FavoriteMeal,
-		UnderwearColor,
-		Secret
+		PhoneNumber,
+		DarkestSecret
 	};	
+
 public:
 	Contact();
 	virtual ~Contact();
 	
 	bool set_info(int id);
-	void display_header();
-	void display();
+	void display_row();
+	void display_contact();
 };
 
 #endif

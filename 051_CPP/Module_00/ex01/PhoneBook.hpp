@@ -10,6 +10,7 @@ class PhoneBook
 private:
 	Contact	contacts[8];
 	int		amount;
+
 public:
 	PhoneBook();
 	virtual ~PhoneBook();
@@ -17,7 +18,7 @@ public:
 	void	show_startup(void);
 	void	add_contact(void);
 	void	search_contact(void);
-	void	show_search_header(void);
+	void	display_contact_table(void);
 };
 
 #endif

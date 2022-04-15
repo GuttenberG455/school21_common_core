@@ -8,7 +8,7 @@ HEADERS = Contact.hpp \
 
 OBJS	= $(SRCS:.cpp=.o)
 
-NAME	= phone
+NAME	= phonebook
 
 CXX		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98
