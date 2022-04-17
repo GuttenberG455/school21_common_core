@@ -49,3 +49,4 @@ This project is a general practical exercise to let you discover networking.
 - [NetWhat - ответы на вопросы](https://github.com/evgenkarlson/ALL_SCHOOL_42/blob/master/00_Projects__(%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B5_%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5)/00_Global_(begin_cadet)/02____netwhat/answers_to_netwhat.md)
 - [NetPractice walkthrough](https://github.com/Sglossu/NetPractice/tree/main)
 - [Протокол TCP/IP, служба DNS](https://intuit.ru/studies/professional_retraining/966/courses/216/lecture/5564?page=1)
+- [Лекция IP-адресация](https://en-15.ucoz.ru/POKS_lekcii/lekcia1/IP.doc.pdf)
