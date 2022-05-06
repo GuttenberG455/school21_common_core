@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 14:38:14 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/06 16:41:21 by majacqua         ###   ########.fr       */
+/*   Created: 2022/05/06 16:23:25 by majacqua          #+#    #+#             */
+/*   Updated: 2022/05/06 18:48:42 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#ifndef PARSER_H
+#define PARSER_H
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
+# include <limits.h>
 
-# include "const.h"
-# include "error/error.h"
-# include "hooks/hooks.h"
-# include "parser/parser.h"
-# include "libftv2/libftv2.h"
+# include "../env/env.h"
+# include "../error/error.h"
+
+void check_input(int argc, char **argv);
+t_map *get_map(char *argv);
 
 #endif

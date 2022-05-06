@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 14:38:14 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/06 16:41:21 by majacqua         ###   ########.fr       */
+/*   Created: 2022/05/06 16:37:51 by majacqua          #+#    #+#             */
+/*   Updated: 2022/05/06 17:56:33 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "env.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
+t_map	*initMap(void)
+{
+	t_map	*map;
 
-# include "const.h"
-# include "error/error.h"
-# include "hooks/hooks.h"
-# include "parser/parser.h"
-# include "libftv2/libftv2.h"
-
-#endif
+	map = ft_zalloc(sizeof(t_map));
+	map->no_path = NULL;
+	map->so_path = NULL;
+	map->we_path = NULL;
+	map->ea_path = NULL;
+	map->grid = NULL;
+	map->floor_color = 0;
+	map->ceiling_color = 0;
+	map->width = 0;
+	map->height = 0;
+	return (map);
+}

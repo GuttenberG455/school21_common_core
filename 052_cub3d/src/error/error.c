@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 14:38:14 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/06 16:41:21 by majacqua         ###   ########.fr       */
+/*   Created: 2022/05/06 16:17:35 by majacqua          #+#    #+#             */
+/*   Updated: 2022/05/06 18:51:05 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "error.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-
-# include "const.h"
-# include "error/error.h"
-# include "hooks/hooks.h"
-# include "parser/parser.h"
-# include "libftv2/libftv2.h"
-
-#endif
+int	exit_txt(char *text)
+{
+	ft_putstr_fd("Error! Cub3D: ", 2);
+	ft_putstr_fd(text, 2);
+	ft_putstr_fd("\n", 2);
+	ft_free();
+	exit(1);
+}

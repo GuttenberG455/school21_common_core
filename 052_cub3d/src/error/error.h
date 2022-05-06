@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 14:38:14 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/06 16:41:21 by majacqua         ###   ########.fr       */
+/*   Created: 2022/05/06 16:16:12 by majacqua          #+#    #+#             */
+/*   Updated: 2022/05/06 18:48:35 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#ifndef ERROR_H
+#define ERROR_H
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
+# include "../libftv2/libft/libft.h"
+# include "../const.h"
 
-# include "const.h"
-# include "error/error.h"
-# include "hooks/hooks.h"
-# include "parser/parser.h"
-# include "libftv2/libftv2.h"
+int	exit_txt(char *text);
 
 #endif

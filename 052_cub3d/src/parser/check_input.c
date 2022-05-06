@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 14:38:14 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/06 16:41:21 by majacqua         ###   ########.fr       */
+/*   Created: 2022/05/06 18:37:29 by majacqua          #+#    #+#             */
+/*   Updated: 2022/05/06 18:50:37 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "parser.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-
-# include "const.h"
-# include "error/error.h"
-# include "hooks/hooks.h"
-# include "parser/parser.h"
-# include "libftv2/libftv2.h"
-
-#endif
+void check_input(int argc, char **argv)
+{
+	if (argc != 2)
+		exit_txt("Wrong amount of arguments");
+	if (!ft_strnstr(argv[1], ".cub", INT_MAX))
+		exit_txt("Wrong map extension (.cub expected)");
+}
