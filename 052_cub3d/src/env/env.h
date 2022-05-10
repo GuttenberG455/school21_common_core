@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:25:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/06 18:21:33 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:40:18 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 # include "../const.h"
 # include "../libftv2/libftv2.h"
@@ -46,5 +47,6 @@ typedef struct s_env
 }	t_env;
 
 t_map	*init_map(void);
+void	print_map(t_map *map); // DELETE
 
 #endif

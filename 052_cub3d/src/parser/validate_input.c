@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   validate_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 16:17:35 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/10 15:49:14 by majacqua         ###   ########.fr       */
+/*   Created: 2022/05/06 18:37:29 by majacqua          #+#    #+#             */
+/*   Updated: 2022/05/10 15:03:53 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#include "parser.h"
 
-int	exit_txt(char *text)
+void validate_input(int argc, char **argv)
 {
-	ft_putstr_fd("Error! Cub3D: ", 2);
-	ft_putstr_fd(text, 2);
-	ft_putstr_fd("\n", 2);
-	// ft_free();
-	exit(1);
+	int fd;
+
+	if (argc != 2)
+		exit_txt("Wrong amount of arguments");
+	if (!ft_strnstr(argv[1], ".cub", INT_MAX))
+		exit_txt("Wrong map extension (.cub expected)");
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		exit_txt("Wrong file");	
+	close(fd);
 }
