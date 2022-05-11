@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 14:38:14 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/11 16:51:19 by majacqua         ###   ########.fr       */
+/*   Created: 2022/05/11 15:29:44 by majacqua          #+#    #+#             */
+/*   Updated: 2022/05/11 17:14:54 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "render.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-
-# include "const.h"
-# include "error/error.h"
-# include "hooks/hooks.h"
-# include "parser/parser.h"
-# include "render/render.h"
-# include "vector/vector.h"
-
-# include "libftv2/libftv2.h"
-# include "./minilibx/mlx.h"
-
-#endif
+t_vect *raycasting(t_env *env)
+{
+	return (NULL);
+}

@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:03:50 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/10 15:49:46 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/05/11 11:29:34 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_map *get_map(char *filename)
 	fd = open(filename, O_RDONLY);	
 	get_properties(map, fd);
 	get_grid(map, fd);
-	// check_assets_path(map); // !!! 
+	check_assets_path(map);
 	close(fd);
 	return (map);
 }

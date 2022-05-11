@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:37:51 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/10 15:46:21 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:29:41 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,45 @@ t_map	*init_map(void)
 	map->width = 0;
 	map->height = 0;
 	return (map);
+}
+
+float	get_angle(char ch)
+{
+	if (ch == 'E')
+		return (0);
+	if (ch == 'S')
+		return ((3 * PI) / 2);
+	if (ch == 'W')
+		return (PI);
+	if (ch == 'N')
+		return (PI / 2);
+}
+
+t_vect *create_player(t_map *map)
+{
+	t_vect *player;
+	int i;
+	int j;
+
+	player = ft_zalloc(sizeof(t_vect));
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			if (ft_strchr("SNWE", map->grid[i][j]))
+			{
+				player->y = i;
+				player->x = j;
+				player->angle = get_angle(map->grid[i][j]);
+				// map->grid[i][j] = '0'; // !!!
+			}
+			j++;
+		}
+		i++;
+	}
+	return (player);
 }
 
 // DELETE
@@ -51,4 +90,11 @@ void	print_map(t_map *map)
 			i++;
 		}
 	}
+}
+
+// DELETE
+void	print_player(t_vect *player)
+{
+	printf("Player");
+	printf("Pos:[%f][%f] Angle = %f",player->x, player->y, player->angle);
 }
