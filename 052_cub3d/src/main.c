@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 14:37:17 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/11 17:25:25 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/05/13 13:06:04 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 	// env.win = mlx_new_window(env.mlx, RES_X, RES_Y, "Game");
 	
 	// render(&env);
+	// HOOKS
 	// mlx_loop(env.mlx);
 	return (0);	
 }

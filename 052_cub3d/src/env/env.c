@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:37:51 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/11 17:29:41 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:51:58 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ float	get_angle(char ch)
 		return (PI);
 	if (ch == 'N')
 		return (PI / 2);
+	return (0);
 }
 
 t_vect *create_player(t_map *map)
