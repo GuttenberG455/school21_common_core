@@ -6,23 +6,33 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:22:38 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/06 17:51:22 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/03 14:15:58 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HOOKS_H
 #define HOOKS_H
 
+# include "../minilibx/mlx.h"
+# include "../libft/libft.h"
+# include "../env/env.h"
+# include "../const.h"
+# include "../error/error.h"
+# include "../render/render.h"
+# include "../vector/vector.h"
+
 # define W_KEY		13
 # define A_KEY		0
 # define S_KEY		1
 # define D_KEY		2
 # define ESC		53
-# define Q_KEY		123
-# define E_KEY		124
+# define Q_KEY		12
+# define E_KEY		14
 
 # define KEYHOLD	2
 
 # define CLOSE_WIND	17
+
+void	set_hooks(t_env *env);
 
 #endif

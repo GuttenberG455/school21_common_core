@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 15:13:15 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/13 13:34:23 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/03 13:37:14 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,10 @@
 
 # define FOV	1.2 // ???
 # define VFOV	0.523614 // ???
+
+# define TYPE_NO 'N'
+# define TYPE_SO 'S'
+# define TYPE_WE 'W'
+# define TYPE_EA 'E'
 
 #endif

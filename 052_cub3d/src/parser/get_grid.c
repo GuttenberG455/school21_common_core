@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:43:12 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/10 15:34:39 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:34:57 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void get_grid(t_map *map, int fd)
 	while (i < map->height)
 	{
 		map->grid[i] = ft_strtrim(ft_get_next_line(fd), "\n");
+		printf("{%zu}_%s_\n", ft_strlen(map->grid[i]), map->grid[i]);
 		i++;
 	}
 }

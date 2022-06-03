@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:25:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/11 17:24:46 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:03:07 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,15 @@ typedef struct s_env
 {
 	void	*mlx;
 	void	*win;
-	t_vect	*player;
+	t_vect	player;
 	t_map	*map;
+	float	size;
 }	t_env;
 
 t_map	*init_map(void);
-t_vect	*create_player(t_map *map);
+// t_vect	create_player(t_map *map);
+t_vect	create_player(t_map *map, t_env *env);
 void	print_map(t_map *map); // DELETE
-void	print_player(t_vect *player); // DELETE
+void	print_player(t_vect player); // DELETE
 
 #endif

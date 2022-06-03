@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:37:51 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/13 12:51:58 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:02:46 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,45 @@ float	get_angle(char ch)
 	return (0);
 }
 
-t_vect *create_player(t_map *map)
+int	is_in_set(char ch, char *set)
 {
-	t_vect *player;
+	int i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (ch == set[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+t_vect create_player(t_map *map, t_env *env)
+{
+	t_vect player;
 	int i;
 	int j;
 
-	player = ft_zalloc(sizeof(t_vect));
 	i = 0;
 	while (i < map->height)
 	{
 		j = 0;
 		while (j < map->width)
 		{
-			if (ft_strchr("SNWE", map->grid[i][j]))
+			if (is_in_set(map->grid[i][j], "SNWE"))
 			{
-				player->y = i;
-				player->x = j;
-				player->angle = get_angle(map->grid[i][j]);
-				// map->grid[i][j] = '0'; // !!!
+				player.y = i * env->size;
+				player.x = j * env->size;
+				player.angle = get_angle(map->grid[i][j]);
+				printf("[%c][%f][%f] Ang - %f\n", map->grid[i][j], player.x, player.y, player.angle);
+				map->grid[i][j] = '0'; // !!!
 			}
 			j++;
 		}
 		i++;
 	}
+	print_player(player);
 	return (player);
 }
 
@@ -94,8 +109,8 @@ void	print_map(t_map *map)
 }
 
 // DELETE
-void	print_player(t_vect *player)
+void	print_player(t_vect player)
 {
 	printf("Player");
-	printf("Pos:[%f][%f] Angle = %f",player->x, player->y, player->angle);
+	printf("Pos:[%f][%f] Angle = %f", player.x, player.y, player.angle);
 }
