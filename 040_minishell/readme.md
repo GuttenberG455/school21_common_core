@@ -122,4 +122,8 @@ Your program has to implement:
 
 ### Misc
 
-- []()
+- [Bash Reference Manual](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html)
+- [GNU Readline Library](https://tiswww.case.edu/php/chet/readline/readline.html)
+- [GNU History Library](https://tiswww.case.edu/php/chet/readline/history.html)
+- [pipex tutorial — 42 project](https://csnotes.medium.com/pipex-tutorial-42-project-4469f5dd5901)
+- [«Шелл» на С: пишем командную оболочку для Unix](https://tproger.ru/translations/unix-shell-in-c/)
