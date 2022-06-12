@@ -95,7 +95,7 @@ int			check_map_grid(t_prog *prog);
 void		get_map_status(t_map *map);
 void		get_counts(t_map *map);
 
-int			ft_close(char *text, int free_fl, t_prog *prog);
+int			ft_close(char *text);
 t_window	ft_new_window(void *mlx, t_prog prog);
 t_image		ft_new_sprite(void *mlx, char *path);
 int			ft_input(int key, void *param);
