@@ -6,13 +6,13 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:52:02 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/03 15:58:27 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:07:04 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./hooks.h"
 
-int	endgame(t_env *env)
+int	close_game(t_env *env)
 {
 	free_img(env->mlx, env->map->no_img);
 	free_img(env->mlx, env->map->so_img);
@@ -47,8 +47,8 @@ t_vect	make_step(t_env *env, int dir, int ang)
 
 int	key_press(int keycode, t_env *env)
 {
-	printf("Angle - [%f] Position - [%fx%f] \n", env->player.angle, env->player.x, env->player.y);
-	if (keycode == W_KEY)
+	// printf("Angle - [%f] Position - [%fx%f] \n", env->player.angle, env->player.x, env->player.y);
+	if (keycode == W_KEY) // шаги
 		env->player = make_step(env, -1, 1);
 	if (keycode == S_KEY)
 		env->player = make_step(env, 1, 1);
@@ -56,22 +56,22 @@ int	key_press(int keycode, t_env *env)
 		env->player = make_step(env, -1, -1);
 	if (keycode == D_KEY)
 		env->player = make_step(env, 1, -1);
-	if (keycode == Q_KEY)
-		env->player.angle -= 2 * 0.01;
+	if (keycode == Q_KEY) // повороты
+		env->player.angle -= ROTATE_ANG;
 	if (keycode == E_KEY)
-		env->player.angle += 2 * 0.01;
+		env->player.angle += ROTATE_ANG;
 	if (keycode == ESC)
-		endgame(env);
-	if (env->player.angle > PI * 2)
+		close_game(env); // закрыть игру
+	if (env->player.angle > PI * 2) // когда около 360 градусов (реализация поворота вокруг оси)
 			env->player.angle -= PI * 2;
 	if (env->player.angle < 0)
 			env->player.angle += PI * 2;
-	render(env);
+	render(env); // Рендер после действия
 	return (0);
 }
 
 void	set_hooks(t_env *env)
 {
-	mlx_hook(env->win, KEYHOLD, 1L << 0, key_press, env);
-	mlx_hook(env->win, CLOSE_WIND, 1L << 0, endgame, env);
+	mlx_hook(env->win, KEYHOLD, 1L << 0, key_press, env); // нажатие на клавишу
+	mlx_hook(env->win, CLOSE_WIND, 1L << 0, close_game, env);	// закрыть окно
 }

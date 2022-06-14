@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 15:13:15 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/03 13:37:14 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:14:55 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 # define RES_X		1280	
 # define RES_Y		800
-# define STEP_SIZE	0.25f
+# define STEP_SIZE	0.3
+# define ROTATE_ANG 0.05
 # define PI			3.14159
 
-# define FOV	1.2 // ???
-# define VFOV	0.523614 // ???
+# define FOV	1.2 // условно нормальный фов
+# define VFOV	0.523614 // ??? а вот ХЗ
 
 # define TYPE_NO 'N'
 # define TYPE_SO 'S'

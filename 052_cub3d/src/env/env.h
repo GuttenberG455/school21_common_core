@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:25:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/03 17:03:07 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:40:26 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,31 @@ typedef struct s_img	t_img;
 
 typedef struct s_map
 {
-	char	*no_path;
+	char	*no_path;	// пути на картинки стен
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	int		floor_color;
+	int		floor_color;// цвета пола и потолка
 	int		ceiling_color;
-	t_img	*no_img;
+	t_img	*no_img;	// картинки стен
 	t_img	*so_img;
 	t_img	*we_img;
 	t_img	*ea_img;
-	size_t	width;
+	size_t	width;		// ширина и высота поля
 	size_t	height;
-	char	**grid;
+	char	**grid;		// поле
 }	t_map;
 
 typedef struct s_env
 {
-	void	*mlx;
-	void	*win;
-	t_vect	player;
-	t_map	*map;
-	float	size;
+	void	*mlx;	// библиотека mlx
+	void	*win;	// окно
+	t_vect	player;	// игрок
+	t_map	*map;	// карта
+	float	size;	// шаг, между разрешением окна и шириной карты
 }	t_env;
 
 t_map	*init_map(void);
-// t_vect	create_player(t_map *map);
 t_vect	create_player(t_map *map, t_env *env);
 void	print_map(t_map *map); // DELETE
 void	print_player(t_vect player); // DELETE

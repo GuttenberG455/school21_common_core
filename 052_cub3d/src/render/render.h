@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:54:34 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/03 15:56:05 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:31:50 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_column
 
 
 
-void render(t_env *env);
+void	render(t_env *env);
 t_img	*new_img(void *mlx);
 t_img	*new_img_xpm(void *mlx, char *path);
 t_vect	**raycasting(t_env *env);
@@ -72,14 +72,11 @@ int		get_pixel(t_img *img, int x, int y);
 
 // MINIMAP
 
-# define COL_WHITE	0xffffff
 # define COL_BLACK	0x000000
-# define COL_DGRAY	0x303030
-# define COL_LGRAY	0x919191
-# define COL_RED	0xFF7E7E
+# define COL_GRAY	0x808080
+# define COL_RED	0xFF8E8E
+# define COL_ORANGE	0xFFA500
 # define COL_YELLOW	0xFFF700
-# define COL_BLUE	0x000d85
-# define COL_GREEN	0x2d752e
 # define MINI_MAP_W	0.4
 
 typedef struct s_rec
@@ -88,9 +85,8 @@ typedef struct s_rec
 	int	y;
 	int	width;
 	int	height;
-	int	color;
 }	t_rec;
 
-void	render_minimap(t_env *env, t_img *img, t_vect **rays);
+void	render_minimap(t_env *env, t_img *img);
 
 #endif
