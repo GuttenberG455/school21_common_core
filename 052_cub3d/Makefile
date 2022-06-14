@@ -9,7 +9,13 @@ HEADERS =	./src/cub3d.h \
 			./src/const.h \
 			./src/libftv2/ft_zalloc/ft_zalloc.h \
 			./src/libftv2/libftv2.h \
-			./src/libftv2/libft/libft.h
+			./src/libftv2/libft/libft.h \
+			./src/env/env.h \
+			./src/error/error.h \
+			./src/hooks/hooks.h \
+			./src/parser/parser.h \
+			./src/render/render.h \
+			./src/vector/vector.h
 
 LIBFT = ./src/libftv2/libft.a
 
@@ -19,11 +25,18 @@ MLXDIR		=	./src/minilibx/
 MAIN_SRCS	=	main \
 				env/env \
 				error/error \
-				parser/validate_input \
+				hooks/hooks \
+				parser/check_input \
+				parser/get_properties \
 				parser/get_map \
-				parser/get_grid \
+				parser/validate_input \
 				render/image \
-				render/render
+				render/raycasting \
+				render/render_minimap \
+				render/render_walls \
+				render/render \
+				vector/vector_operations1 \
+				vector/vector_operations2
 
 MAIN_SRC = $(addprefix ./src/, $(addsuffix .c, $(MAIN_SRCS)))
 
