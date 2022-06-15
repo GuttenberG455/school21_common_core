@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:23:25 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/14 17:45:58 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/15 18:08:30 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 
 void validate_input(int argc, char **argv);
 void get_properties(t_map *map, int fd);
+void get_dimensions(t_map *map, char *filename);
 t_map *get_map(char *argv);
+
+int		is_filled(t_map *map);
+void	check_assets_path(t_map *map);
 
 #endif

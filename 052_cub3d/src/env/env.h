@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:25:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/14 17:40:26 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/15 17:49:09 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "../vector/vector.h"
 # include "../const.h"
 # include "../libftv2/libftv2.h"
+# include "../error/error.h"
 
 typedef struct s_img	t_img;
 
@@ -37,6 +38,7 @@ typedef struct s_map
 	t_img	*ea_img;
 	size_t	width;		// ширина и высота поля
 	size_t	height;
+	int		num_start_grid; // номер строки, с которой начинается поле
 	char	**grid;		// поле
 }	t_map;
 

@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:37:51 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/14 18:01:15 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/15 17:49:28 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ t_map	*init_map(void)
 	map->we_path = NULL;
 	map->ea_path = NULL;
 	map->grid = NULL;
-	map->floor_color = 0;
-	map->ceiling_color = 0;
+	map->floor_color = -1;
+	map->ceiling_color = -1;
 	map->width = 0;
 	map->height = 0;
+	map->num_start_grid = 0;
 	return (map);
 }
 
@@ -42,20 +43,6 @@ float	get_angle(char ch)
 	return (0);
 }
 
-int	is_in_set(char ch, char *set)
-{
-	int i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (ch == set[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 t_vect create_player(t_map *map, t_env *env)
 {
 	t_vect player;
@@ -63,12 +50,15 @@ t_vect create_player(t_map *map, t_env *env)
 	int j;
 
 	i = 0;
+	player.x = -1;
 	while (i < map->height)
 	{
 		j = 0;
 		while (j < ft_strlen(env->map->grid[i]))
 		{
-			if (is_in_set(map->grid[i][j], "SNWE"))
+			if (ft_strchr("SNWE", map->grid[i][j]) && player.x != -1)
+				err_exit("Error!/n Two players on the map");
+			if (ft_strchr("SNWE", map->grid[i][j]))
 			{
 				player.y = i * env->size + env->size / 2; // позиция игрока сразу в координатах
 				player.x = j * env->size + env->size / 2;
@@ -80,6 +70,8 @@ t_vect create_player(t_map *map, t_env *env)
 		}
 		i++;
 	}
+	if (player.x == -1)
+		err_exit("Error!/n No player's position on the map");
 	print_player(player); // DEL
 	return (player);
 }

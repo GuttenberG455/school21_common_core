@@ -6,69 +6,104 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:03:50 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/14 17:54:47 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/15 18:22:20 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void get_dimensions(t_map *map, char *filename)
+char *get_grid_line(t_map *map, char *str)
 {
-	int fd;
+	char *res;
 	int i;
-	char *str;
-
-	fd = open(filename, O_RDONLY);
+	
 	i = 0;
-	while (i++ < 8) // скипаем лишнее
-		ft_get_next_line(fd);
-	str = ft_strtrim(ft_get_next_line(fd), "\n"); // первая строка
-	map->width = ft_strlen(str);
-	i = 0;
-	while (str)
+	res = ft_zalloc(map->width + 1);
+	while (str[i])
 	{
-		if (ft_strlen(str) > map->width)
-			map->width = ft_strlen(str);
-		str = ft_strtrim(ft_get_next_line(fd), "\n"); 
+		res[i] = str[i];
 		i++;
 	}
-	map->height = i; 
-	close(fd);
-}
-
-void	check_assets_path(t_map *map)
-{
-	int	fd;
-
-	fd = open(map->no_path, O_RDONLY);
-	if (fd == -1)
-		exit_txt("Wrong asset path");
-	close(fd);
-	fd = open(map->so_path, O_RDONLY);
-	if (fd == -1)
-		exit_txt("Wrong asset path");
-	close(fd);
-	fd = open(map->ea_path, O_RDONLY);
-	if (fd == -1)
-		exit_txt("Wrong asset path");
-	close(fd);
-	fd = open(map->we_path, O_RDONLY);
-	if (fd == -1)
-		exit_txt("Wrong asset path");
-	close(fd);
+	while (i < map->width)
+	{
+		res[i] = ' ';
+		i++;
+	}
+	return (res);
 }
 
 void get_grid(t_map *map, int fd)
 {
 	int i;
+	int j;
 	
 	i = 0;
 	map->grid = ft_zalloc(sizeof(char *) * map->height + 1);
 	while (i < map->height)
 	{
-		map->grid[i] = ft_strtrim(ft_get_next_line(fd), "\n"); // получаем строку поля
+		map->grid[i] = get_grid_line(map, ft_strtrim(ft_get_next_line(fd), "\n")); // получаем строку поля
+		j = 0;
+		while (map->grid[i][j])
+		{
+			if (!ft_strchr(" 01SNWE", map->grid[i][j])) // если неправильный символ в поле
+			{
+				printf("_+%d+_", j);
+				err_exit("Error!\nWrong symbols in grid");
+			}
+			j++;
+		}
 		i++;
 	}
+}
+
+int check_neighbors(t_map *map, int i, int j)
+{
+	if (i == 0 || j == 0) 
+		if (ft_strchr("0SNWE", map->grid[i][j]))
+			return (1);
+	if (i == map->height - 1 || j == map->width - 1) 
+		if (ft_strchr("0SNWE", map->grid[i][j]))
+			return (1);
+	if (!ft_strchr("01SNWE", map->grid[i-1][j]) ||
+		!ft_strchr("01SNWE", map->grid[i+1][j]) || 
+		!ft_strchr("01SNWE", map->grid[i][j-1]) ||
+		!ft_strchr("01SNWE", map->grid[i][j+1]))
+			return (1);
+	return (0);
+}
+
+void	check_grid_borders(t_map *map)
+{
+	size_t i;
+	size_t j;
+	
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < ft_strlen(map->grid[i]))
+		{
+			if (ft_strchr("0SNWE", map->grid[i][j])) 
+			{
+				if (check_neighbors(map, i, j)) // проверка соседних клеток
+				{
+					printf("Err at [%zu:%zu] symb{%s}\n", i, j, map->grid[i]);
+					err_exit("Error!\nBad borders");
+				}
+			}
+			j++;
+		}
+		i++;		
+	}
+}
+
+void	skip_unuseful_lines(t_map *map, int fd)
+{
+	int i;
+
+	i = 0;
+	while (i++ < map->num_start_grid) // скипаем до поля
+		ft_get_next_line(fd);
 }
 
 t_map *get_map(char *filename)
@@ -77,11 +112,16 @@ t_map *get_map(char *filename)
 	int		fd;
 
 	map = init_map();	// инициализации карты
-	get_dimensions(map, filename); // получение ширины и высоты
-	fd = open(filename, O_RDONLY);	
+	fd = open(filename, O_RDONLY);
 	get_properties(map, fd); // получение данных
-	get_grid(map, fd);	// получение поля
-	check_assets_path(map);	// проверка путей ассетов
+	print_map(map);
+	// get_dimensions(map, filename); // получение ширины и высоты
 	close(fd);
+	// fd = open(filename, O_RDONLY);
+	// skip_unuseful_lines(map, fd);
+	// get_grid(map, fd);	// получение поля
+	// close(fd);
+	// check_grid_borders(map); // проверка границ поля
+	// check_assets_path(map);	// проверка путей ассетов
 	return (map);
 }
