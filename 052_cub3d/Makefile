@@ -26,7 +26,7 @@ MAIN_SRCS	=	main \
 				env/env \
 				error/error \
 				hooks/hooks \
-				parser/check_input \
+				parser/check_properties \
 				parser/get_properties \
 				parser/get_map \
 				parser/validate_input \
