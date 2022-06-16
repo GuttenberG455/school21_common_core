@@ -3,7 +3,7 @@
 
 [Checklist]()
 
-***100/100 SUCCESS***
+***IN PROGRESS***
 
 ---
 
@@ -29,7 +29,7 @@
 
 [Лист проверки](https://github.com/mharriso/school21-checklists/blob/master/ng_1_born2beroot.pdf)
 
-Проверено на ***100/100 SUCCESS***
+***В процессе***
 
 ---
 
