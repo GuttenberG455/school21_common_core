@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:37:51 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/15 17:49:28 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/16 13:43:03 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ t_map	*init_map(void)
 
 float	get_angle(char ch)
 {
-	if (ch == 'E')
-		return (0);
+	if (ch == 'N')
+		return (PI / 2);
 	if (ch == 'S')
 		return ((3 * PI) / 2);
 	if (ch == 'W')
+		return (0);
+	if (ch == 'E')
 		return (PI);
-	if (ch == 'N')
-		return (PI / 2);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:52:02 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/14 18:07:04 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/16 16:15:40 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,42 +23,41 @@ int	close_game(t_env *env)
 	exit (EXIT_SUCCESS);
 }
 
-t_vect	make_step(t_env *env, int dir, int ang)
+t_vect	make_step(t_env *env, int dir_x, int dir_y)
 {
 	t_vect	res;
 
-	res.dist = env->size * STEP_SIZE * dir;
-	res.angle = env->player.angle;
-	if (ang < 0)
+	res.dist = env->size * STEP_SIZE * dir_x; // длина шага
+	res.angle = env->player.angle; // угол не меняется
+	if (dir_y < 0)
 		res.angle -= PI / 2;
-	res.x = res.dist * cosf(res.angle);
-	res.y = res.dist * sinf(res.angle);
-	res = vect_add(env->player, res);
-	if (env->map->grid[(int)(res.y / env->size)][(int)(env->player.x \
+	res.x = res.dist * cosf(res.angle); // изменение по координате x
+	res.y = res.dist * sinf(res.angle); // изменение по координате y
+	res = vect_add(env->player, res); // складываем вектор игрока с вектором перемещения
+	if ((env->map->grid[(int)(res.y / env->size)][(int)(env->player.x \
 		/ env->size)] == '1' && \
 		env->map->grid[(int)(env->player.y / env->size)][(int)(res.x \
-		/ env->size)] == '1')
-		return (env->player);
-	if (env->map->grid[(int)(res.y / env->size)][(int)(res.x \
-		/ env->size)] == '1')
-		return (env->player);
+		/ env->size)] == '1') ||
+		(env->map->grid[(int)(res.y / env->size)][(int)(res.x \
+		/ env->size)] == '1'))
+		return (env->player); // Коллизия
 	return (res);
 }
 
 int	key_press(int keycode, t_env *env)
 {
-	// printf("Angle - [%f] Position - [%fx%f] \n", env->player.angle, env->player.x, env->player.y);
-	if (keycode == W_KEY) // шаги
+	printf("Angle - [%f] Position - [%fx%f] Dist= \n", env->player.angle, env->player.x, env->player.y);
+	if (keycode == W_KEY || keycode == UP_KEY) // шаги
 		env->player = make_step(env, -1, 1);
-	if (keycode == S_KEY)
+	if (keycode == S_KEY || keycode == DOWN_KEY)
 		env->player = make_step(env, 1, 1);
 	if (keycode == A_KEY)
 		env->player = make_step(env, -1, -1);
 	if (keycode == D_KEY)
 		env->player = make_step(env, 1, -1);
-	if (keycode == Q_KEY) // повороты
+	if (keycode == Q_KEY || keycode == LEFT_KEY) // повороты
 		env->player.angle -= ROTATE_ANG;
-	if (keycode == E_KEY)
+	if (keycode == E_KEY || keycode == RIGHT_KEY)
 		env->player.angle += ROTATE_ANG;
 	if (keycode == ESC)
 		close_game(env); // закрыть игру

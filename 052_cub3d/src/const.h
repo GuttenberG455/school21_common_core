@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 15:13:15 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/14 18:14:55 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/16 15:56:10 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,15 @@
 # define ROTATE_ANG 0.05
 # define PI			3.14159
 
-# define FOV	1.2 // условно нормальный фов
-# define VFOV	0.523614 // ??? а вот ХЗ
+
+// 60 FOV
+# define FOV	1.0472
+# define VFOV	0.698132
+
+// // 75 FOV
+// # define FOV	1.309
+// # define VFOV	0.907571
+
 
 # define TYPE_NO 'N'
 # define TYPE_SO 'S'

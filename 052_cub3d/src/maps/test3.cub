@@ -1,11 +1,13 @@
+SO            ./src/assets/anime/so.xpm
 NO ./src/assets/anime/no.xpm
-SO ./src/assets/anime/so.xpm
 WE ./src/assets/anime/we.xpm
 EA ./src/assets/anime/ea.xpm
+F 5,216,10
+C            0,87,184
 
-F 9,216,10
-C 0,87,184
-
-111
-1N1
-111
+111111111111111
+1S00011110000011111
+1000000000000000001
+1000000000000000001
+1000000000000011111
+111111111111111

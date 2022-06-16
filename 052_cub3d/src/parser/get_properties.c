@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:43:12 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/15 18:29:35 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/16 14:33:29 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,39 @@ int get_color(char *str)
 
 void add_property(t_map *map, char **prop)
 {
+	if (!prop || !prop[0] || !prop[1])
+		err_exit("Error!\nWrong properties input");
 	printf("prop:[%s][%s]\n", prop[0], prop[1]);
-	if (ft_strncmp(prop[0], "NO", 2) == 0)
+	if (ft_strlen(prop[0]) == 2 && ft_strncmp(prop[0], "NO", 2) == 0)
 		map->no_path = prop[1];
-	if (ft_strncmp(prop[0], "SO", 2) == 0)
+	if (ft_strlen(prop[0]) == 2 && ft_strncmp(prop[0], "SO", 2) == 0)
 		map->so_path = prop[1];
-	if (ft_strncmp(prop[0], "WE", 2) == 0)
+	if (ft_strlen(prop[0]) == 2 && ft_strncmp(prop[0], "WE", 2) == 0)
 		map->we_path = prop[1];
-	if (ft_strncmp(prop[0], "EA", 2) == 0)
+	if (ft_strlen(prop[0]) == 2 && ft_strncmp(prop[0], "EA", 2) == 0)
 		map->ea_path = prop[1];
-	if (ft_strncmp(prop[0], "F", 1) == 0)
+	if (ft_strlen(prop[0]) == 1 && ft_strncmp(prop[0], "F", 1) == 0)
 		map->floor_color = get_color(prop[1]);
-	if (ft_strncmp(prop[0], "C", 1) == 0)
+	if (ft_strlen(prop[0]) == 1 && ft_strncmp(prop[0], "C", 1) == 0)
 		map->ceiling_color = get_color(prop[1]);
+}
+
+void get_dimensions(t_map *map, int fd, char *first_lane)
+{
+	int i;
+	char *str;
+	
+	str = first_lane; // первая строка
+	map->width = ft_strlen(first_lane);
+	i = 0;
+	while (str)
+	{
+		if (ft_strlen(str) > map->width)
+			map->width = ft_strlen(str);
+		str = ft_strtrim(ft_get_next_line(fd), "\n"); 
+		i++;
+	}
+	map->height = i; 
 }
 
 void get_properties(t_map *map, int fd)
@@ -71,36 +91,16 @@ void get_properties(t_map *map, int fd)
 	while (!is_filled(map) && str)
 	{
 		i++;
-		// printf("[%s]\n", str);
 		if (ft_strlen(str))
 			add_property(map, ft_split(str, ' '));
 		str = ft_strtrim(ft_get_next_line(fd), " \n\t"); // убираем табы и \n
 	}
-	// while (!str)
-	// {
-	// 	ft_strtrim(ft_get_next_line(fd), " \n\t");
-	// 	i++;
-	// }
-	map->num_start_grid = i;
-}
-
-
-void get_dimensions(t_map *map, char *filename)
-{
-	int fd;
-	int i;
-	char *str;
-
-	// начинаем с первой строки поля
-	str = ft_strtrim(ft_get_next_line(fd), "\n"); // первая строка
-	map->width = ft_strlen(str);
-	i = 0;
-	while (str)
+	while (ft_strlen(str) == 0)
 	{
-		if (ft_strlen(str) > map->width)
-			map->width = ft_strlen(str);
-		str = ft_strtrim(ft_get_next_line(fd), "\n"); 
+		str = ft_strtrim(ft_get_next_line(fd), " \n\t");
 		i++;
 	}
-	map->height = i; 
+	map->num_start_grid = i;
+	get_dimensions(map, fd, str);
+	printf("Start of map - %d\n", map->num_start_grid);
 }

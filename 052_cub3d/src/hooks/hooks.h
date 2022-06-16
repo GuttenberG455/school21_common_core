@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:22:38 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/03 14:15:58 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/16 14:42:46 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,13 @@
 # define Q_KEY		12
 # define E_KEY		14
 
-# define KEYHOLD	2
+# define LEFT_KEY	123
+# define RIGHT_KEY	124
+# define DOWN_KEY	125
+# define UP_KEY		126
 
+		
+# define KEYHOLD	2
 # define CLOSE_WIND	17
 
 void	set_hooks(t_env *env);

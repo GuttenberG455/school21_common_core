@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:03:50 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/15 18:22:20 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/16 12:27:30 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,12 @@ t_map *get_map(char *filename)
 	map = init_map();	// инициализации карты
 	fd = open(filename, O_RDONLY);
 	get_properties(map, fd); // получение данных
-	print_map(map);
-	// get_dimensions(map, filename); // получение ширины и высоты
 	close(fd);
-	// fd = open(filename, O_RDONLY);
-	// skip_unuseful_lines(map, fd);
-	// get_grid(map, fd);	// получение поля
-	// close(fd);
-	// check_grid_borders(map); // проверка границ поля
-	// check_assets_path(map);	// проверка путей ассетов
+	fd = open(filename, O_RDONLY);
+	skip_unuseful_lines(map, fd);
+	get_grid(map, fd);	// получение поля
+	close(fd);
+	check_grid_borders(map); // проверка границ поля
+	check_assets_path(map);	// проверка путей ассетов
 	return (map);
 }
