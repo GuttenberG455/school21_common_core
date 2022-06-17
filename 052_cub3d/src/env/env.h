@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:25:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/15 17:49:09 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/17 13:41:09 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ t_map	*init_map(void);
 t_vect	create_player(t_map *map, t_env *env);
 void	print_map(t_map *map); // DELETE
 void	print_player(t_vect player); // DELETE
-
+void	print_vector(t_vect vect, char *str); // DELETE
 #endif

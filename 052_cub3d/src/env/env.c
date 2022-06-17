@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:37:51 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/16 13:43:03 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/17 13:40:26 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,10 @@ void	print_player(t_vect player)
 {
 	printf("Player\t");
 	printf("Pos:[%f][%f] Angle = %f\n", player.x, player.y, player.angle);
+}
+
+void	print_vector(t_vect vect, char *str)
+{
+	printf("Vect - %s\n", str);
+	printf("Coors:[%f][%f] Angle = [%f] Dist = [%f] Color = [%d]\n", vect.x, vect.y, vect.dist, vect.angle, vect.color);
 }

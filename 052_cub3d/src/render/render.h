@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:54:34 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/14 17:31:50 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/17 16:20:55 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ struct	s_img
 
 typedef struct s_raycast
 {
-	t_vect	plr;
+	t_vect	player_vect;
 	t_vect	map_check;
-	t_vect	unit_step;
+	t_vect	delta_dist;
+	t_vect	side_dist;
 	t_vect	step;
-	t_vect	ray_lend;
-	t_vect	intersection;
-	int		found_wall;
-	float	dist;
-	float	max_dist;
+	t_vect	wall_hit;
+	int		is_wall_found;
+	float	distance;
 }	t_raycast;
 
 typedef struct s_column

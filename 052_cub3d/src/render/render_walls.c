@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:34:50 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/03 14:04:27 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:01:38 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	render_column(t_env *env, t_img *img, t_vect *ray, int col)
 	int			type;
 	int			i;
 
-	type = get_wall_type(ray);
+	type = get_wall_type(ray);	// тип стены, на которую указывает луч
 	if (type == TYPE_NO)
 		column.texture = env->map->no_img;
 	else if (type == TYPE_SO)
@@ -96,9 +96,9 @@ void	render_walls(t_env *env, t_vect **rays, t_img *img)
 	size_t	i;
 
 	i = 0;
-	while (i < RES_X)
+	while (i < RES_X)	// проходим по всему массиву лучей
 	{
-		render_column(env, img, rays[i], i);
+		render_column(env, img, rays[i], i);	// прорисовать колонну
 		i++;
 	}
 }
