@@ -8,8 +8,9 @@
 class PhoneBook
 {
 private:
-	Contact	contacts[8];
-	int		amount;
+	Contact	_contacts[8];
+	int		_amount;
+	int		_oldest_id;
 
 public:
 	PhoneBook();

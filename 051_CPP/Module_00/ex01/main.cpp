@@ -13,7 +13,7 @@ int main()
 		std::getline(std::cin, command);
 		if (std::cin.bad() || std::cin.eof())
 		{
-			cerr << "\nEOF error" << endl;
+			std::cerr << "\n(x ω x`) EOF error" << std::endl;
 			break;
 		}
 		if (command == "ADD")

@@ -8,9 +8,9 @@
 class Contact
 {
 private:
-	int id;
-	static std::string	fields_name[5];
-	std::string			info[5];
+	int _id;
+	static std::string	_fields_name[5];
+	std::string			_info[5];
 
 	enum Field {
 		FirstName = 0,

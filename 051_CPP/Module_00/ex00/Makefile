@@ -1,7 +1,7 @@
 SRCS	= megaphone.cpp
 
 
-OBJS =		$(SRCS:.cpp=.o)
+OBJS	= $(SRCS:.cpp=.o)
 
 NAME	= megaphone
 
