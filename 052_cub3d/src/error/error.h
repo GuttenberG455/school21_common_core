@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:16:12 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/06 18:48:35 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/15 13:16:31 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "../libftv2/libft/libft.h"
 # include "../const.h"
 
-int	exit_txt(char *text);
+int	err_exit(char *text);
 
 #endif

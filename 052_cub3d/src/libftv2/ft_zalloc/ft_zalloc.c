@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_zalloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
+/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 20:34:52 by rusty             #+#    #+#             */
-/*   Updated: 2022/03/05 18:01:49 by rusty            ###   ########.fr       */
+/*   Updated: 2022/06/20 12:52:10 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	ft_free(void)
 	size_t	i;
 
 	i = 0;
-	while (i < g_heap.count)
-		free(g_heap.mem[i++]);
-	free(g_heap.mem);
+	// while (i < g_heap.count)
+		// free(g_heap.mem[i++]);
+	// free(g_heap.mem);
 }
 
 void	alloc_error(int size)

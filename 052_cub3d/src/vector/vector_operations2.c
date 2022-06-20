@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:03:50 by majacqua          #+#    #+#             */
-/*   Updated: 2022/05/31 19:36:37 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:26:56 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ float	vec_scal_prod(float angle, t_vect projected)
 {
 	float	alfa;
 
-	alfa = to_rad(angle) - to_rad(projected.angle);
+	alfa = deg_to_rad(angle) - deg_to_rad(projected.angle);
 	return (projected.dist * cosf(alfa));
 }
