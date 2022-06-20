@@ -1,13 +1,19 @@
+
+
 SO            ./src/assets/anime/so.xpm
-NO ./src/assets/anime/no.xpm
-WE ./src/assets/anime/we.xpm
-EA ./src/assets/anime/ea.xpm
+
 F 5,216,10
+
+NO ./src/assets/anime/no.xpm
+
+WE ./src/assets/anime/we.xpm
+
+EA ./src/assets/anime/ea.xpm
 C            0,87,184
 
 111111111111111
-1S00011110000011111
+1000011110000011111
 1000000000000000001
-1000000000000000001
+100000W000000000001
 1000000000000011111
 111111111111111

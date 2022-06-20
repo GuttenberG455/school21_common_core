@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:03:50 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/16 12:27:30 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:54:20 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char *get_grid_line(t_map *map, char *str)
 {
 	char *res;
-	int i;
+	unsigned int i;
 	
 	i = 0;
 	res = ft_zalloc(map->width + 1);
@@ -34,8 +34,8 @@ char *get_grid_line(t_map *map, char *str)
 
 void get_grid(t_map *map, int fd)
 {
-	int i;
-	int j;
+	unsigned int i;
+	unsigned int j;
 	
 	i = 0;
 	map->grid = ft_zalloc(sizeof(char *) * map->height + 1);
@@ -56,7 +56,7 @@ void get_grid(t_map *map, int fd)
 	}
 }
 
-int check_neighbors(t_map *map, int i, int j)
+int check_neighbors(t_map *map, unsigned int i, unsigned int j)
 {
 	if (i == 0 || j == 0) 
 		if (ft_strchr("0SNWE", map->grid[i][j]))

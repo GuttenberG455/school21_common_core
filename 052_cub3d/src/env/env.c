@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:37:51 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/17 13:40:26 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:52:55 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ float	get_angle(char ch)
 t_vect create_player(t_map *map, t_env *env)
 {
 	t_vect player;
-	int i;
-	int j;
+	unsigned int i;
+	unsigned int j;
 
 	i = 0;
 	player.x = -1;
@@ -79,7 +79,7 @@ t_vect create_player(t_map *map, t_env *env)
 // DELETE
 void	print_map(t_map *map)
 {
-	int i;
+	unsigned int i;
 	
 	printf("no_path -[%s]\n", map->no_path);
 	printf("so_path -[%s]\n", map->so_path);

@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:52:02 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/16 16:15:40 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:52:04 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	close_game(t_env *env)
 	free_img(env->mlx, env->map->we_img);
 	free_img(env->mlx, env->map->ea_img);
 	mlx_destroy_window(env->mlx, env->win);
-	// ft_free();
+	ft_free();
 	exit (EXIT_SUCCESS);
 }
 
@@ -46,7 +46,7 @@ t_vect	make_step(t_env *env, int dir_x, int dir_y)
 
 int	key_press(int keycode, t_env *env)
 {
-	printf("Angle - [%f] Position - [%fx%f] Dist= \n", env->player.angle, env->player.x, env->player.y);
+	// printf("Angle - [%f] Position - [%fx%f] Dist= \n", env->player.angle, env->player.x, env->player.y);
 	if (keycode == W_KEY || keycode == UP_KEY) // шаги
 		env->player = make_step(env, -1, 1);
 	if (keycode == S_KEY || keycode == DOWN_KEY)

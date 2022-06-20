@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:54:34 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/17 16:20:55 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:37:55 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_column
 	float	wall_height;
 	int		top;
 	int		bot;
-	int		col;
+	int		x_pos;
 }	t_column;
 
 
@@ -66,7 +66,7 @@ t_img	*new_img_xpm(void *mlx, char *path);
 t_vect	**raycasting(t_env *env);
 void	free_img(void *mlx, t_img *img);
 void	render_walls(t_env *env, t_vect **rays, t_img *img);
-void	put_pixel(t_img *img, int x, int y, int color);
+void	put_pixel(t_img *img, int x, int y, int x_pos);
 int		get_pixel(t_img *img, int x, int y);
 
 // MINIMAP
