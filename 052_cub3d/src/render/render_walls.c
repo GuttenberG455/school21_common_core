@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:34:50 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/20 15:33:42 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/22 12:38:45 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	get_wall_type(t_vect *ray)
 {
 	float	diff;
 
-	ray->x = roundf(ray->x * 100000) / 100000;
-	ray->y = roundf(ray->y * 100000) / 100000;
+	ray->x = roundf(ray->x * 10000) / 10000;
+	ray->y = roundf(ray->y * 10000) / 10000;
 	if (ray->angle > PI * 2)
 		ray->angle -= PI * 2;
 	if (ray->angle < 0)
