@@ -6,7 +6,7 @@
 /*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 15:13:15 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/16 15:56:10 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/06/22 12:44:31 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # define RES_X		1280	
 # define RES_Y		800
-# define STEP_SIZE	0.3
-# define ROTATE_ANG 0.05
+# define STEP_SIZE	0.15
+# define ROTATE_ANG 0.03
 # define PI			3.14159
 
 
