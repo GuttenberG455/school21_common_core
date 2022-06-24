@@ -4,9 +4,9 @@ A nine small projects that introduce us to OOP and C++ covering topics from С++
 
 ---
 ## List of projects:
-* ### Module 00: C++ basics (3/3 ☑️)
+* ### Module 00: C++ basics (3/3 ✅)
 Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff
-* ### Module 01: C++ basics (🔜)
+* ### Module 01: C++ basics (2/7 🔜)
 Memory allocation, pointers to members, references, switch statement
 * ### Module 02:  (🔜)
 Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form
