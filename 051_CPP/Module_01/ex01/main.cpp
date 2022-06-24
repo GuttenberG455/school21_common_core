@@ -6,7 +6,7 @@ Zombie* zombieHorde( int N, std::string name );
 int main()
 {
     int N = 13;
-    Zombie *Horde = zombieHorde(N, "Zombik");
+    Zombie *Horde = zombieHorde(N, "Zombik");   // TODO Проверить деструктор
     if (Horde == NULL)
         return (EXIT_FAILURE);
     for (int i =0; i<N; ++i)

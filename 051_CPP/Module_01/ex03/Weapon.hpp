@@ -1,9 +1,6 @@
-//
-// Created by Manhack Jacqualine on 6/22/22.
-//
 
-#ifndef MODULE_01_WEAPON_HPP
-#define MODULE_01_WEAPON_HPP
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
 
 #include <iostream>
 #include <string>
@@ -14,12 +11,11 @@ private:
     std::string _type;
 
 public:
-    Weapon(std::string);
-    virtual ~Weapon();
+    Weapon(std::string type);
+    ~Weapon();
 
-    std::string getType();
-    void setType(std::string type);
+    const std::string &getType();
+    void setType(const std::string type);
 };
 
-
-#endif //MODULE_01_WEAPON_HPP
+#endif

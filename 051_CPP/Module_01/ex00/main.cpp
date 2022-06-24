@@ -13,7 +13,7 @@ int main()
     zombie2->announce();
 
     randomChump("Gogi");
-    randomChump("Bobby");
+    randomChump("Nani");
 
     delete zombie2;
 
