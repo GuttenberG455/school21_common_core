@@ -19,7 +19,8 @@ You have to implement two classes:
   - It has an array of contacts.
   - It can store a maximum of 8 contacts. If the user tries to add a 9th contact, replace the oldest one by the new one.
 - Contact
-  - Stands for a phonebook contact.
+  - Stands for a phonebook contact. </br>
+
 On program start-up, the phonebook is empty and the user is prompted to enter one
 of three commands. The program only accepts ADD, SEARCH and EXIT.
 - ADD: save a new contact
