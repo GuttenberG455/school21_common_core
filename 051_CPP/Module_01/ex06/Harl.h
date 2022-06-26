@@ -12,12 +12,18 @@ private:
     void warning(void);
     void error(void);
 
+    enum lvl {
+        DEBUG = 1,
+        INFO,
+        WARNING,
+        ERROR,
+    };
+
 public:
     Harl();
     ~Harl();
 
     void complain(std::string level);
-
 };
 
 

@@ -26,14 +26,28 @@ void Harl::error() {
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void Harl::complain(std::string level) {
-    void (Harl::*functionPool[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-    std::string inputPool[] = {"debug", "info", "warning", "error"};
+int getLvl(std::string const &l) {
+    std::string const pool[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    for (int i = 0; i < 4; ++i)
+        if (pool[i] == l)
+            return i;
+    return -1;
+}
 
-    for (int i = 0; i < 4; i++) {
-        if (level == inputPool[i]) {
-            void (Harl::*function)(void) = functionPool[i];
-            (this->*function)();
-        }
+void Harl::complain(std::string level) {
+
+    switch (getLvl(level)) {
+        case 0:
+            this->debug();
+        case 1:
+            this->info();
+        case 2:
+            this->warning();
+        case 3:
+            this->error();
+            break;
+        default:
+            std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+            break;
     }
 }

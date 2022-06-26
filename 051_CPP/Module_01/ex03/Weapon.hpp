@@ -6,7 +6,7 @@
 #include <string>
 
 
-class Weapon{
+class Weapon {
 private:
     std::string _type;
 
