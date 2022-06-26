@@ -4,9 +4,9 @@ A nine small projects that introduce us to OOP and C++ covering topics from С++
 
 ---
 ## List of projects:
-* ### Module 00: C++ basics (3/3 ✅)
+* ### Module 00: C++ basics (3/3 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_00))
 Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff
-* ### Module 01: C++ basics (2/7 🔜)
+* ### Module 01: C++ basics (7/7 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_01))
 Memory allocation, pointers to members, references, switch statement
 * ### Module 02:  (🔜)
 Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form
