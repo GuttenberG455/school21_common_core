@@ -48,9 +48,41 @@ And then:
 
 * ### ex03: Unnecessary violence
 
+Implement a Weapon class that has:
+	- A private attribute type, which is a string.
+	- A *getType()* member function that returns a const reference to type.
+	- A *setType()* member function that sets type using the new one passed as parameter.
+Now, create two classes: HumanA and HumanB. They both have a Weapon and a
+name. They also have a member function attack() that displays (of course, without the
+angle brackets):
+
+`<name> attacks with their <weapon type>`
+
+HumanA and HumanB are almost the same except for these two tiny details:
+	- While *HumanA* takes the Weapon in its constructor, *HumanB* doesn’t.
+	- *HumanB* may not always have a *Weapon*, whereas *HumanA* will always be armed.
+
 * ### ex04: Sed is for losers
+
+Create a program that takes three parameters in the following order: a filename and two strings, s1 and s2.
+It will open the file <filename> and copies its content into a new file <filename>.replace, replacing every occurrence of s1 with s2.
 
 * ### ex05: Harl 2.0
 
+You have to create a Harl class with the following private member functions:
+	- void debug( void );
+	- void info( void );
+	- void warning( void );
+	- void error( void );
+Harl also has a public member function that calls the four member functions above
+depending on the level passed as parameter:
+
+`void complain( std::string level );`
+
+The goal of this exercise is to use pointers to member functions. Harl has to complain without using a forest of if/else if/else. 
+
 * ### ex06: Harl filter
+
+Create a program that takes as parameter one of the four levels. It will display all
+messages from this level and above. You must use, the switch statement in this exercise.
 
