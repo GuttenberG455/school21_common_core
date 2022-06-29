@@ -4,11 +4,10 @@
 
 int main(void) {
 
-    Point obj;
-    Point const point(Fixed(17), Fixed(3));
-    Point const a(Fixed(17), Fixed(17));
-    Point const b(Fixed(11), Fixed(1));
-    Point const c(Fixed(2), Fixed(2));
+    Point const point(Fixed(1), Fixed(1));
+    Point const a(Fixed(10), Fixed(10));
+    Point const b(Fixed(10), Fixed(20));
+    Point const c(Fixed(20), Fixed(10));
 
     if (bsp(a, b, c, point))
         std::cout << "Point is inside the triangle" << std::endl;
