@@ -1,11 +1,13 @@
 SRCS	= main.cpp \
 		ClapTrap.cpp \
 		ScavTrap.cpp \
-		FragTrap.cpp
+		FragTrap.cpp \
+		DiamondTrap.cpp
 
 HEADERS = ClapTrap.hpp \
 		ScavTrap.hpp \
-		FragTrap.hpp
+		FragTrap.hpp \
+		DiamondTrap.hpp
 
 OBJS	= $(SRCS:.cpp=.o)
 

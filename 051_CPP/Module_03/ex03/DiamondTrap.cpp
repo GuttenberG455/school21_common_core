@@ -2,7 +2,10 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap() {
-
+    std::cout << "New DiamondTrap constructed" << std::endl;
+    this->_hitPoints = FragTrap::_hitPoints;
+    this->_energyPoints = ScavTrap::_energyPoints;
+    this->_attackDamage = FragTrap::_attackDamage;
 }
 
 DiamondTrap::DiamondTrap(std::string name) {
@@ -10,20 +13,20 @@ DiamondTrap::DiamondTrap(std::string name) {
     this->_name = name;
     this->ClapTrap::_name = name + "_clap_name";
     this->_hitPoints = FragTrap::_hitPoints;
-    this->_energyPoints = 50; // TODO I am here now
-    this->_attackDamage = 20;
+    this->_energyPoints = ScavTrap::_energyPoints;
+    this->_attackDamage = FragTrap::_attackDamage;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap const &old) :
-        ClapTrap(clap), ScavTrap(clap.name), FragTrap(clap.name) {
-    this->name = clap.name;
-    this->hitpoints = clap.hitpoints;
-    this->energy = clap.energy;
-    this->attack_damage = clap.attack_damage;
+DiamondTrap::DiamondTrap(DiamondTrap const &clap) :
+        ClapTrap(clap), ScavTrap(clap._name), FragTrap(clap._name) {
+    this->_name = clap._name;
+    this->_hitPoints = clap._hitPoints;
+    this->_energyPoints = clap._energyPoints;
+    this->_attackDamage = clap._attackDamage;
 }
 
 DiamondTrap::~DiamondTrap() {
-    std::cout << "DiamondTrap '" << _name << "' was destructed" << std::endl
+    std::cout << "DiamondTrap was destructed" << std::endl;
 }
 
 DiamondTrap &DiamondTrap::operator=(DiamondTrap const &old) {
@@ -35,10 +38,10 @@ DiamondTrap &DiamondTrap::operator=(DiamondTrap const &old) {
     return (*this);
 }
 
-void DiamondTrap::attack(const int &target) {
+void DiamondTrap::attack(const std::string &target) {
     this->ScavTrap::attack(target);
 }
 
 void DiamondTrap::whoAmI(void) {
-    std::cout << "My Diamond name is: " << _name << " and my Clap name is: " << this->ClapTrap::_name << std::endl;
+    std::cout << "My Diamond name is " << _name << " and my Clap name is " << this->ClapTrap::_name << std::endl;
 }
