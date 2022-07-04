@@ -10,7 +10,7 @@ Namespaces, classes, member functions, stdio streams, initialization lists, stat
 Memory allocation, pointers to members, references, switch statement
 * ### Module 02: Orthodox Canonical class form  (4/4 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_02))
 Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form
-* ### Module 03: Inheritance (1/4 🔜) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_03))
+* ### Module 03: Inheritance (4/4 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_03))
 Inheritance
 * ### Module 04: OOP (🔜)
 Subtype polymorphism, abstract classes, interfaces
