@@ -14,6 +14,8 @@ int main()
     j->makeSound();
     meta->makeSound();
 
+    std::cout << std::endl;
+
     const WrongAnimal* wrong_meta = new WrongAnimal();
     const WrongAnimal* wrong_cat = new WrongCat();
 

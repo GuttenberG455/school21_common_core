@@ -12,7 +12,8 @@ int main() {
             animals[i] = new Dog();
         else
             animals[i] = new Cat();
-        std::cout <<  std::endl;
+
+        std::cout << std::endl;
     }
 
     std::cout << "\nGETTING IDEAS\n";
@@ -36,5 +37,8 @@ int main() {
         delete animals[i];
         std::cout <<  std::endl;
     }
+
+//    Animal animal; // Animal is abstract class, this code doesn't work
+
     return 0;
 }
