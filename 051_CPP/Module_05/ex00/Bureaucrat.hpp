@@ -17,8 +17,17 @@ public:
 
      std::string getName(void) const;
      int getGrade(void) const;
-     void setName(std::string const name);
      void setGrade(int const grade);
+
+	 void incrementGrade(void);
+	 void decrementGrade(void);
+
+	 class GradeTooHighException: public std::exception {
+		virtual const char* what() const throw();
+	};
+	class GradeTooLowException: public std::exception {
+		virtual const char* what() const throw();
+	};
 
      Bureaucrat &operator=(Bureaucrat const &old);
 
