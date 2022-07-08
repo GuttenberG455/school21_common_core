@@ -12,9 +12,9 @@ Memory allocation, pointers to members, references, switch statement
 Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form
 * ### Module 03: Inheritance (4/4 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_03))
 Inheritance
-* ### Module 04: OOP (🔜)
+* ### Module 04: Polymorphism (3/4 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_04))
 Subtype polymorphism, abstract classes, interfaces
-* ### Module 05: Exceptions(🔜)
+* ### Module 05: Exceptions(1/4 🔜)
 Repetition and Exceptions
 * ### Module 06:  (🔜)
 C++ casts
