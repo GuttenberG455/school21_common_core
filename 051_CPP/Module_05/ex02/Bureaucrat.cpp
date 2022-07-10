@@ -11,13 +11,10 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
     }
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &old) {
-    this->_grade = old._grade;
+Bureaucrat::Bureaucrat(Bureaucrat const &old) : _name(old._name), _grade(old._grade) {
 }
 
-Bureaucrat::~Bureaucrat() {
-    std::cout << "Bureaucrat " << this->_name << " was found dead. RIP" << std::endl;
-}
+Bureaucrat::~Bureaucrat() {}
 
 std::string Bureaucrat::getName() const {
     return (this->_name);
@@ -56,12 +53,37 @@ void Bureaucrat::decrementGrade() {
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-    return "Bureaucrat.GradeTooHighException: Grade too high.";
+    return "Bureaucrat.GradeTooHighException: Grade too High.";
 }
 
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Bureaucrat.GradeTooLowException: Grade too low.";
+    return "Bureaucrat.GradeTooLowException: Grade too Low.";
+}
+
+void Bureaucrat::signForm(Form &form) {
+    if (this->_grade <= form.getSignGrade())
+        std::cout << this->getName() << " signed " << form.getName() << std::endl;
+    else
+        std::cout << this->getName() << " couldn’t sign " << form.getName()
+        << " because his grade is too Low" << std::endl;
+    form.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(Form const &form)
+{
+    if (!form.getSignStatus()) {
+        std::cout << this->getName() << " cannot execute " << form
+                  << " because the form is unsigned." << std::endl;
+    }
+    else if (form.getExecGrade() < this->_grade) {
+        std::cout << this->getName() << " cannot execute " << form
+                  << " because his grade is too low." << std::endl;
+    }
+    else {
+        std::cout << *this << " executes " << form << std::endl;
+    }
+    form.execute(*this);
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &bur) {

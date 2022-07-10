@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <string>
+class Bureaucrat;
+#include "Form.hpp"
 
 class Bureaucrat {
 private:
@@ -31,6 +33,7 @@ public:
 
     Bureaucrat &operator=(Bureaucrat const &old);
 
+    void signForm(Form &form);
 };
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &bur);
