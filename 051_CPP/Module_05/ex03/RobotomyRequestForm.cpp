@@ -19,3 +19,7 @@ void RobotomyRequestForm::execute(const Bureaucrat &bur) const {
     else
         std::cout << this->_target << " has not been robotomized. Mission failed" << std::endl;
 }
+
+Form *RobotomyRequestForm::create(std::string const target) {
+    return new RobotomyRequestForm(target);
+}

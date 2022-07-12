@@ -49,3 +49,8 @@ void ShrubberyCreationForm::execute(const Bureaucrat &bur) const {
                "                          ...;%@@@@@%%:;;;;,.." << std::endl;
     outfile.close();
 }
+
+
+Form *ShrubberyCreationForm::create(std::string const target) {
+    return new ShrubberyCreationForm(target);
+}

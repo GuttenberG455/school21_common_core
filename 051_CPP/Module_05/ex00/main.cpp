@@ -4,6 +4,14 @@
 int main() {
     Bureaucrat bur1("Joe", 150);
     Bureaucrat bur2("Vito", 1);
+//    Bureaucrat bur3(bur1);
+//    Bureaucrat bur4 = bur2;
+
+//    std::cout << bur1;
+//    std::cout << bur2;
+//    std::cout << bur3;
+//    std::cout << bur4;
+
 
     std::cout << bur1;
     bur1.incrementGrade();

@@ -2,6 +2,7 @@
 #include "Intern.hpp"
 
 int main() {
+    srand(time(NULL));
     Intern intern;
 
     Form *form_schr = intern.makeForm("Shrubbery Creation", "Target1");
@@ -16,7 +17,6 @@ int main() {
 
     bur.signForm(*form_pres);
     bur.executeForm(*form_pres);
-
 
     bur.signForm(*form_rob);
     bur.executeForm(*form_rob);

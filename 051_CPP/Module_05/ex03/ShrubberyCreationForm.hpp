@@ -16,6 +16,8 @@ public:
     ShrubberyCreationForm &operator=(ShrubberyCreationForm const &old);
 
     void execute(Bureaucrat const &bur) const;
+    static Form *create(std::string const target);
+
 };
 
 

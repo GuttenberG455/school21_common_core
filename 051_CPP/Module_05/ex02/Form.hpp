@@ -34,7 +34,7 @@ public:
     Form &operator=(Form const &old);
 
     void beSigned(Bureaucrat const &bur);
-    virtual void execute(Bureaucrat const &bur) const;
+    virtual void execute(Bureaucrat const &executor) const;
 };
 
 std::ostream &operator<<(std::ostream &out, Form const &form);

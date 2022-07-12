@@ -10,13 +10,13 @@ const std::string Intern::_forms[3] = {
 Intern::Intern() {}
 
 Intern::Intern(const Intern &old) {
-    (void)old;
+    (void) old;
 }
 
 Intern::~Intern() {}
 
 Intern &Intern::operator=(const Intern &old) {
-    (void)old;
+    (void) old;
     return (*this);
 }
 
@@ -25,25 +25,15 @@ const char *Intern::WrongFormException::what() const throw() {
 }
 
 Form *Intern::makeForm(std::string formName, std::string target) {
-    int form_type = -1;
+    Form *(*functionPool[3])(std::string const target) = {
+            &ShrubberyCreationForm::create,
+            &RobotomyRequestForm::create,
+            &PresidentialPardonForm::create
+    };
     for (int i = 0; i < 3; i++) {
         if (formName == Intern::_forms[i]) {
-            form_type = i;
-            break;
+            return functionPool[i](target);
         }
     }
-    switch (form_type) {
-        case 0:
-            return new ShrubberyCreationForm(target);
-            break;
-        case 1:
-            return new RobotomyRequestForm(target);
-            break;
-        case 2:
-            return new PresidentialPardonForm(target);
-            break;
-        default:
-            throw Intern::WrongFormException();
-            break;
-    }
+    throw Intern::WrongFormException();
 }

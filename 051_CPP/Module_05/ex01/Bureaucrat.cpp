@@ -64,12 +64,14 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 }
 
 void Bureaucrat::signForm(Form &form) {
-    if (this->_grade <= form.getSignGrade())
-        std::cout << this->getName() << " signed " << form.getName() << std::endl;
-    else
-        std::cout << this->getName() << " couldn’t sign " << form.getName()
-        << " because his grade is too Low" << std::endl;
-    form.beSigned(*this);
+    if (!form.getSignStatus()) {
+        if (this->_grade <= form.getSignGrade())
+            std::cout << this->getName() << " signed " << form.getName() << std::endl;
+        else
+            std::cout << this->getName() << " couldn’t sign " << form.getName()
+                      << " because his grade is too Low" << std::endl;
+        form.beSigned(*this);
+    }
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &bur) {

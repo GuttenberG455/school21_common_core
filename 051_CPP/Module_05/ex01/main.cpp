@@ -2,7 +2,7 @@
 #include "Form.hpp"
 
 int main() {
-    Bureaucrat bur1("Polly", 100);
+    Bureaucrat bur1("Polly", 150);
     Form form1("Car rent", 50, 120);
 
     try {
@@ -21,7 +21,6 @@ int main() {
     bur2.signForm(form2);
     std::cout << form2;
 
-
     std::cout << std::endl;
 
     try {
@@ -30,8 +29,6 @@ int main() {
     catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
-
-    std::cout << std::endl;
 
     return 0;
 }

@@ -11,7 +11,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
     }
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &old) {
+Bureaucrat::Bureaucrat(Bureaucrat const &old) : _name(old._name) {
     this->_grade = old._grade;
 }
 

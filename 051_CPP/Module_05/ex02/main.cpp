@@ -4,6 +4,7 @@
 #include "PresidentialPardonForm.hpp"
 
 int main() {
+    srand(time(NULL));
     Bureaucrat bur1("Polly", 100);
     ShrubberyCreationForm form_shr("Tree"); // 145, 137
 
@@ -20,7 +21,7 @@ int main() {
 
     try {
         bur2.signForm(form_rob);
-        form_rob.execute(bur2);
+        bur2.executeForm(form_rob);
     }
     catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
@@ -32,7 +33,7 @@ int main() {
 
     try {
         bur3.signForm(form_pres);
-        form_pres.execute(bur3);
+        bur3.executeForm(form_pres);
     }
     catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
