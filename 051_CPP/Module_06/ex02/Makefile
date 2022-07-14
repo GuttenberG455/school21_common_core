@@ -1,20 +1,16 @@
 SRCS	= main.cpp \
-		Converter.cpp
-
-HEADERS = Converter.hpp
 
 OBJS	= $(SRCS:.cpp=.o)
 
-NAME	= convert
+NAME	= out
 
 CXX		= c++
-#FLAGS	= -Wall -Wextra -Werror -std=c++98
-FLAGS	= -std=c++98
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS) $(HEADERS)
+$(NAME):	$(OBJS)
 		$(CXX) $(OBJS) -o $(NAME)
 
 %.o:		%.cpp Makefile

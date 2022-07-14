@@ -9,9 +9,7 @@ int main(int argc, char **argv) {
     }
     Converter converter(argv[1]);
 
-    std::cout << "Input - " << converter.getInput() << std::endl;
-
-    converter.printAll();
+    converter.print();
 
     return (0);
 }
