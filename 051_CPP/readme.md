@@ -16,9 +16,9 @@ Inheritance
 Subtype polymorphism, abstract classes, interfaces
 * ### Module 05: Exceptions(4/4 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_05))
 Repetition and Exceptions
-* ### Module 06: C++ casts (3/3 🔜) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_06))
+* ### Module 06: C++ casts (3/3 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_06))
 Type Casting operators
-* ### Module 07:  (🔜)
-C++ templates
+* ### Module 07: C++ templates (🔜)
+C++ templates basics
 * ### Module 08: (🔜)
 Templated containers, iterators, algorithms
