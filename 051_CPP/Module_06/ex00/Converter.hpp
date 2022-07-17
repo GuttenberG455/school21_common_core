@@ -5,10 +5,8 @@
 # include <iostream>
 # include <sstream>
 # include <string>
-
 # include <cctype>
 # include <cmath>
-# include <limits>
 
 # define CHAR_TYPE 0
 # define INT_TYPE 1
@@ -35,6 +33,7 @@ private:
     void printPseudo();
     void printAll();
     void convertAll();
+    int checkEnding();
 public:
     Converter(char *argv);
     Converter(Converter const &old);

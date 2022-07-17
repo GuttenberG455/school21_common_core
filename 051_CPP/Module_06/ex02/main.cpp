@@ -64,21 +64,21 @@ void identify(Base &p) {
 int main() {
     srand(time(NULL));
 
-    Base *a1 = generate();
-    Base *a2 = generate();
+    Base *base1 = generate();
+    Base *base2 = generate();
 
-    Base *b1 = generate();
-    Base *b2 = generate();
+    Base *base3 = generate();
+    Base *base4 = generate();
 
     std::cout << "Using pointer" << std::endl;
 
-    identify(a1);
-    identify(a2);
+    identify(base1);
+    identify(base2);
 
-    std::cout << std::endl << "Without pointer" << std::endl;
+    std::cout << std::endl << "Using reference" << std::endl;
 
-    identify(*b1);
-    identify(*b2);
+    identify(*base3);
+    identify(*base4);
 
     D *d = new D;
 
@@ -88,10 +88,11 @@ int main() {
     identify(*d);
 
 
-    delete a1;
-    delete a2;
-    delete b1;
-    delete b2;
+    delete base1;
+    delete base2;
+    delete base3;
+    delete base4;
+    delete d;
 
     return (0);
 }
