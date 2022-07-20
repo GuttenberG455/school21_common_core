@@ -1,6 +1,6 @@
 # C++ Module
 
-A nine small projects that introduce us to OOP and C++ covering topics from С++ Basics (variable types, classes, inheritance, encapsulation).
+A nine small projects that introduce us to OOP and C++ covering С++ Basics: variable types, classes, OOP, templates, containers.
 
 ---
 ## List of projects:
@@ -18,7 +18,7 @@ Subtype polymorphism, abstract classes, interfaces
 Repetition and Exceptions
 * ### Module 06: C++ casts (3/3 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_06))
 Type Casting operators
-* ### Module 07: C++ templates (🔜)
+* ### Module 07: Templates (3/3 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_07))
 C++ templates basics
-* ### Module 08: (🔜)
+* ### Module 08: Containers (0/3 🔜)
 Templated containers, iterators, algorithms
