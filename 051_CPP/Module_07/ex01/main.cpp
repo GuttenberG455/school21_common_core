@@ -20,6 +20,6 @@ int	main() {
 
     std::cout << std::endl;
 
-    std::string arr3[] = {"cow", "bear", "horse"};
-    iter(arr3, 3, printKo);
+    std::string arr3[] = {"cow", "bear", "horse", "duck"};
+    iter(arr3, 4, printKo);
 }
