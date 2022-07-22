@@ -1,7 +1,6 @@
-SRCS	= main.cpp \
-		Span.cpp
+SRCS	= main.cpp
 
-HEADERS = Span.hpp
+HEADERS = MutantStack.hpp
 
 OBJS	= $(SRCS:.cpp=.o)
 

@@ -18,14 +18,18 @@ public:
 
     Span &operator=(Span const &old);
 
-    void addNumber(int const num); // TODO
-
-    int shortestSpan(void); // TODO
-    int longestSpan(void); // TODO
-
     class NumLimitException: public std::exception {
         virtual const char* what() const throw();
     };
+
+    class TooFewNumsException: public std::exception {
+        virtual const char* what() const throw();
+    };
+
+    void addNumber(int const num);
+    void addNumber(std::vector<int>::iterator const &start, std::vector<int>::iterator const &end);
+    int shortestSpan(void);
+    int longestSpan(void);
 
 
 };
