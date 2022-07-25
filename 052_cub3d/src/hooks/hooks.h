@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: rtwitch <rtwitch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:22:38 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/16 14:42:46 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:34:09 by rtwitch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HOOKS_H
-#define HOOKS_H
+# define HOOKS_H
 
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
@@ -34,7 +34,6 @@
 # define DOWN_KEY	125
 # define UP_KEY		126
 
-		
 # define KEYHOLD	2
 # define CLOSE_WIND	17
 

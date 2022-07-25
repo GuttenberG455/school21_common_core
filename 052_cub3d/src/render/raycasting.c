@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: rtwitch <rtwitch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 15:29:44 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/17 16:20:23 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:37:16 by rtwitch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_vect	get_ray(t_env *env, t_vect dir)
 
 	ft_bzero(&rc, sizeof(t_raycast));		// обнуляем
 	ft_bzero(&wall_hit, sizeof(t_vect));	// 
-	init_ray(env, &rc, dir);	
+	init_ray(env, &rc, dir);
 	find_wall(env, &rc);
 	if (rc.is_wall_found == 1) // если нашли стену
 	{
@@ -80,7 +80,7 @@ t_vect	get_ray(t_env *env, t_vect dir)
 	return (wall_hit);	// возвращаем точку попадания
 }
 
-t_vect **raycasting(t_env *env)
+t_vect	**raycasting(t_env *env)
 {
 	t_vect	**rays;
 	t_vect	*ray;
@@ -101,5 +101,5 @@ t_vect **raycasting(t_env *env)
 		cur_angle += step; // идем дальше
 		i++;	// идем дальше
 	}
-	return (rays); 
+	return (rays);
 }

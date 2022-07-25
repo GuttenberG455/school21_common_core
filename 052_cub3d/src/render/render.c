@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: rtwitch <rtwitch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:57:40 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/17 16:23:38 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:38:12 by rtwitch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
-void render(t_env *env)
+void	render(t_env *env)
 {
 	t_img	*frame;
 	t_vect	**rays;
@@ -28,5 +28,4 @@ void render(t_env *env)
 	while (i < RES_X)	// очищаем изображение
 		free(rays[i++]);
 	free(rays);
-	
 }

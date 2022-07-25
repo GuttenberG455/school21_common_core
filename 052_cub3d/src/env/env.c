@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: rtwitch <rtwitch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:37:51 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/20 12:52:55 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:33:27 by rtwitch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ float	get_angle(char ch)
 	return (0);
 }
 
-t_vect create_player(t_map *map, t_env *env)
+t_vect	create_player(t_map *map, t_env *env)
 {
-	t_vect player;
-	unsigned int i;
-	unsigned int j;
+	t_vect			player;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	player.x = -1;
@@ -63,7 +63,6 @@ t_vect create_player(t_map *map, t_env *env)
 				player.y = i * env->size + env->size / 2; // позиция игрока сразу в координатах
 				player.x = j * env->size + env->size / 2;
 				player.angle = get_angle(map->grid[i][j]); // узнать в какую сторон смотрит игрок изначально
-				printf("[%c][%f][%f] Ang - %f\n", map->grid[i][j], player.x, player.y, player.angle); // DEL
 				map->grid[i][j] = '0'; // Обнуляем позицию
 			}
 			j++;
@@ -72,7 +71,6 @@ t_vect create_player(t_map *map, t_env *env)
 	}
 	if (player.x == -1)
 		err_exit("Error!/n No player's position on the map");
-	print_player(player); // DEL
 	return (player);
 }
 

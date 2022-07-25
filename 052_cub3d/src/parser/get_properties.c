@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_properties.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: rtwitch <rtwitch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:43:12 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/16 14:33:29 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:36:32 by rtwitch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 size_t	get_word_count(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!array)
 		return (i);
 	while (array[i])
 		i++;
-	return (i);	
+	return (i);
 }
 
-int get_color(char *str)
+int	get_color(char *str)
 {
-	int color = 0;
-	char **rgb;
+	int		color;
+	char	**rgb;
 
+	color = 0;
 	rgb = ft_split(str, ',');
 	if (get_word_count(rgb) != 3)
 		err_exit("Error!\nWrong rgb colors");
@@ -37,16 +38,16 @@ int get_color(char *str)
 		(ft_atoi(rgb[0]) == 0 && rgb[0][0] != '0') ||
 		(ft_atoi(rgb[1]) == 0 && rgb[1][0] != '0') ||
 		(ft_atoi(rgb[2]) == 0 && rgb[2][0] != '0'))
-			err_exit("Error!\nWrong colors");
+		err_exit("Error!\nWrong colors");
 	color = ft_atoi(rgb[0]);
 	color = (color << 8) + ft_atoi(rgb[1]);
 	color = (color << 8) + ft_atoi(rgb[2]);
-	return color;
+	return (color);
 }
 
-void add_property(t_map *map, char **prop)
+void	add_property(t_map *map, char **prop)
 {
-	if (!prop || !prop[0] || !prop[1])
+	if (!prop || !prop[0] || !prop[1] || prop[2])
 		err_exit("Error!\nWrong properties input");
 	printf("prop:[%s][%s]\n", prop[0], prop[1]);
 	if (ft_strlen(prop[0]) == 2 && ft_strncmp(prop[0], "NO", 2) == 0)
@@ -81,11 +82,11 @@ void get_dimensions(t_map *map, int fd, char *first_lane)
 	map->height = i; 
 }
 
-void get_properties(t_map *map, int fd)
+void	get_properties(t_map *map, int fd)
 {
-	int i;
-	char *str;
-	
+	int		i;
+	char	*str;
+
 	i = 0;
 	str = ft_strtrim(ft_get_next_line(fd), " \n\t"); // убираем табы и \n
 	while (!is_filled(map) && str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: majacqua <majacqua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 16:25:32 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/17 13:41:09 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/07/25 13:07:52 by majacqua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "../vector/vector.h"
 # include "../const.h"
-# include "../libftv2/libftv2.h"
+# include "../libft/libft.h"
 # include "../error/error.h"
 
 typedef struct s_img	t_img;

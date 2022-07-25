@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: rtwitch <rtwitch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:54:34 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/20 13:37:55 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:38:19 by rtwitch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDER_H
-#define RENDER_H
+# define RENDER_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -21,7 +21,7 @@
 # include "../env/env.h"
 # include "../vector/vector.h"
 
-# include "../libftv2/libftv2.h"
+# include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
 typedef struct s_img	t_img;
@@ -57,8 +57,6 @@ typedef struct s_column
 	int		bot;
 	int		x_pos;
 }	t_column;
-
-
 
 void	render(t_env *env);
 t_img	*new_img(void *mlx);

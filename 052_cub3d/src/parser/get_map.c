@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: rtwitch <rtwitch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:03:50 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/20 12:54:20 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:35:32 by rtwitch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-char *get_grid_line(t_map *map, char *str)
+char	*get_grid_line(t_map *map, char *str)
 {
-	char *res;
-	unsigned int i;
-	
+	char			*res;
+	unsigned int	i;
+
 	i = 0;
 	res = ft_zalloc(map->width + 1);
 	while (str[i])
@@ -32,11 +32,11 @@ char *get_grid_line(t_map *map, char *str)
 	return (res);
 }
 
-void get_grid(t_map *map, int fd)
+void	get_grid(t_map *map, int fd)
 {
-	unsigned int i;
-	unsigned int j;
-	
+	unsigned int	i;
+	unsigned int	j;
+
 	i = 0;
 	map->grid = ft_zalloc(sizeof(char *) * map->height + 1);
 	while (i < map->height)
@@ -56,12 +56,12 @@ void get_grid(t_map *map, int fd)
 	}
 }
 
-int check_neighbors(t_map *map, unsigned int i, unsigned int j)
+int	check_neighbors(t_map *map, unsigned int i, unsigned int j)
 {
-	if (i == 0 || j == 0) 
+	if (i == 0 || j == 0)
 		if (ft_strchr("0SNWE", map->grid[i][j]))
 			return (1);
-	if (i == map->height - 1 || j == map->width - 1) 
+	if (i == map->height - 1 || j == map->width - 1)
 		if (ft_strchr("0SNWE", map->grid[i][j]))
 			return (1);
 	if (!ft_strchr("01SNWE", map->grid[i-1][j]) ||
@@ -74,9 +74,9 @@ int check_neighbors(t_map *map, unsigned int i, unsigned int j)
 
 void	check_grid_borders(t_map *map)
 {
-	size_t i;
-	size_t j;
-	
+	size_t	i;
+	size_t	j;
+
 	i = 0;
 	while (i < map->height)
 	{
@@ -93,20 +93,20 @@ void	check_grid_borders(t_map *map)
 			}
 			j++;
 		}
-		i++;		
+		i++;
 	}
 }
 
 void	skip_unuseful_lines(t_map *map, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i++ < map->num_start_grid) // скипаем до поля
 		ft_get_next_line(fd);
 }
 
-t_map *get_map(char *filename)
+t_map	*get_map(char *filename)
 {
 	t_map	*map;
 	int		fd;

@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   check_properties.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: rtwitch <rtwitch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:49:58 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/16 14:37:32 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:34:39 by rtwitch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int is_filled(t_map *map)
+int	is_filled(t_map *map)
 {
 	if (!map->no_path || !map->so_path || !map->we_path || !map->ea_path)
 		return (0);
 	if (map->ceiling_color == -1 || map->floor_color == -1)
 		return (0);
-	printf("ZAPOLNENO\n"); // DEL
 	return (1);
 }
 

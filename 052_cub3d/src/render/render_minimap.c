@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: majacqua <majacqua@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: rtwitch <rtwitch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 15:51:25 by majacqua          #+#    #+#             */
-/*   Updated: 2022/06/17 16:48:52 by majacqua         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:37:33 by rtwitch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ float	get_scale_minimap(t_env *env)
 		max_width = (int)floorf(RES_X * MINI_MAP_W / 2);
 	while (max_width % env->map->width != 0)
 		max_width--;
-		
 	return ((float)max_width / (float)RES_X); // масштаб миникарты
 }
 
@@ -82,7 +81,7 @@ void	render_minimap(t_env *env, t_img *img)
 
 	i = 0;
 	scale = get_scale_minimap(env);	// получить масштаб миникарты
-	while (i < env->map->height)	
+	while (i < env->map->height)
 	{
 		j = 0;
 		while (j < ft_strlen(env->map->grid[i]))
