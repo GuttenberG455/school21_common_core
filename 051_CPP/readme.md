@@ -20,5 +20,5 @@ Repetition and Exceptions
 Type Casting operators
 * ### Module 07: Templates (3/3 ✅) ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP/Module_07))
 C++ templates basics
-* ### Module 08: Containers (0/3 🔜)
+* ### Module 08: Containers (3/3 ✅)
 Templated containers, iterators, algorithms
