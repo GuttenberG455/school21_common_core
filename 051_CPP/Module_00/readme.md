@@ -15,10 +15,10 @@ Program converts input parameter to uppercase.
 
 * ### ex01: My Awesome PhoneBook
 You have to implement two classes:
-- PhoneBook
-  - It has an array of contacts.
+- **PhoneBook**
+  - It has an array of *contacts*.
   - It can store a maximum of 8 contacts. If the user tries to add a 9th contact, replace the oldest one by the new one.
-- Contact
+- **Contact**
   - Stands for a phonebook contact. </br>
 
 On program start-up, the phonebook is empty and the user is prompted to enter one
