@@ -31,6 +31,7 @@ You have to handle these pseudo literals as well (you know, for science): -inff,
 and nanf.
 
 Examples of double literals: 0.0, -4.2, 4.2...
+
 You have to handle these pseudo literals as well (you know, for fun): -inf, +inf and nan.
 
 You have to first detect the type of the literal passed as parameter, convert it from
@@ -45,11 +46,11 @@ handle numeric limits and special values.
 
 Implement the following functions:
 
-*uintptr_t serialize(Data/* ptr);*
+*uintptr_t serialize(Data\* ptr);*
 
 It takes a *pointer* and converts it to the *unsigned integer type uintptr_t*.
 
-*Data/* deserialize(uintptr_t raw);*
+*Data\* deserialize(uintptr_t raw);*
 
 It takes an *unsigned integer parameter* and converts it to a *pointer* to **Data**.
 
@@ -68,11 +69,11 @@ classes **A**,**B** and **C**, that publicly inherit from **Base**.
 
 Implement the following functions:
 
-*Base /*generate(void);*
+*Base \*generate(void);*
 It randomly instanciates A, B or C and returns the instance as a Base pointer. Feel free
 to use anything you like for the random choice implementation.
 
-*void identify(Base/* p);*
+*void identify(Base\* p);*
 
 It prints the actual type of the object pointed to by p: "A", "B" or "C".
 
