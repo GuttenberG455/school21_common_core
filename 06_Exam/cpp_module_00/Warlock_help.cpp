@@ -1,4 +1,3 @@
-
 #include "Warlock_help.hpp"
 
 Warlock::Warlock(std::string name, std::string title) {
@@ -8,14 +7,22 @@ Warlock::Warlock(std::string name, std::string title) {
 }
 
 Warlock::~Warlock() {
-	    std::cout << name << ": My job here is done!" << std::endl;
- 
+    std::cout << name << ": My job here is done!" << std::endl;
+
 }
 
 std::string const &Warlock::getName(void) const {
-	return (this->name);
+    return (this->name);
 }
 
 std::string const &Warlock::getTitle(void) const {
-	return (this->title);
+    return (this->title);
+}
+
+void Warlock::setTitle(std::string title) {
+    this->title = title;
+}
+
+void Warlock::introduce() const {
+    std::cout << this->name << ": I am " << this->name << ", " << this->title << "!\n";
 }
