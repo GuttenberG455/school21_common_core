@@ -3,6 +3,7 @@
 #define ATARGET_HPP
 
 #include <iostream>
+#include "ASpell.hpp"
 
 class ASpell;
 
@@ -14,7 +15,7 @@ public:
     ATarget();
     ATarget(std::string const &type);
     ATarget(ATarget const &old);
-    ~ATarget();
+    virtual ~ATarget() ;
 
     ATarget &operator=(ATarget const &other);
     std::string const &getType(void) const;
