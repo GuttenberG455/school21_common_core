@@ -45,7 +45,7 @@ Skills: C (multithreading, multiprocessing, mutexes).
 
 * ### 3 minishell ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/040_minishell)):
 Creation a simple bash shell.
-Skills: C (processes, file desriptors, signals, redirects, pipes)
+Skills: C (processes, file descriptors, signals, redirects, pipes)
 
 * ### 3 Exam Rank 03 ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/04_Exam)): 
 Exam: parsing input file and printing the result in the terminal
