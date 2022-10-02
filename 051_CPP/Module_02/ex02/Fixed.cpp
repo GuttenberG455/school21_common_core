@@ -97,7 +97,7 @@ Fixed Fixed::operator++() {
 
 Fixed Fixed::operator--(int) {
     Fixed fixed(*this);
-    ++_value;
+    --_value;
     return fixed;
 }
 
