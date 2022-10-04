@@ -1,5 +1,5 @@
 
-#include "Warlock_help.hpp"
+#include "Warlock.hpp"
 
 int main()
 {
