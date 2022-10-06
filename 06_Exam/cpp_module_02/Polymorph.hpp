@@ -1,7 +1,7 @@
 
 #include "ASpell.hpp"
 
-class Polymorph {
+class Polymorph : public ASpell{
 public:
     Polymorph();
     ~Polymorph();
