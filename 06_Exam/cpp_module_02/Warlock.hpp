@@ -4,8 +4,9 @@
 
 #include <iostream>
 #include <map>
-#include "Dummy.hpp"
-#include "Fwoosh.hpp"
+#include "ASpell.hpp"
+#include "ATarget.hpp"
+#include "SpellBook.hpp"
 
 class Warlock {
 private:
