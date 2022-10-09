@@ -1,28 +1,39 @@
 
 # Common Core School 21 (Ecole 42)
 
-A general course of Ecole 42 covering topics from basic libraries to Containers using languages C and C++. Average duration of completing the common core projects: 12 - 16 months.
+A general course of Ecole 42 covering topics from basic libraries to Containers using languages C and C++. Average duration of completing the common core projects: 14 - 16 months.
 
-Currently: 13 / 20 complete
+Currently: 15 / 20 complete
 
 ---
 
-## Projects:
-* ### 0 Libft ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/010_libft)): 
-Coding a C library with highly useful standard functions. </br>
-Skills: C
+## Projects (from latest to oldest):
 
-* ### 1 ft_printf ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/021_printf)): 
-Recoding a printf() function.</br>
-Skills: C (variadic functions)
+* ### 4 CPP Module ([link]https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP)): 
+A nine small projects that introduce us to OOP and C++ </br> 
+Skills: C++ (basics, OOP)
 
-* ### 1 get_next_line ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/020_get_next_line)):  
-Creation function that returns a line read from a file descriptor.</br>
-Skills: C (static variables, file descriptors)
+* ### 4 cub3d ([link]https://github.com/GuttenberG455/school21_common_core/tree/main/052_cub3d)): 
+Creation a “realistic” 3D graphical representation of the inside of a maze from a first-person perspective. </br> 
+Skills: C (MiniLibX, raycasting)
 
-* ### 1 Born2beroot ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/022_born2beroot)): 
-Creation your first machine in VirtualBox under specific instructions.</br>
-Skills: Debian, Unix Shell, Network & system administration (SSH, UFW, password policy)
+* ### 4 NetPractice ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/050_Net_Practice)): 
+Configuration small-scale networks. </br> 
+Skills: TCP/IP addressing.
+
+* ### 4 Exam Rank 04 ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/05_Exam)): 
+Exam: short version of minishell (pipes)
+
+* ### 3 minishell ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/040_minishell)):
+Creation a simple bash shell.
+Skills: C (processes, file descriptors, signals, redirects, pipes)
+
+* ### 3 Philosophers ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/041_Philosophers)):
+Simulation a lifecycle of philosphers, their eating, sleeping and waiting states, using limited resources.</br>
+Skills: C (multithreading, multiprocessing, mutexes).
+
+* ### 3 Exam Rank 03 ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/04_Exam)): 
+Exam: parsing input file and printing the result in the terminal
 
 * ### 2 push_swap ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/030_push_swap)): 
 Sorting a list of integers using two stacks. </br>
@@ -39,20 +50,18 @@ Skills: C (MiniLibX)
 * ### 2 Exam Rank 02 ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/03_Exam)): 
 Exam: short version of get_next_line
 
-* ### 3 Philosophers ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/041_Philosophers)):
-Simulation a lifecycle of philosphers, their eating, sleeping and waiting states, using limited resources.</br>
-Skills: C (multithreading, multiprocessing, mutexes).
+* ### 1 Born2beroot ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/022_born2beroot)): 
+Creation your first machine in VirtualBox under specific instructions.</br>
+Skills: Debian, Unix Shell, Network & system administration (SSH, UFW, password policy)
 
-* ### 3 minishell ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/040_minishell)):
-Creation a simple bash shell.
-Skills: C (processes, file descriptors, signals, redirects, pipes)
+* ### 1 ft_printf ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/021_printf)): 
+Recoding a printf() function.</br>
+Skills: C (variadic functions)
 
-* ### 3 Exam Rank 03 ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/04_Exam)): 
-Exam: parsing input file and printing the result in the terminal
+* ### 1 get_next_line ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/020_get_next_line)):  
+Creation function that returns a line read from a file descriptor.</br>
+Skills: C (static variables, file descriptors)
 
-* ### 4 NetPractice ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/050_Net_Practice)): 
-Configuration small-scale networks. </br> 
-Skills: TCP/IP addressing.
-
-* ### 4 Exam Rank 04 ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/05_Exam)): 
-Exam: short version of minishell (pipes)
+* ### 0 Libft ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/010_libft)): 
+Coding a C library with highly useful standard functions. </br>
+Skills: C
