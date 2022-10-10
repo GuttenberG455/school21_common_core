@@ -9,11 +9,11 @@ Currently: 15 / 20 complete
 
 ## Projects (from latest to oldest):
 
-* ### 4 CPP Module ([link]https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP)): 
+* ### 4 CPP Module ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/051_CPP)): 
 A nine small projects that introduce us to OOP and C++ </br> 
 Skills: C++ (basics, OOP)
 
-* ### 4 cub3d ([link]https://github.com/GuttenberG455/school21_common_core/tree/main/052_cub3d)): 
+* ### 4 cub3d ([link](https://github.com/GuttenberG455/school21_common_core/tree/main/052_cub3d)): 
 Creation a “realistic” 3D graphical representation of the inside of a maze from a first-person perspective. </br> 
 Skills: C (MiniLibX, raycasting)
 
